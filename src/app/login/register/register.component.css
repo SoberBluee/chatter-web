@@ -1,0 +1,43 @@
+
+::placeholder{text-align: center;}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: underline;
+    text-align: center;
+}
+
+input[type=text],input[type=password]{
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.loginFormBtn{
+    margin: 10px;
+    width: 40%;    
+    border-radius: 10px;
+    background-color:white;
+    justify-content: center;
+}
+
+.loginFormBtn:hover, input[type=text]:hover,input[type=password]:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.error-invalid{
+    color: red;
+    width: auto;
+    margin-top: 5px;
+    overflow: hidden;
+}

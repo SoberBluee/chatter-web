@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="content" style="height: 386px">
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+            <div>
+                <h2>Login</h2>
+            </div>
+            <div class="row">
+                <label for="email">Email:</label>
+                <input [ngStyle]="{'border':loginControls.email.invalid && loginControls.email.touched ? '2px solid red' : '1px solid black'}"
+                    type="text" 
+                    id="email" 
+                    placeholder="Please enter email" 
+                    formControlName="email"
+                        >
+                
+            </div>
+            <p class="error-invalid" 
+                *ngIf="loginControls.email.invalid && loginControls.email.touched">
+                Please enter a valid email </p>
+
+            <div class="row">
+                <label for="password">Password:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Please enter password"
+                    formControlName="password">
+            </div>
+
+            <div class="row">
+                <button class="loginFormBtn" type="submit">Login</button>
+                <button class="loginFormBtn"
+                        type="button" 
+                        (click)="switchForgotPassword()">Sign Up</button>
+                <button class="loginFormBtn" type="button" (click)="clear()">Clear</button>
+                <button class="loginFormBtn" type="button" (click)="switchRegister()">Forgot Password</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="content" *ngIf="showRegisterForm">
+        <app-register></app-register>
+    </div>
+    <div class="content" style="height: 150px !important;" *ngIf="showForgotPasswordForm">
+        <app-forgot-password></app-forgot-password>
+    </div>
+</div>
+

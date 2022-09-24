@@ -1,0 +1,19 @@
+<div class="content">
+    <form>
+        <div class="row header-content">
+            <h3 style="width: auto;">{{title}}</h3>
+            <p style="width: auto;">{{uploadDate}}</p>
+        </div>
+        <div class="row">
+            <!-- show if there is an image -->
+            <img text href="">
+        </div>
+        <div class="row footer-content">
+            <button type="button" class="actionBtn like-button" (click)="like()"></button>
+            <button class="actionBtn comment-button" type="button" (click)="showComment = !showComment"></button>
+            <button class="actionBtn share-button" type="button" (click)="share()"></button>
+            <input *ngIf="showComment" type="text" placeholder="Leave a comment!"/>
+            <button *ngIf="showComment" class="actionBtn post-comment" type="text" (click)="comment()"></button>
+        </div>
+    </form>
+</div>
