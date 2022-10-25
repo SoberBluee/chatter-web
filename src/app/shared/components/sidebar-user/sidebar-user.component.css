@@ -1,0 +1,40 @@
+
+
+.pp{
+    padding: 0px;
+    max-width: 70px;
+    max-height: 50px;   
+    height: auto;
+    width: auto;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+.status{
+    position: relative;
+    right: 25px;
+    top: 35px;
+    height:15px;
+    width: 40px;
+    z-index: 2;
+}
+
+p{
+    text-decoration: underline gray;
+    width: auto;
+    
+}
+
+.sidebar-user{
+    display: flex;
+    border: 1px solid gray;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0px;
+    padding: 5px;
+}
+
+.sidebar-user:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}

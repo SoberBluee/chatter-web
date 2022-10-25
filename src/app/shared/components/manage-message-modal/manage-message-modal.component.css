@@ -1,0 +1,53 @@
+.container{
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 250px;
+    align-items:center;
+    border: 1px solid black;
+    padding:1rem .5rem;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    background-color: rgb(189, 228, 255);
+    margin: 10px;  
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.close{
+    width: 90%;
+    text-align: center;
+    position: relative;
+    float: right;
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    background-color: white;
+    margin-top: 10px;
+}
+
+.close:hover{
+    background-color: rgb(251, 65, 65);
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.controlBtn{
+    margin: 10px;
+    width: 90%;    
+    border-radius: 10px;
+    border: none;
+    background-color:white;
+    justify-content: center;
+}
+
+.controlBtn:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+    background-color: rgb(184, 196, 204);
+
+}
+
+.loginFormBtn:hover, input[type=text]:hover,input[type=password]:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}

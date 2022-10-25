@@ -1,0 +1,46 @@
+<div class="message-content" style="display:inline-block">
+    <form [formGroup]="messageForm">
+        <!-- Message window -->
+        <div class="row message-window" *ngIf="messageData; else noData">
+            <div class="box" *ngFor="let user_message of messageData.messages ">
+                <div>
+                    <!-- sender -->
+                    <!-- (mouseenter)="" (mouseleave)="" -->
+                    <div class="message-box sender" 
+                        *ngIf="user_message.isSender" 
+                        (mouseover)="hoverSettings(user_message.id)" 
+                        (mouseleave)="hoverSettings(user_message.id)">
+                        <button class="edit" (click)="calltoggleEdit()">...</button>
+                        <div class="divider"></div>
+                        {{user_message.message}}
+                    </div>
+    
+                    <!-- reciever -->
+                    <div class="message-box reciever" 
+                        *ngIf="!user_message.isSender">
+                        {{user_message.message}}
+                        <!-- <button style="width: 50px;" (click)="addReciever()">+</button> -->
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Message pop up -->
+            <app-manage-message-modal 
+                *ngIf="toggleEdit" 
+                (emitExit)="manageMessageExit($event)"
+                (emitEdit)="manageMessageEdit($event)"
+                (emitDelete)="manageMessageDelete($event)"
+                (emitForward)="manageMessageForward($event)">
+            </app-manage-message-modal>
+        </div>
+        <ng-template #noData>
+            <p>Please select a user to message</p>
+        </ng-template>
+
+        <!-- footer -->
+        <div class="row footer-content">
+            <input class="message-box"type="text" placeholder="Send a message" formControlName="message"/>
+            <button type="button" class="message-btn" (click)="send()"> Send</button>
+        </div>
+    </form>
+</div>

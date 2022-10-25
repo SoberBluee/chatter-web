@@ -1,0 +1,138 @@
+
+/* Global Styles */
+::placeholder{text-align: center;}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: underline;
+    text-align: center;
+}
+
+input[type=text]{
+    display: inline-block;
+    border: 1px solid black;
+    width:80%;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin: 10px;
+    padding: 5px;
+    
+}
+
+.message-btn{
+    margin: 10px;
+    height: 35px;
+    width: 10%;    
+    border-radius: 10px;
+    background-color:white;
+    justify-content: center;
+}
+
+input[type=text]:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.options{
+    height: 50px;
+}
+
+.message-content{
+    position: relative;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin: 0px 10px;
+    height: 90%;
+    min-height: 500px;
+    width: 100%;
+    padding: 10px;
+}   
+
+.message-box{
+    border-radius: 10px;
+    min-height: 50px;
+    border: 1px solid black;
+    width: 100%;
+    height: 80%;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid black;
+    position: absolute;
+    width: 95%;
+    margin-bottom: 10px;
+    bottom: 0;
+}
+
+.box{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: auto;
+    margin: 0px;
+    overflow:scroll;
+}
+
+.edit{
+    height: 20px;
+    border: none;
+    background-color: transparent;
+}   
+
+.message-box{
+    padding: 5px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.reciever{
+    display: flex;
+    flex-direction: row;
+    float: left;
+    width: auto;
+    height: auto;
+    max-width: 31.25rem;
+    margin: 5px;
+    color: red;
+    padding: 5px;
+}
+
+.sender{
+    display: flex;
+    flex-direction: row;
+    float: right;
+    width: auto;
+    max-width: 31.25rem;
+    height: fit-content;
+    margin: 5px;
+    color: blue;
+    padding: 5px;
+}
+
+.sender:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+
+}
+
+.reciever:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+
+}
+
+.divider{
+    border: 1px solid rgb(170, 170, 170);
+    opacity: .75;
+    width: 1px;
+    height: 20px;
+    margin: 5px 10px;
+}
