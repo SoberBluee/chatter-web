@@ -54,6 +54,7 @@ export interface Posts{
     img?: string;
     body: string;
     comment_id: number;
+    likes: number;
 }
 
 /**

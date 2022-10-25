@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-post-item',
@@ -8,29 +9,41 @@ import {Component, OnInit, Input} from '@angular/core'
 
 export class PostItemComponent implements OnInit {
 
+    public postOptionsForm: FormGroup;
     @Input() public title: string;
     @Input() public uploadDate: string;
     @Input() public img: string;
     @Input() public content: string;
     @Input() public comments: string[];
-
+    @Input() public likes: number = 0;
+    
+    // TODO: make this input when like system is setup
+    public isLiked: boolean = false;
     public showComment: boolean = false;
+    public toggleCommentSection: boolean = false;
 
     constructor(){}
 
     ngOnInit(): void {
-        
+        this.postOptionsForm = new FormGroup({
+            commentBox: new FormControl(''),
+        });
     }
 
     public like(): void{
-        console.log('Like post');
+        this.isLiked = !this.isLiked;
     }
 
     public comment():void{
-        console.log('Post comment');
+        const comment = this.postOptionsForm.get('commentBox')?.value;
+        console.log("comment: ", comment);
     }   
 
     public share():void{
         console.log("Share post")
+    }
+
+    public showComments(): void{
+        this.toggleCommentSection = !this.toggleCommentSection
     }
 }

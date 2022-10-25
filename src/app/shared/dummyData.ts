@@ -129,8 +129,8 @@ export class DummyData{
     ]
 
     public posts: Posts[] = [
-        {id: 22, title: 'A new post', body:'something below the title to fill it', comment_id: 1},
-        {id: 22, title: 'Another test post', img:'assets/mountain.jpeg', body:'another something body lkjsdlfkj;alksdf asdfl;aj asd falsdkf ', comment_id: 1}
+        {id: 22, title: 'A new post', body:'something below the title to fill it', comment_id: 1, likes:0},
+        {id: 22, title: 'Another test post', img:'assets/mountain.jpeg', body:'another something body lkjsdlfkj;alksdf asdfl;aj asd falsdkf ', comment_id: 1, likes:0}
     ]
 
     public getUsers(): User[]{
