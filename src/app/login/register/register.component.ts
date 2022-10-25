@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-
 import { Register } from './../auth-properties';
 
 @Component({
@@ -15,6 +14,7 @@ export class RegisterComponent implements OnInit {
     public emailConfirmFail: boolean = false;
     public passwordConfirmFail: boolean = false;
     public noDetailsError: boolean = false;
+
 
     public registerForm =  new FormGroup({
         firstname: new FormControl('', Validators.required),
@@ -75,8 +75,12 @@ export class RegisterComponent implements OnInit {
             return;
         }
         
-        this.authService.createUser(registerDetails);
+        this.authService.register(registerDetails);
         this.router.navigate(['/'])
+    }
+
+    private generateToken(){
+
     }
 }
 

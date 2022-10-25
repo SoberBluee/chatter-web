@@ -1,11 +1,40 @@
-<div class="row" style="display: flex">
+<div class="row container" style="display: flex">
+    <app-error-banner 
+        *ngIf="showErrorBanner" 
+        [error_message]="errorBannerMessage" 
+        [error_type]="errorBannerType"
+        (emitClose)="closeError()"></app-error-banner>
     <div class="colum content" style="width: 30%;">
-        <label for="title">Sidebar</label>
+        <h2>Sidebar</h2>
+        <div class="row" *ngFor="let user of users; let i = index" 
+            (click)="setSelectedUser(i)">
+            <app-sidebar-user 
+                [user]="user"
+            ></app-sidebar-user>
+        </div>
     </div>
 
-    <div class="column content" style="width: 60%;">
+    <div class="column content" style="width: 55%;">
+        <div class="row header">
+            
+            <h2 style="width: auto;">Messages</h2>
+            <a class="divider"></a>
+            <img class="pp" src="assets/default-avatar.png"
+                alt="profile-picture">
+            <h3 style="width: auto;"> <a href="#their profile link">{{userHeaderName}}</a> </h3>
+            <a class="divider"></a>
+            <button class="user-setting-btn" (click)="showManageUserModal()"><h4>...</h4></button>
+        </div>
+        <app-manage-user-modal 
+            *ngIf="toggleManageUser"
+            [user]="selectedUser"></app-manage-user-modal>
+        <div class="row seperator"></div>
+
+        <app-message-box
+        [selectedUser]="selectedUser"
+        ></app-message-box>
     </div>
-</div>
+</div>      
 <div class="row content footer">
     <label for="footer">Footer</label>
 </div>

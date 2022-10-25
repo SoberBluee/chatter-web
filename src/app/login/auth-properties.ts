@@ -7,9 +7,17 @@ interface Login{
 interface Register{
     firstname: string;
     surname: string;
-    phoneNumber: number;
+    phoneNumber: string;
     email: string;
     password: string;
 }
 
-export {Login, Register}
+interface UpdatedUser{
+    firstname?: string;
+    surname?: string;
+    phoneNumber?:  number;
+    email?: string;
+    password?: string;
+}
+
+export {Login, Register, UpdatedUser}

@@ -2,14 +2,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Login, Register} from "./auth-properties";
-
+import { UserService } from "../shared/user.service";
+import { pipe } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 
 export class AuthService{
     public validUser: boolean = false;
-
-
     //priv levels
         //0 superAdmin
         //1 admin
@@ -26,7 +25,7 @@ export class AuthService{
 
     public loginUrl: string = '/login'
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private userService: UserService){}
     //TEMP FUNCTION
     public verifyLogin(login: Login):boolean{
         const userLogin = JSON.stringify(login);
@@ -39,17 +38,22 @@ export class AuthService{
         return this.validUser;
     }
 
-    //TEMP FUNCTION
-    public createUser(registedDetails: Register ): void{
-        this.createdUser.push(registedDetails);
-    }
-
     public login(loginDetails: Login){
-        // return this.http.post<Login>(this.loginUrl,loginDetails); //TODO: create route to endend to verify login
+        return this.http.post<Login>(this.loginUrl,loginDetails); //TODO: create route to endend to verify login
     }
 
-    public register(){
-
+    public register(user: Register){
+        this.userService.storeUser(user).subscribe({
+            next: (response: unknown) => {
+                if(response){
+                    console.log('user registered');
+                }
+                console.log('something went wrong');
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
     }
 
     public superLogin(){

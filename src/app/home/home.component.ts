@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from './post-properties.component';
-
+import { User, Posts } from '../shared/interface.model';
+import { MessageService } from '../message/message.service';
+import { DummyData } from '../shared/dummyData';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,16 +9,23 @@ import { Post } from './post-properties.component';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(){}
+    public users: User[] =[]
+    public posts: Posts[];
+    public selectedUser: User;
+    
 
-    public defaultPosts: Post[] = [
-        {id: 1, title:'something', uploadDate: 'DD/MM/YYYY', img: 'something',userId: 554, content: 'some content', comments: ['some comment', 'another comments'] },
-        {id: 2, title:'post 2', uploadDate: 'DD/MM/YYYY', img: 'something', userId: 223, content: 'some post 2 content', comments: ['some comment', 'another comments'] },
-        {id: 3, title:'another post', uploadDate: 'DD/MM/YYYY', img: 'something', userId: 441, content: 'another post conetent', comments: ['some comment', 'another comments'] },
-        {id: 4, title:'some other post', uploadDate: 'DD/MM/YYYY', img: 'something', userId: 111, content: 'some more post content ', comments: ['some comment', 'another comments'] },
-    ]
+    constructor(private messageService: MessageService, private dummyData: DummyData){}
 
-    ngOnInit(): void{}
+    ngOnInit(){
+        this.users = this.dummyData.getUsers();
+        this.posts  = this.dummyData.getPosts();
+        console.log("posts: ", this.posts);
+    }
+
+    public setSelectedUser(index: number): void{
+        this.selectedUser = this.users[index];
+        this.messageService.emitSelectedUser.next(this.selectedUser);
+    }
 
 
 

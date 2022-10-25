@@ -10,11 +10,9 @@ export class PostItemComponent implements OnInit {
 
     @Input() public title: string;
     @Input() public uploadDate: string;
-    // @Input() public img: string;
+    @Input() public img: string;
     @Input() public content: string;
     @Input() public comments: string[];
-
-    
 
     public showComment: boolean = false;
 
@@ -35,7 +33,4 @@ export class PostItemComponent implements OnInit {
     public share():void{
         console.log("Share post")
     }
-
-
-
 }

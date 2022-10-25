@@ -14,6 +14,7 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -69,11 +70,14 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "chatter_app:build:production"
+              "browserTarget": "chatter_app:build:production",
+              "proxyConfig": "src/proxy.conf.json"
+
             },
             "development": {
               "browserTarget": "chatter_app:build:development",
-              "proxyConfig": "proxy.conf.js"
+              "proxyConfig": "src/proxy.conf.json"
+              
             }
           },
           "defaultConfiguration": "development"

@@ -4,9 +4,12 @@
             <h3 style="width: auto;">{{title}}</h3>
             <p style="width: auto;">{{uploadDate}}</p>
         </div>
-        <div class="row">
+        <div class="row post-content">
             <!-- show if there is an image -->
-            <img text href="">
+            <img src="{{img}}">
+            <div class="body">
+                {{content}}
+            </div>
         </div>
         <div class="row footer-content">
             <button type="button" class="actionBtn like-button" (click)="like()"></button>

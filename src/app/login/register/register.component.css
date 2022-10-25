@@ -41,3 +41,15 @@ input[type=text],input[type=password]{
     margin-top: 5px;
     overflow: hidden;
 }
+
+.success{
+    background-color:rgb(74, 255, 74);
+}
+
+.danger{
+    background-color: rgb(255, 85, 85);
+}
+
+.default{
+    background-color: rgb(111, 137, 253);
+}

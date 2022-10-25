@@ -73,8 +73,8 @@
             *ngIf="noDetailsError">
             Please make sure you have entered your details</p>
         <div class="row">
-            <button class="loginFormBtn" type="submit" [disabled]="compareLogin">Create</button>
-            <button class="loginFormBtn" (click)="clear()">Clear</button>
+            <button class="loginFormBtn success" type="submit" [disabled]="compareLogin">Create</button>
+            <button class="loginFormBtn danger" (click)="clear()">Clear</button>
         </div>
 
     </form>

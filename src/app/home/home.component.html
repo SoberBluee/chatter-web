@@ -1,27 +1,26 @@
-
-<div class="row" style="display: flex">
+<div class="row container" style="display: flex">
     <div class="colum content" style="width: 30%;">
-        <label for="title">Sidebar</label>
-        <app-sidebar-user></app-sidebar-user>
-        <app-sidebar-user></app-sidebar-user>
-        <app-sidebar-user></app-sidebar-user>
-        <app-sidebar-user></app-sidebar-user>
+        <h2>Sidebar</h2>
+        <div class="row" *ngFor="let user of users; let i = index" 
+            (click)="setSelectedUser(i)">
+            <app-sidebar-user 
+                [user]="user"
+            ></app-sidebar-user>
+        </div>
     </div>
 
-    <div class="column content" style="width: 60%;">
-        <h2>Content</h2>
-        <app-post-item *ngFor="let aPost of defaultPosts"
-            [title]="aPost.title"
-            [uploadDate]="aPost.uploadDate"
-            [content]="aPost.content"
-            [comments]="aPost.comments"
-        ></app-post-item>
-
-
+    <div class="column content" style="width: 55%;">
+        <div class="row" 
+            *ngFor="let post of posts; let i = index">
+            <app-post-item
+                [title]="post.title"
+                [img]="post.img ?? ''"
+                [content]="post.body"
+            ></app-post-item>
+            
+        </div>
     </div>
-</div>
+</div>  
 <div class="row content footer">
     <label for="footer">Footer</label>
 </div>
-
-

@@ -1,1 +1,48 @@
-<p> Account Page</p>
+
+<div class="row parent">
+    <form [formGroup]="accountForm" (ngSubmit)="updateAccount()">
+        <div class="row account-container">
+            <div class="row">
+                <h2>Update Account Information</h2>
+            </div>
+            <div class="row spacing">
+                <label for="firstname">Firstname</label>
+                <input [ngStyle]="{'color': checkTouched('firstname') ? 'black' : 'gray'}" type="text" placeholder="Change firstname" formControlName="firstname">
+            </div>
+            <div class="row spacing">
+                <label for="surname">Surname</label>
+                <input [ngStyle]="{'color': checkTouched('surname') ? 'black' : 'gray'}" type="text" placeholder="Change Surname" formControlName="surname">
+            </div>
+            <div class="row spacing">
+                <label for="phonenumber">Phone Number</label>
+                <input [ngStyle]="{'color': checkTouched('phonenumber') ? 'black' : 'gray'}" type="text" placeholder="Change Phone number" formControlName="phonenumber">
+            </div>
+            <button type="submit" class="account-btn success">Update</button>
+            <button type="button" class="account-btn dagner">Clear</button>
+        </div>
+
+        <div class="row account-container">
+            <div class="row">
+                <h2>Change Password</h2>
+            </div>
+            <div class="row spacing">
+                <label for="password">Old Password</label>
+                <input style="border: 1px solid black'"
+                type="password" placeholder="Old Password" formControlName="oldPassword">
+            </div>
+            <div class="row spacing">
+                <label for="password">Password</label>
+                <input [ngStyle]="{border: !comparePassword && !passwordEmpty ? ' 2px solid red' : '1px solid black'}"
+    
+                type="password" placeholder="Change Password" formControlName="password">
+            </div>
+            <div class="row spacing">
+                <label for="confirmPassword">Confirm Password</label>
+                <input [ngStyle]="{border: !comparePassword && !passwordEmpty ? ' 2px solid red' : '1px solid black'}"
+                        type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+            </div>
+            <button type="submit" class="account-btn success">Update</button>
+            <button type="button" class="account-btn dagner">Clear</button>
+        </div>
+    </form>
+</div>
