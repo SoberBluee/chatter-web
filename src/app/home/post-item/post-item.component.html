@@ -5,7 +5,6 @@
             <p style="width: auto;">{{uploadDate}}</p>
         </div>
         <div 
-            [ngStyle]="{'"
             class="row post-content" 
             (click)="showComments()">
             <!-- show if there is an image -->
@@ -14,6 +13,10 @@
                 {{content}}
             </div>  
         </div>
+        <app-comment-selction
+            style="padding: 0px;"
+            *ngIf="toggleCommentSection"
+            [comments]="comments"></app-comment-selction>
         <div class="row footer-content">
             <label class="likes-label" for="likes">Likes: {{likes}}</label>
             <div class="divider"></div>

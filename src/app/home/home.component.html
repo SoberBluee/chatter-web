@@ -10,6 +10,10 @@
     </div>
 
     <div class="column content" style="width: 55%;">
+        <button class="new-post-btn" (click)="toggleNewPost()"> New Post</button>
+        <app-create-post>
+
+        </app-create-post>
         <div class="row" 
             *ngFor="let post of posts; let i = index">
             <app-post-item
@@ -17,7 +21,6 @@
                 [img]="post.img ?? ''"
                 [content]="post.body"
             ></app-post-item>
-            
         </div>
     </div>
 </div>  

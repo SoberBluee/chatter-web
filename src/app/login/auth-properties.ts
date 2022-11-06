@@ -1,17 +1,21 @@
 interface Login{
     email: string;
     password: string;
-    privLevel: number;
 }
 
 interface Register{
+    user_name: string;
     firstname: string;
     surname: string;
-    phoneNumber: string;
+    phone_number: string;
     email: string;
     password: string;
 }
 
+
+/**
+ * don't need
+ */
 interface UpdatedUser{
     firstname?: string;
     surname?: string;

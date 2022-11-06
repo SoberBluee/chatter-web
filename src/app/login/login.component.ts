@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Login } from './auth-properties';
-
 
 @Component({
   selector: 'app-login',
@@ -54,20 +53,25 @@ export class LoginComponent implements OnInit{
     public submitLogin(): void{
         this.submitted = true;
         //TODO: create login route to backend, verify login details, redirect to /home
-        console.log(this.loginForm);
         const login:Login ={
             email: this.loginForm.controls['email'].value,
             password: this.loginForm.controls['password'].value,
-            privLevel: 2
         };
-        console.log('stored user details');
 
-        //TODO: verify JWT token on login (should be created when user registes )
-       if(this.authService.verifyLogin(login)){
-        this.router.navigate(['/']);
-        return;
-       }
-       
+        this.authService.login(login).pipe().subscribe({
+            next:(response:any) =>{
+                if(response.status === 200){
+                    console.log("login user: ", response);
+                    this.authService.currentUser = response.data
+                    console.log("curentUser: ", this.authService.currentUser)
+                    localStorage.setItem('session', JSON.stringify(response.data));
+                    console.log("before redirect");
+                    this.router.navigate(['/'])
+                }else{
+                    return;
+                }
+            }
+        });        
        this.submitted = false;
     }
 }

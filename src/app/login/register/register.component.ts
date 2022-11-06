@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Register } from './../auth-properties';
+import { pipe } from 'rxjs';
 
 @Component({
     selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
 
 
     public registerForm =  new FormGroup({
+        username: new FormControl('', Validators.required),
         firstname: new FormControl('', Validators.required),
         surname: new FormControl('', Validators.required),
         rEmail: new FormControl('', [Validators.required, Validators.email]),
@@ -59,13 +61,11 @@ export class RegisterComponent implements OnInit {
     }
 
     public submitRegister(): void{
-        // const emailConfirmFail = this.registerForm.value.rEmail !== this.registerForm.value.confirmEmail ? true : false;
-        // const passwordConfirmFail = this.registerForm.value.rPassword !== this.registerForm.value.confirmPassword ? true : false;
-        
         const registerDetails: Register = {
+            user_name: this.registerForm.value.username,
             firstname: this.registerForm.value.firstname,
             surname: this.registerForm.value.surname,
-            phoneNumber: this.registerForm.value.phoneNumber,
+            phone_number: this.registerForm.value.phoneNumber,
             email: this.registerForm.value.rEmail,
             password: this.registerForm.value.rPassword,
         }
@@ -74,9 +74,22 @@ export class RegisterComponent implements OnInit {
             this.noDetailsError = true;
             return;
         }
-        
-        this.authService.register(registerDetails);
-        this.router.navigate(['/'])
+
+        this.authService.register(registerDetails).pipe().subscribe({
+            next: (response:any) =>{
+                if(response.status === 200){
+                    console.log("register user: ", response);
+                    this.authService.currentUser = response.data;
+                    this.router.navigate(['/'])
+                }
+                //display error message
+            },
+            error: (error)=>{
+                console.error("ERROR : ", error);
+            }
+        });
+
+        //display error message
     }
 
     private generateToken(){

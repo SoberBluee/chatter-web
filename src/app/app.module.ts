@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -22,7 +23,9 @@ import { ManageUserModalComponent } from './shared/components/manage-user-modal/
 import { ManageMessageModalComponent } from './shared/components/manage-message-modal/manage-message-modal.component';
 // import {MatDialogModule} from '@angular/material/dialog';
 import { ErrorBannerComponent } from './shared/components/error-banner/error-banner.component';
-
+import { CommentSectionComponent } from './shared/components/comments-section/comment-section.component';
+import { HeaderInterceptor } from './header-interceptor.interceptor';
+import { CreatePostComponent } from './home/create-post/create-post.component';
 
 //Error Exceptions
 import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
@@ -44,6 +47,8 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     ManageUserModalComponent,
     ManageMessageModalComponent,
     ErrorBannerComponent,
+    CommentSectionComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,11 +64,10 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
       { path: 'message', component: MessageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
       { path: 'people-page', component: PeoplePageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
       { path: '**', component: NotFoundComponent}
-
     ])
   ],
   providers: [
-    // {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true ,}
   ],
   bootstrap: [AppComponent]
 })

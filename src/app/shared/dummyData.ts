@@ -1,4 +1,4 @@
-import { User, MessageContent, Message, UserContacts, Posts } from "./interface.model"
+import { User, MessageContent, Message, UserContacts, Posts, Comment } from "./interface.model"
 import { Injectable } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
@@ -39,6 +39,8 @@ export class DummyData{
             addedUsers: [2,3],
             status: 'INACTIVE', 
             lastOnline: new Date('2022-12-23'),
+            liked_posts:[],
+
          },
          {id: 2, 
             messages_id: 12, 
@@ -52,6 +54,8 @@ export class DummyData{
             addedUsers: [1,4],
             status: 'ACTIVE', 
             lastOnline: new Date('2022-12-23'),
+            liked_posts:[],
+
          },
          {id: 3, 
             messages_id: 99 ,
@@ -65,6 +69,8 @@ export class DummyData{
             addedUsers: [2,3],
             status: 'AFK', 
             lastOnline: new Date('2022-12-23'),
+            liked_posts:[],
+
          },
          {id: 4, 
             messages_id: 55, 
@@ -78,6 +84,8 @@ export class DummyData{
             addedUsers: [2,3],
             status: 'INACTIVE', 
             lastOnline: new Date('2022-12-23'),
+            liked_posts:[],
+
          },
          {
             id: 5, 
@@ -92,6 +100,7 @@ export class DummyData{
             addedUsers: [2,3],
             status: 'ACTIVE', 
             lastOnline: new Date('2022-12-23'),
+            liked_posts:[],
       },
     ];
 
@@ -128,9 +137,28 @@ export class DummyData{
         }}
     ]
 
+    public comments: Comment[] = [
+        {id: 1, comment: 'test comment'},
+        {id: 1, comment: 'another test comment'},
+        {id: 2, comment: 'one comment'},
+        {id: 2, comment: 'two comment'},
+        {id: 2, comment: 'three comment'},
+    ];
+
+    /**
+     * A post can have many comments
+     * A comment can have many comments 
+     * 
+     * 
+     * Posts
+     * id = primary key
+     * comment_id = foreign key to comments table
+     * 
+     */
+
     public posts: Posts[] = [
-        {id: 22, title: 'A new post', body:'something below the title to fill it', comment_id: 1, likes:0},
-        {id: 22, title: 'Another test post', img:'assets/mountain.jpeg', body:'another something body lkjsdlfkj;alksdf asdfl;aj asd falsdkf ', comment_id: 1, likes:0}
+        {title: 'A new post', body:'something below the title to fill it' },
+        {title: 'Another test post', img:'assets/mountain.jpeg', body:'another something body lkjsdlfkj;alksdf asdfl;aj asd falsdkf '}
     ]
 
     public getUsers(): User[]{
@@ -151,6 +179,33 @@ export class DummyData{
                 message.messages.push(new_message);
             }
         })
+    }
+
+    public setComment(new_comment: Comment){
+        this.comments.push(new_comment);
+    }
+
+    public setLike(like:boolean, post_id: number){
+        // if(like){
+        //     this.posts.forEach((post:Posts)=>{
+        //         post.id === post_id ? post.likes += 1 : null;
+        //     })
+        // }else{
+        //     this.posts.forEach((post:Posts) =>{
+        //         post.id === post_id ? post.likes -= 1 : null;
+        //     })
+        // }
+
+        console.log("posts: ", this.posts);
+    }
+
+    public updateComments(comments: Comment[]){
+        this.comments = comments;
+    }
+
+    public getComments():Comment[]{
+        console.log("getComments: ", this.comments);
+        return this.comments.slice();
     }
 
     public getMessagesForUser(message_id: number){

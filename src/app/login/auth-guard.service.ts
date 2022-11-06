@@ -1,19 +1,23 @@
 import { Router, CanActivate} from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 
 export class AuthGuardService implements CanActivate {
 
-    constructor(public authService: AuthService, public router: Router){
-
+    constructor(public authService: AuthService, public router: Router, private http: HttpClient) {
     }
 
     public canActivate():boolean{
-        // if(!this.authService.isAuthenticated())
-        //TODO: Create auth service to check if user is logged in
-        console.log('AUTH CHECK: canActivate');
+        /**
+         * TODO
+         * make work when user is logged in 
+         */
+        // if(this.authService.currentUser){
+        //     return true;
+        // }
         return true;
     }
 

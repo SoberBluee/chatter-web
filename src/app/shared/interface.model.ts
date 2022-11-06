@@ -19,6 +19,19 @@ export interface User{
     status: string, 
     lastOnline: Date,
     profile_picture?: string;
+    liked_posts: number[];
+}
+
+export interface CurrentUesr{
+    id: number;
+    user_name: string;
+    first_name: string;
+    sur_name: string;
+    email: string;
+    phone_number: number;
+    email_verified_at: Date;
+    created_at: Date;
+    updated_at: Date;
 }
 
 /**
@@ -49,12 +62,9 @@ export interface UserContacts{
  */
 
 export interface Posts{
-    id: number;
     title: string;
     img?: string;
     body: string;
-    comment_id: number;
-    likes: number;
 }
 
 /**
@@ -64,7 +74,7 @@ export interface Posts{
  * 
  * id = primary key 
  */
-export interface Comments{
+export interface Comment{
     id: number;
     comment: string;
 }
@@ -86,6 +96,12 @@ export interface Message{
     timestamp: number;
     sender: string;
     reciever: string; //make sure to add user type to define exact user
+}
+
+export interface JsonResponse{
+    data: any,
+    message: string,
+    status: number;
 }
 
 // user has own unique id

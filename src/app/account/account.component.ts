@@ -13,9 +13,10 @@ import { Register} from '../login/auth-properties';
 export class AccountComponent implements OnInit {
 
     public dummyData: Register = {
+        user_name: 'tempUser',
         firstname: 'something',
         surname: 'something else',
-        phoneNumber: '09999999',
+        phone_number: '09999999',
         email:'something@mail.com',
         password: ''
     }
@@ -23,8 +24,9 @@ export class AccountComponent implements OnInit {
     public accountForm = new FormGroup({
         firstname: new FormControl(this.dummyData.firstname ? this.dummyData.firstname : '', { updateOn: 'blur' }),
         surname: new FormControl(this.dummyData.surname ? this.dummyData.surname : '', { updateOn: 'blur' }),
-        phonenumber: new FormControl(this.checkFormNumber() ? this.dummyData.phoneNumber : '', { updateOn: 'blur' }),
+        phonenumber: new FormControl(this.checkFormNumber() ? this.dummyData.phone_number : '', { updateOn: 'blur' }),
         email: new FormControl(this.dummyData.email ? this.dummyData.email : '', { updateOn: 'blur' }),
+        oldPassword: new FormControl('', Validators.min(6)),
         password: new FormControl('', [Validators.min(6)]),
         confirmPassword: new FormControl('', Validators.min(6)),
     });
@@ -53,7 +55,7 @@ export class AccountComponent implements OnInit {
     }
 
     public checkFormNumber():boolean{
-        return !!this.dummyData.phoneNumber ? true : false;
+        return !!this.dummyData.phone_number ? true : false;
     }
 
     public updateAccount(): void { 
