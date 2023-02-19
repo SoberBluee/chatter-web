@@ -49,6 +49,7 @@ export class MessageBoxComponent implements OnInit {
         .subscribe((selectedUser: CurrentUser) => {
             this.messageData = [];
             this.loading = true;
+            this.selectedUser = selectedUser;
             // get message by the selectedUser id
             this.messageService.getMessages(this.currentUser.message_id, selectedUser.message_id)
                 .subscribe((response: any) => {
@@ -56,14 +57,20 @@ export class MessageBoxComponent implements OnInit {
                     console.log("response: ", response);
                     // work out sender after data returned from database
                     // Want to base the sender of the currently logged in user
-                    this.findSender(response.data);
+                    this.findSenderAndReciever(response.data);
                     this.loading = false;
                 })
     
         })
     }
 
-    private findSender(message: Message[]): void{
+    /**
+     * Will set the sender boolean to tell sender and reciever apart from server
+     * @param message[] 
+     * @returns void
+     */
+    private findSenderAndReciever(message: Message[]): void{
+        this.messageData = [];
         message.forEach((message) => {
             if(message.user_sender_id === this.currentUser.message_id) { message.isSender = true }
             else { message.isSender = false}
@@ -71,12 +78,18 @@ export class MessageBoxComponent implements OnInit {
         })
     }
 
+    /**
+     * will send or edit a message and send the new data to the server
+     * 
+     * @params none
+     * @returns void
+     */
     public send():void {
-        const message = this.messageForm.controls['message'].value;
+        const message = this.getMessage;
         if(message === ''){
             return;
         }
-
+        // check if the user wants to edit the message
         if(this.editMode){
             this.messageService.editMessage(this.selectedUser.message_id, this.messageHoverId, message);
             this.editMode = false;
@@ -89,12 +102,18 @@ export class MessageBoxComponent implements OnInit {
             reciever: this.selectedUser.id,
             message: message,
         };
-
-        this.messageService.setMessage(new_message).subscribe((message: any)=>{
-            this.messageData.push(message.data);
-        });
+        // set message locally
+        this.messageService
+            .setMessage(new_message)
+            .subscribe((message: any)=>{// return the latest message from the server
+                this.findSenderAndReciever(message.data);// find sender and reciever
+            });
 
         this.clearMessageBox();
+    }
+
+    public get getMessage(): string{
+        return this.messageForm.controls['message'].value;
     }
 
     /*
@@ -143,10 +162,11 @@ export class MessageBoxComponent implements OnInit {
     public clearMessageBox(): void{ this.messageForm.reset(); }
 
     private findMessageToEdit(message_id: number):any{
-        // const messageToEdit = this.messageData.messages.filter((message) =>{
-        //     return message.id === this.messageHoverId;
-        // })
-        // return messageToEdit[0];
+        if(!message_id){ return; }
+        // filter the message to edit and retreieve the first message 
+        return this.messageData.filter((message) => {
+            return message.id === message_id;
+        })[0];
     }
 
     /*

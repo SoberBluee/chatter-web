@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { Login } from './auth-properties';
-import { UserService } from '../shared/user.service';
+import { CurrentUser } from '../shared/interface.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +19,9 @@ export class LoginComponent implements OnInit{
     public errorStatusCode: number; 
 
     //Form related sutff
+    public user: CurrentUser;
     public submitted: boolean = false;
-    public loginForm = new FormGroup ({
-        email: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.min(6)])
-    });
+    public loginForm: FormGroup;
     public showRegisterForm: boolean = false;
     public showForgotPasswordForm: boolean = false;
 
@@ -31,7 +30,26 @@ export class LoginComponent implements OnInit{
     constructor(public authService: AuthService, 
                 public router: Router){}
 
-    ngOnInit(): void{}
+    public ngOnInit(): void{
+        // ============= attempty to setup autologin ===============
+        // let user = localStorage.getItem('session') ?? null;
+        // if(user){
+        //     console.log('user session: ', user);
+        //     this.authService.autoLogin(JSON.parse(user)).subscribe({
+        //         next: (response: any) => {
+        //             if(response.data){
+        //                 console.log("navigate");
+        //                 this.router.navigate(['/']);
+        //             }
+        //         }
+        //     });
+        // }
+
+        this.loginForm = new FormGroup ({
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required, Validators.min(6)])
+        });
+    }
 
     public get loginControls(){
         return this.loginForm.controls;
@@ -73,6 +91,7 @@ export class LoginComponent implements OnInit{
         .subscribe({
             next:(response:any) =>{
                 if(response.status === 200){
+                    console.log('response: ', response.data);
                     localStorage.setItem('session', JSON.stringify(response.data));
                     this.authService.setCurrentUser(response.data);
                     this.loading = false;
