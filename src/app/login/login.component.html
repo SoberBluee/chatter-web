@@ -1,13 +1,17 @@
 <div class="row">
-    <!-- <app-error-banner 
-        ngIf="error"
-        [error_message]=""
-        [error_type]=""
-    ></app-error-banner> -->
+    <!-- Error Banner -->
+    <app-error-banner 
+        *ngIf="isError" 
+        [error_message]="errorBannerMessage" 
+        [error_type]="'ERROR'" 
+        [widthPercentage]="50" 
+        [error_status]="errorStatusCode"
+        ></app-error-banner>
     <div class="content" style="height: 386px">
+        <!-- Login form -->
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
             <div>
-                <h2>Login</h2>
+                <h2> Login </h2>
             </div>
             <div class="row">
                 <label for="email">Email:</label>
@@ -15,8 +19,7 @@
                     type="text" 
                     id="email" 
                     placeholder="Please enter email" 
-                    formControlName="email"
-                        >
+                    formControlName="email">
                 
             </div>
             <p class="error-invalid" 
@@ -33,19 +36,20 @@
             </div>
 
             <div class="row">
-                <button class="loginFormBtn success" type="submit">Login</button>
-                <button class="loginFormBtn default"
-                        type="button" 
+                <!-- <div class="row loader" *ngIf="loading"></div> -->
+                <button class="selection-box" type="submit">Login</button>
+                <button class="selection-box" type="button" 
                         (click)="switchForgotPassword()">Sign Up</button>
-                <button class="loginFormBtn danger" type="button" (click)="clear()">Clear</button>
-                <button class="loginFormBtn default" type="button" (click)="switchRegister()">Forgot Password</button>
-
+                <button class="selection-box" type="button" (click)="clear()">Clear</button>
+                <button class="selection-box" type="button" (click)="switchRegister()">Forgot Password</button>
             </div>
         </form>
     </div>
+    <!--  Register form -->
     <div class="content" *ngIf="showRegisterForm">
         <app-register></app-register>
     </div>
+    <!-- Reset password form -->
     <div class="content" style="height: 150px !important;" *ngIf="showForgotPasswordForm">
         <app-forgot-password></app-forgot-password>
     </div>

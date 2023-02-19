@@ -1,25 +1,25 @@
+
 <div class="message-content" style="display:inline-block">
     <form [formGroup]="messageForm">
         <!-- Message window -->
-        <div class="row message-window" *ngIf="messageData; else noData">
-            <div class="box" *ngFor="let user_message of messageData.messages ">
+        <div class="row message-window" *ngIf="!loading else noData">
+            <div class="box" *ngFor="let user_message of messageData ;">
                 <div>
                     <!-- sender -->
-                    <!-- (mouseenter)="" (mouseleave)="" -->
                     <div class="message-box sender" 
                         *ngIf="user_message.isSender" 
                         (mouseover)="hoverSettings(user_message.id)" 
                         (mouseleave)="hoverSettings(user_message.id)">
                         <button class="edit" (click)="calltoggleEdit()">...</button>
                         <div class="divider"></div>
+                        <!-- {{ currentUser.id === user_message.user_sender_id }} -->
                         {{user_message.message}}
                     </div>
     
                     <!-- reciever -->
                     <div class="message-box reciever" 
                         *ngIf="!user_message.isSender">
-                        {{user_message.message}}
-                        <!-- <button style="width: 50px;" (click)="addReciever()">+</button> -->
+                        {{user_message.message}} 
                     </div>
                 </div>
             </div>

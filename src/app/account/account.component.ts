@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UpdatedUser } from "../login/auth-properties";
-
-import { Register} from '../login/auth-properties';
+import { AuthService } from "../shared/auth.service";
+import { CurrentUser } from "../shared/interface.model";
+import { AccountServiceComponent } from "../shared/services/account.service";
 
 @Component({
     selector: 'app-account',
@@ -11,29 +12,34 @@ import { Register} from '../login/auth-properties';
 })
 
 export class AccountComponent implements OnInit {
-
-    public dummyData: Register = {
-        user_name: 'tempUser',
-        firstname: 'something',
-        surname: 'something else',
-        phone_number: '09999999',
-        email:'something@mail.com',
-        password: ''
-    }
-
+    public currentUser: CurrentUser;
     public accountForm = new FormGroup({
-        firstname: new FormControl(this.dummyData.firstname ? this.dummyData.firstname : '', { updateOn: 'blur' }),
-        surname: new FormControl(this.dummyData.surname ? this.dummyData.surname : '', { updateOn: 'blur' }),
-        phonenumber: new FormControl(this.checkFormNumber() ? this.dummyData.phone_number : '', { updateOn: 'blur' }),
-        email: new FormControl(this.dummyData.email ? this.dummyData.email : '', { updateOn: 'blur' }),
+        username: new FormControl('', {updateOn: 'blur'}),
+        firstname: new FormControl('', { updateOn: 'blur' }),
+        surname: new FormControl('', { updateOn: 'blur' }),
+        phonenumber: new FormControl('', { updateOn: 'blur' }),
+        email: new FormControl('', { updateOn: 'blur' }),
+    });
+
+    public changePasswordForm = new FormGroup({
         oldPassword: new FormControl('', Validators.min(6)),
         password: new FormControl('', [Validators.min(6)]),
         confirmPassword: new FormControl('', Validators.min(6)),
     });
-
-    constructor(){}
+    
+    constructor(private authService: AuthService, 
+                private accountService: AccountServiceComponent){}
 
     ngOnInit(): void {
+        this.currentUser = JSON.parse(localStorage.getItem('session') || '');
+
+        this.accountForm.patchValue({
+            username: this.currentUser.user_name,
+            firstname: this.currentUser.first_name,
+            surname: this.currentUser.sur_name,
+            phonenumber : this.currentUser.phone_number,
+        });
+        
         this.accountForm.valueChanges.subscribe({
             next:((changes)=>{
                 console.log(changes);
@@ -54,10 +60,6 @@ export class AccountComponent implements OnInit {
         return this.accountForm.controls[controlName].touched;
     }
 
-    public checkFormNumber():boolean{
-        return !!this.dummyData.phone_number ? true : false;
-    }
-
     public updateAccount(): void { 
         const updatedData:UpdatedUser = {
             firstname: this.accountForm.controls['firstname'].value,
@@ -67,5 +69,12 @@ export class AccountComponent implements OnInit {
             password: this.accountForm.controls['password'].value,
         }
         console.log("accountForm: ", updatedData);
+    }
+
+    public changePassword(): void{
+        const oldPassword = this.changePasswordForm.controls['oldPassword'].value
+        this.accountService.checkOldPassword(this.currentUser.id, oldPassword).subscribe((response) => {
+            console.log('reponse: ', response);
+        })
     }
 }

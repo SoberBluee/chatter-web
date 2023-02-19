@@ -1,6 +1,6 @@
 import { Router, CanActivate} from '@angular/router';
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../shared/auth.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
@@ -15,10 +15,10 @@ export class AuthGuardService implements CanActivate {
          * TODO
          * make work when user is logged in 
          */
-        // if(this.authService.currentUser){
-        //     return true;
-        // }
-        return true;
+        if(this.authService.currentUser){
+            return true;
+        }
+        return false;
     }
 
 }

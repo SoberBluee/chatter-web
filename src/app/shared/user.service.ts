@@ -1,34 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Register, UpdatedUser } from '../login/auth-properties';
-import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
-import { UrlDefinitions } from './url-endpoints'
+import { Injectable, OnInit } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { AuthService } from "./auth.service";
+import { CurrentUser } from "./interface.model";
+import { HttpClient } from "@angular/common/http";
+import { Subject } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 
-export class UserService{
-    constructor(private http: HttpClient, private urls: UrlDefinitions){}
+export class UserService implements OnInit{
 
-    public storeUser(user: Register):Observable<unknown>{
-        //TODO: create interceptor to add headers to every request sent to endpoint
-        const headers = new HttpHeaders()
-            .set('Access-Control-Allow-Origin', '*')
-            .set('Content-Type', 'application/json');
-        return this.http.post(this.urls.addUser, user, {headers});  
-    }
+    public routePrefix: string = environment.php_api_url;
+    public currentUser: CurrentUser;
+    public hasFriendsEvent = new Subject<CurrentUser[]>();
 
-    //pass in parameters that only need to be updated
-    //could pass in a user object that only contains the the values that need to be updated
-    //return observable boolean
-    public updateUser(body:UpdatedUser):Observable<unknown>{
-        const header = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
-        return this.http.post(this.urls.updateUser, {headers: header, body});
-    }
-    //return observable boolean
-    public deleteUser(userId: number){
-        const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
-        return this.http.delete(this.urls.deleteUser, {headers, body: JSON.stringify(userId)});
-    }
+    constructor(private readonly authService: AuthService, private http: HttpClient){}
 
+    public ngOnInit(): void {}
+
+    public getFriends(friends_list: string){
+        if(friends_list === null){
+            console.error('NO friends in list')
+            return;
+        }
+
+        return this.http.post(this.routePrefix + '/friend/get-friends', friends_list.split(","));
+    }
 }

@@ -9,11 +9,14 @@ import { Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
 export class ErrorBannerComponent implements OnInit {
     @Input() error_message: string; 
     @Input() error_type: string;
+    @Input() error_status: number;
+    @Input() widthPercentage: number;
     @Output() emitClose = new EventEmitter();
 
     constructor(){}
 
     public ngOnInit(): void {
+        console.log('width: ', this.widthPercentage);
         setTimeout(()=> this.emitClose.emit(), 5000); //banner closes after a certain time
     }
 

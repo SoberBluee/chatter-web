@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
 import { Register } from './../auth-properties';
-import { pipe } from 'rxjs';
 
 @Component({
     selector: 'app-register',
@@ -78,8 +77,8 @@ export class RegisterComponent implements OnInit {
         this.authService.register(registerDetails).pipe().subscribe({
             next: (response:any) =>{
                 if(response.status === 200){
-                    console.log("register user: ", response);
-                    this.authService.currentUser = response.data;
+                    console.log("response user: ", response);
+                    // this.authService.currentUserChange.next(response.data);
                     this.router.navigate(['/'])
                 }
                 //display error message

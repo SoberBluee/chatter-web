@@ -22,18 +22,22 @@ input[type=text]{
     width:80%;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin: 10px;
+    margin: .625rem;
     padding: 5px;
     
 }
 
 .message-btn{
-    margin: 10px;
-    height: 35px;
-    width: 10%;    
+    margin: .625rem;
+    height: 2.5rem;
+    width: 5rem;    
     border-radius: 10px;
     background-color:white;
     justify-content: center;
+}
+
+.message-btn:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
 input[type=text]:hover{
@@ -68,6 +72,7 @@ input[type=text]:hover{
     display: flex;
     flex-direction: row;
     border-top: 1px solid black;
+    align-items: center;
     position: absolute;
     width: 95%;
     margin-bottom: 10px;
@@ -135,4 +140,9 @@ input[type=text]:hover{
     width: 1px;
     height: 20px;
     margin: 5px 10px;
+}
+
+.message-window{
+    max-height: 26.25rem;
+    overflow: scroll;
 }

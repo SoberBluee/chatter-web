@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-
+import { Component, OnInit, Input, ChangeDetectorRef } from "@angular/core";
+import { AuthService } from "../../auth.service";
+import { MessageService } from "src/app/message/message.service";
+import { Router } from "@angular/router";
 //Interfaces
-import { User } from "../../interface.model";
+import { CurrentUser } from "../../interface.model";
 
 @Component({
     selector: 'app-sidebar-user',
@@ -11,24 +13,36 @@ import { User } from "../../interface.model";
 
 export class SideBarUserComponent implements OnInit{
     // make as table
-    @Input() user: User;
-
+    @Input() user: CurrentUser;
+    
+    public currentUser: CurrentUser;
     public profile_picture: string;
     public status: string;
+    public selectedUser: CurrentUser;
 
-    constructor(){}
+    constructor(private authService:AuthService, 
+                private cd: ChangeDetectorRef, 
+                private messageService: MessageService,
+                private router: Router){}
     
     ngOnInit(): void {
-        this.user.lastOnline.getUTCDate();
+        this.currentUser = JSON.parse(localStorage.getItem('session') || '');
+        this.currentUser.lastOnline;
 
-        if(this.user.status === 'ACTIVE'){
+        if(this.currentUser.status === 'ACTIVE'){
             this.status = 'assets/active-user.png'
         }
-        else if(this.user.status === 'INACTIVE'){
+        else if(this.currentUser.status === 'INACTIVE'){
             this.status = 'assets/inactive-user.png';
         }
-        else if(this.user.status === 'AFK'){
+        else if(this.currentUser.status === 'AFK'){
             this.status = 'assets/afk-user.png'
         }
+    }
+
+    public setSelectedUser(selectedUserIndex: number): void{
+        this.selectedUser = this.currentUser.friend_list[selectedUserIndex];
+        this.messageService.emitSelectedUser.next(this.selectedUser);
+        this.router.navigate(['message']);
     }
 }

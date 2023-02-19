@@ -30,6 +30,8 @@ export class CreatePostComponent implements OnInit{
             img: '',
         }
 
-        this.postService.setPosts(new_post);
+        this.postService.setPosts(new_post).pipe().subscribe((post) => {
+            console.log("response: ", post );
+        })
     }
 }

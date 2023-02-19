@@ -21,11 +21,12 @@ import { SideBarUserComponent } from './shared/components/sidebar-user/sidebar-u
 import { MessageBoxComponent } from './message/message-box/message-box.component';
 import { ManageUserModalComponent } from './shared/components/manage-user-modal/manage-user-modal.component';
 import { ManageMessageModalComponent } from './shared/components/manage-message-modal/manage-message-modal.component';
-// import {MatDialogModule} from '@angular/material/dialog';
 import { ErrorBannerComponent } from './shared/components/error-banner/error-banner.component';
 import { CommentSectionComponent } from './shared/components/comments-section/comment-section.component';
 import { HeaderInterceptor } from './header-interceptor.interceptor';
 import { CreatePostComponent } from './home/create-post/create-post.component';
+import { MessageBoxHeaderComponent } from './message/message-box-header/message-box-header.component';
+
 
 //Error Exceptions
 import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
@@ -49,13 +50,13 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     ErrorBannerComponent,
     CommentSectionComponent,
     CreatePostComponent,
+    MessageBoxHeaderComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    // MatDialogModule,
     RouterModule.forRoot([
        //TODO: replace routes with routing component
       { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
@@ -67,7 +68,7 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     ])
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true ,}
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

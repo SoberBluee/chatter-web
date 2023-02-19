@@ -3,13 +3,13 @@
 ::placeholder{text-align: center;}
 
 h2{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-decoration: underline;
 }
 
 label{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: 600;
     text-decoration: underline;
@@ -23,6 +23,7 @@ input[type=text],input[type=password]{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin-top: 5px;
     padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
@@ -33,7 +34,7 @@ input[type=text],input[type=password]{
     border: 1px solid black;
     padding: 2rem;
     border-radius: 10px;
-    width: 40%;
+    width: 45%;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     background-color: rgb(211, 216, 227);
     margin: 10px;   
@@ -78,6 +79,66 @@ input[type=text],input[type=password]{
 .default{
     background-color: rgb(111, 137, 253);
 }
+
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.selection-box{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 10%;
+    height: auto;
+    width: 40%;
+    padding: 10px;
+    margin: .313rem;
+    border-radius: 4px;
+    transition: 0.2s;
+    opacity: .9;
+    border: 2.5px solid ;
+    background-color:rgb(226, 226, 226);
+    box-shadow: inset 15px 0px rgb(21, 21, 21);
+}
+
+.selection-box p{
+    margin-left: 50px;
+}
+
+.selection-box .logo{
+    min-height: 12%;
+    height: auto;
+}
+
+.selection-box:hover{
+    color:#fff;
+    border-radius: 10px;
+    box-shadow: inset -140px 0px rgba(14, 14, 14, 0.5);
+    border: 2.5px solid rgb(21, 21, 21);
+}
+  
 
 
 

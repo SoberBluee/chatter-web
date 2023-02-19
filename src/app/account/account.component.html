@@ -6,6 +6,10 @@
                 <h2>Update Account Information</h2>
             </div>
             <div class="row spacing">
+                <label for="firstname">Username</label>
+                <input [ngStyle]="{'color': checkTouched('username') ? 'black' : 'gray'}" type="text" placeholder="Change username" formControlName="username">
+            </div>
+            <div class="row spacing">
                 <label for="firstname">Firstname</label>
                 <input [ngStyle]="{'color': checkTouched('firstname') ? 'black' : 'gray'}" type="text" placeholder="Change firstname" formControlName="firstname">
             </div>
@@ -20,14 +24,15 @@
             <button type="submit" class="account-btn success">Update</button>
             <button type="button" class="account-btn dagner">Clear</button>
         </div>
-
+    </form>
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
         <div class="row account-container">
             <div class="row">
                 <h2>Change Password</h2>
             </div>
             <div class="row spacing">
                 <label for="password">Old Password</label>
-                <input style="border: 1px solid black'"
+                <input style="border: 1px solid black"
                 type="password" placeholder="Old Password" formControlName="oldPassword">
             </div>
             <div class="row spacing">

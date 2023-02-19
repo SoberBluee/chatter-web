@@ -1,35 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Posts } from '../shared/interface.model';
+import { Posts, CurrentUser } from '../shared/interface.model';
 import { MessageService } from '../message/message.service';
-import { DummyData } from '../shared/dummyData';
 import { PostSerice } from './post.service';
-
-
+import { UserService } from '../shared/user.service'
+import { AuthService } from '../shared/auth.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
-    public users: User[] =[]
+    public currentUser: CurrentUser;
+    public friends_list: any;
     public posts: Posts[];
-    public selectedUser: User;
+    public selectedUser: CurrentUser;
     public toggleCreateNewPost: boolean = false;
+    public test: string = "test1";
     
-    constructor(private messageService: MessageService, private postService: PostSerice, private dummyData: DummyData){}
+    constructor(private messageService: MessageService, 
+                private postService: PostSerice, 
+                private userService:UserService,
+                private authService:AuthService,
+                ){}
 
     ngOnInit(){
-        this.users = this.dummyData.getUsers();
-        this.posts  = this.dummyData.getPosts();
-    }
+        this.authService.emitCurrentUser.subscribe((user:CurrentUser) => {
+            this.currentUser = user;
+            console.log("home component: ", this.currentUser);
+            this.friends_list = user.friend_list;
+            this.userService.hasFriendsEvent.next(user.friend_list);
+        });
 
-    public setSelectedUser(index: number): void{
-        this.selectedUser = this.users[index];
-        this.messageService.emitSelectedUser.next(this.selectedUser);
-        this.postService.currentUserId = this.selectedUser.id
+        // this.postService.getAllPosts().subscribe((allPosts:any) => {
+        //     this.posts = allPosts.data;
+        // })
     }
 
     public toggleNewPost(): void{
         this.toggleCreateNewPost = !this.toggleCreateNewPost;
+        console.log("newPost: ", this.toggleCreateNewPost);
     }
 }

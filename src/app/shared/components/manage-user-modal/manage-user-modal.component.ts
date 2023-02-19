@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, UserContacts } from '../../interface.model';
+import { UserContacts, CurrentUser } from '../../interface.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { User, UserContacts } from '../../interface.model';
 
 export class ManageUserModalComponent implements OnInit {
 
-    @Input() user: User;
+    @Input() user: CurrentUser;
     @Input() user_contact_details: UserContacts;
 
     constructor() {}
@@ -18,7 +18,7 @@ export class ManageUserModalComponent implements OnInit {
     ngOnInit(): void{}
 
     public get name(){
-        return this.user.firstname.toUpperCase() + " " + this.user.surname.toUpperCase();
+        return this.user.first_name.toUpperCase() + " " + this.user.sur_name.toUpperCase();
     }
 
 }

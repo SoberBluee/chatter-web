@@ -1,44 +1,47 @@
 import { Injectable, OnInit } from "@angular/core";
 import { Comment, Posts } from "../shared/interface.model";
 import { Subject } from "rxjs";
-import { DummyData } from "../shared/dummyData";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "src/environments/environment";
  
 @Injectable({providedIn: 'root'})
 
 export class PostSerice implements OnInit{
-    public routePrefix: string = 'http://127.0.0.1:8000/api/v1';
+    public routePrefix: string = environment.media_api_url;
 
     public allComments: Comment[];
     public commentChange = new Subject<Comment>();
     public postLikeChange = new Subject<boolean>();
     public currentUserId: number;
 
-    constructor(private dummyData: DummyData, private http:HttpClient){}
+    constructor(private http:HttpClient){}
 
     public ngOnInit(): void{
     }
 
     public setLike(liked:boolean, post_id: number): void{
-        this.dummyData.setLike(liked, post_id);
     }
 
     public setComment(new_comment:Comment){
         this.allComments.push(new_comment);
-        this.dummyData.updateComments(this.allComments);
+        //Set comment
         this.commentChange.next(new_comment);
     }
     
-    public getComments(comment_id: number): Comment[]{
-        this.allComments = this.dummyData.getComments()
-        const user_comments = this.allComments.filter((comment:Comment) => {
-            return comment.id === comment_id;
-        })
-        return user_comments;
+    public getComments(comment_id: number){
+        // //get Comments
+        // const user_comments = this.allComments.filter((comment:Comment) => {
+        //     return comment.id === comment_id;
+        // })
+        // return user_comments;
     }
 
     public getPost(post_id: number){
-        return this.http.get(this.routePrefix + "/posts/" + post_id);
+        return this.http.get("/posts/" + post_id);
+    }
+
+    public getAllPosts(){
+        return this.http.get(this.routePrefix + '/posts/get-all-posts');
     }
 
     public setPosts(new_post: Posts){
@@ -47,7 +50,7 @@ export class PostSerice implements OnInit{
 
     public deletePosts(post_id: number){
         return this.http.delete(this.routePrefix + "/posts/"+post_id);
-    }
+    }   
 
     public editPosts(){
 

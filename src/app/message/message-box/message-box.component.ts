@@ -1,13 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MessageContent } from 'src/app/shared/interface.model';
-import { DummyData } from 'src/app/shared/dummyData';
+import { AuthService } from 'src/app/shared/auth.service';
 //RXJS
 //Components
 //Services 
 import { MessageService } from '../message.service';
 //Interfaces
-import { User, Message } from 'src/app/shared/interface.model';
+import { MessageResponse, Message, CurrentUser, JsonResponse } from 'src/app/shared/interface.model';
+import { Observer, PartialObserver } from 'rxjs';
 
 @Component({
     selector: 'app-message-box',
@@ -17,38 +17,58 @@ import { User, Message } from 'src/app/shared/interface.model';
 
 export class MessageBoxComponent implements OnInit {
     // recieve selected user from sidebar
-    @Input() selectedUser: User; 
-    public messageForm:FormGroup;
-    public messageData: MessageContent;
-    public toggleEdit: boolean = false;
+    @Input() selectedUser: CurrentUser; 
+
+    public currentUser: CurrentUser;
+    public messageForm: FormGroup;
+    public selectedUserMessage: Message;
+    public loading: boolean = false;
+    public messageData: Message[] = [];
+
     // Hover over message related properties
     public toggleSettings: boolean = false;
     public messageHoverId: number;
+    public toggleEdit: boolean = false;
+
     // manage message options
     public editMode: boolean = false; 
-
     public noUserSelectedError: string;
 
-
-    constructor(private messageService: MessageService, private dummyData: DummyData){}
+    constructor(private messageService: MessageService, 
+                private authService: AuthService){}
     
     ngOnInit(): void{
         this.messageForm = new FormGroup({
             message: new FormControl('' , [Validators.required])
         });
+        // get user from local storage
+        this.currentUser = JSON.parse(localStorage.getItem('session') || '');
 
-        //gets the selected user to display messages for that user
-        this.messageService.emitSelectedUser.pipe().subscribe((user) => {
-            this.selectedUser = user;
-            this.messageData = this.messageService.getMessabyByUser(this.selectedUser.messages_id);
-        });
-        //Will update data when new message is stored
-        this.messageService.messagesChange.subscribe({
-            next: (message: Message) => {
-                // this.messageData.messages.push(message);
-                this.dummyData.setMessage(this.selectedUser.messages_id, message);
-            } 
-        });
+        // listen for when a user on the sidebar menu is selected
+        this.messageService.emitSelectedUser
+        .subscribe((selectedUser: CurrentUser) => {
+            this.messageData = [];
+            this.loading = true;
+            // get message by the selectedUser id
+            this.messageService.getMessages(this.currentUser.message_id, selectedUser.message_id)
+                .subscribe((response: any) => {
+                    if(!response ) {return}
+                    console.log("response: ", response);
+                    // work out sender after data returned from database
+                    // Want to base the sender of the currently logged in user
+                    this.findSender(response.data);
+                    this.loading = false;
+                })
+    
+        })
+    }
+
+    private findSender(message: Message[]): void{
+        message.forEach((message) => {
+            if(message.user_sender_id === this.currentUser.message_id) { message.isSender = true }
+            else { message.isSender = false}
+            this.messageData.push(message);
+        })
     }
 
     public send():void {
@@ -57,27 +77,23 @@ export class MessageBoxComponent implements OnInit {
             return;
         }
 
-        //on send
-        // edit message before sending to service 
-        // send edited message to service
-        // update message in message data history 
-        // return updated list and clear old messages
         if(this.editMode){
-            this.messageService.editMessage(this.selectedUser.messages_id, this.messageHoverId, message);
+            this.messageService.editMessage(this.selectedUser.message_id, this.messageHoverId, message);
             this.editMode = false;
             this.clearMessageBox();
             return;
         }
 
-        const new_message: Message = {
-            id: -1,
-            isSender: true,
-            message,
-            timestamp: +Date.now(),
-            sender: 'ethan',
-            reciever: 'dave',
+        const new_message = {
+            sender: this.authService.currentUser?.id,
+            reciever: this.selectedUser.id,
+            message: message,
         };
-        this.messageService.setMessage(new_message);
+
+        this.messageService.setMessage(new_message).subscribe((message: any)=>{
+            this.messageData.push(message.data);
+        });
+
         this.clearMessageBox();
     }
 
@@ -114,7 +130,7 @@ export class MessageBoxComponent implements OnInit {
     }
 
     public manageMessageDelete(deleteMsg: boolean): void{
-        this.messageService.deleteMessage(this.selectedUser.messages_id, this.messageHoverId)
+        this.messageService.deleteMessage(this.messageHoverId)
     }
 
     public manageMessageForward(forward: boolean): void{}
@@ -126,11 +142,11 @@ export class MessageBoxComponent implements OnInit {
     */
     public clearMessageBox(): void{ this.messageForm.reset(); }
 
-    private findMessageToEdit(message_id: number):Message{
-        const messageToEdit = this.messageData.messages.filter((message) =>{
-            return message.id === this.messageHoverId;
-        })
-        return messageToEdit[0];
+    private findMessageToEdit(message_id: number):any{
+        // const messageToEdit = this.messageData.messages.filter((message) =>{
+        //     return message.id === this.messageHoverId;
+        // })
+        // return messageToEdit[0];
     }
 
     /*

@@ -1,9 +1,9 @@
-import { Component, OnInit, Injectable} from "@angular/core";
-import { DummyData } from "../shared/dummyData";
+import { Component, OnInit} from "@angular/core";
 import { MessageService } from "./message.service";
+import { AuthService } from "../shared/auth.service";
 
 //Interfaces 
-import {User} from '../shared/interface.model';
+import {CurrentUser} from '../shared/interface.model';
 
 @Component({
     selector: 'app-message',
@@ -12,8 +12,8 @@ import {User} from '../shared/interface.model';
 })
 
 export class MessageComponent implements OnInit{
-    public users: User[] =[]
-    public selectedUser: User;
+    public users: CurrentUser[] =[]
+    public selectedUser: CurrentUser;
     public userHeaderName: string = 'No user selected';
     public toggleManageUser: boolean = false;    
     //Error Banner
@@ -21,27 +21,18 @@ export class MessageComponent implements OnInit{
     public errorBannerMessage: string;
     public errorBannerType: string;
 
-    constructor(private messageService: MessageService, private dummyData: DummyData){}
+    constructor(private authService: AuthService, private messageService: MessageService){}
 
     ngOnInit(){
-        this.users = this.dummyData.getUsers();
-    }
-
-    public showManageUserModal(){
-        if(!this.selectedUser){
-            this.showErrorBanner = true;
-            this.errorBannerMessage = 'You have not selected a user.';
-            this.errorBannerType = 'ERROR';
-        }else{
-            this.toggleManageUser = !this.toggleManageUser
-        }
-    }
-
-    public setSelectedUser(index: number): void{
-        this.selectedUser = this.users[index];
-        this.userHeaderName = this.selectedUser.username;
-        this.messageService.emitSelectedUser.next(this.selectedUser);
-    }
+        // const user = this.authService.currentUser || null;
+        // if(user){
+        //     console.log('selected user in message component');
+        //     this.messageService.getMessages(user.message_id, this.selectedUser.message_id)
+        //     .subscribe((response: any) => {
+        //         console.log("get messages : ", response);
+        //     });
+        // }
+    } 
 
     public closeError(){this.showErrorBanner = false;}
 

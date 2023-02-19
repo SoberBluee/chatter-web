@@ -144,6 +144,7 @@
   },
   "defaultProject": "chatter_app",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

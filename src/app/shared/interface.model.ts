@@ -5,31 +5,27 @@
  * ALL USER CONTACTS WILL BE RETRIEVED ON LOGIN,
  * ALL MESSAGES WITH A USER WILL LOAD WHEN THE MESSAGES PAGE IS VISITED
  */
-export interface User{
-    id: number;
-    messages_id: number;
-    contact_id: number;
-    posts_id: number;
-    username: string;
-    firstname: string;
-    surname: string;
-    _session_token: string;
-    _token_expiration: Date;
-    addedUsers?: Number[];   
-    status: string, 
-    lastOnline: Date,
-    profile_picture?: string;
-    liked_posts: number[];
+
+export interface JsonResponse{
+    data: any;
+    message: string;
+    status: number;
 }
 
-export interface CurrentUesr{
+export interface CurrentUser{
     id: number;
     user_name: string;
     first_name: string;
     sur_name: string;
     email: string;
     phone_number: number;
+    lastOnline: Date;
+    status: string;
     email_verified_at: Date;
+    post_id: number;
+    message_id: number;
+    messages: Message[];
+    friend_list: CurrentUser[];
     created_at: Date;
     updated_at: Date;
 }
@@ -79,23 +75,18 @@ export interface Comment{
     comment: string;
 }
 
-/**
- * 
- * message id above is the primary key of message content
- * one message id can be associated with multiple messages
- */
-export interface MessageContent{
-    user_message_id: number;
-    messages: Message[];
+export interface MessageResponse{
+    id: number;
+    sender: boolean;
+    user_sender_id: number;
+    user_reciever_id: number;
+    message: string;
+    created_at: Date;
+    updated_at: Date;
 }
 
-export interface Message{
-    id: number;
-    message: string;
+export interface Message extends MessageResponse{
     isSender: boolean;
-    timestamp: number;
-    sender: string;
-    reciever: string; //make sure to add user type to define exact user
 }
 
 export interface JsonResponse{
@@ -103,7 +94,3 @@ export interface JsonResponse{
     message: string,
     status: number;
 }
-
-// user has own unique id
-// user have unique message id that identifies messages for that user
-

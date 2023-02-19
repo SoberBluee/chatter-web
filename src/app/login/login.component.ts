@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { Login } from './auth-properties';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,12 @@ import { Login } from './auth-properties';
 })
 
 export class LoginComponent implements OnInit{
+    // Error banner stuff
+    public isError: boolean = false;
+    public errorBannerMessage: string;
+    public errorStatusCode: number; 
+
+    //Form related sutff
     public submitted: boolean = false;
     public loginForm = new FormGroup ({
         email: new FormControl('', [Validators.required, Validators.email]),
@@ -19,16 +26,18 @@ export class LoginComponent implements OnInit{
     public showRegisterForm: boolean = false;
     public showForgotPasswordForm: boolean = false;
 
+    public loading: boolean = false;
+
     constructor(public authService: AuthService, 
                 public router: Router){}
 
     ngOnInit(): void{}
 
-    get loginControls(){
+    public get loginControls(){
         return this.loginForm.controls;
     }
 
-    get passwordLength(): number{
+    public get passwordLength(): number{
         const passLen = this.loginForm.controls['password'].value.length
         if(passLen !== 0){
             return passLen;
@@ -52,22 +61,27 @@ export class LoginComponent implements OnInit{
 
     public submitLogin(): void{
         this.submitted = true;
-        //TODO: create login route to backend, verify login details, redirect to /home
+        this.loading = true;
+
         const login:Login ={
             email: this.loginForm.controls['email'].value,
             password: this.loginForm.controls['password'].value,
         };
 
-        this.authService.login(login).pipe().subscribe({
+        this.authService.login(login)
+        .pipe()
+        .subscribe({
             next:(response:any) =>{
                 if(response.status === 200){
-                    console.log("login user: ", response);
-                    this.authService.currentUser = response.data
-                    console.log("curentUser: ", this.authService.currentUser)
                     localStorage.setItem('session', JSON.stringify(response.data));
-                    console.log("before redirect");
+                    this.authService.setCurrentUser(response.data);
+                    this.loading = false;
                     this.router.navigate(['/'])
                 }else{
+                    console.error("ERROR:", response);
+                    this.isError = true;
+                    this.errorBannerMessage = response.message
+                    this.errorStatusCode = response.status;
                     return;
                 }
             }

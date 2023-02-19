@@ -2,13 +2,13 @@
 ::placeholder{text-align: center;}
 
 h2{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-decoration: underline;
 }
 
 label{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: 600;
     text-decoration: underline;
@@ -16,6 +16,7 @@ label{
 }
 
 input[type=text],input[type=password]{
+    font-family: Arial, Helvetica, sans-serif;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -33,6 +34,40 @@ input[type=text],input[type=password]{
 
 .loginFormBtn:hover, input[type=text]:hover,input[type=password]:hover{
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.selection-box{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 10%;
+    height: auto;
+    width: 40%;
+    padding: 10px;
+    margin: .313rem;
+    border-radius: 4px;
+    transition: 0.2s;
+    opacity: .9;
+    border: 2.5px solid ;
+    background-color:rgb(226, 226, 226);
+    box-shadow: inset 15px 0px rgb(21, 21, 21);
+}
+
+.selection-box p{
+    margin-left: 50px;
+}
+
+.selection-box .logo{
+    min-height: 12%;
+    height: auto;
+}
+
+.selection-box:hover{
+    color:#fff;
+    border-radius: 10px;
+    box-shadow: inset -140px 0px rgba(14, 14, 14, 0.5);
+    border: 2.5px solid rgb(21, 21, 21);
 }
 
 .error-invalid{

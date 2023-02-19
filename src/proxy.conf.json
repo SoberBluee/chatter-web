@@ -1,6 +1,16 @@
 {
     "/api/*": {
-        "target": "http://127.0.0.1:8000",
+        "target": "http://127.0.0.1:3001",
+        "secure": true,
+        "logLevel": "debug"
+    },
+    "/api/*":{
+        "target": "http://127.0.0.1:3002",
+        "secure": true,
+        "logLevel": "debug"
+    },
+    "/api/*":{
+        "target": "http://127.0.0.1:3003",
         "secure": true,
         "logLevel": "debug"
     }

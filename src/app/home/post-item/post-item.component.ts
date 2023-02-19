@@ -32,7 +32,7 @@ export class PostItemComponent implements OnInit {
 
     ngOnInit(): void {
         // get comments for a certain post when inialised
-        this.comments = this.postService.getComments(this.comment_id);
+        // this.comments = this.postService.getComments(this.comment_id);
         // Initialise comment box
         this.postOptionsForm = new FormGroup({
             commentBox: new FormControl(''),
@@ -63,7 +63,7 @@ export class PostItemComponent implements OnInit {
     }
 
     public share():void{
-        console.log("Share post");
+        // console.log("Share post");
     }
 
     public showComments(): void{
