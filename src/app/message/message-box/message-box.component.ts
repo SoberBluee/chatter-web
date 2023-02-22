@@ -64,6 +64,70 @@ export class MessageBoxComponent implements OnInit {
         })
     }
 
+    
+    /**
+     * will send or edit a message and send the new data to the server
+     * 
+     * @params none
+     * @returns void
+     */
+    public send():void {
+        const message = this.getMessage;
+        if(message === ''){
+            return; 
+        }
+        // check if the user wants to edit the message
+        if(this.editMode){ 
+            const message_to_edit = this.findMessageToEdit(this.messageHoverId);
+            message_to_edit.message = message; 
+            this.messageService.editMessage(message_to_edit).pipe().subscribe({
+                next: (response: any) => {
+                    if(response.status === 200){
+                        this.findUpdatedMessage(response.data);
+                    }
+                    /**
+                     * Throw error if necessary
+                     */
+                },
+                
+            });
+            this.editMode = false;
+            this.clearMessageBox();
+            return;
+        }
+        
+        const new_message = {
+            sender: this.authService.currentUser?.id,
+            reciever: this.selectedUser.id,
+            message: message,
+        };
+        // set message locally
+        this.messageService
+            .setMessage(new_message)
+            .subscribe((message: any)=>{// return the latest message from the server
+                if(message.status === 200){
+                    this.findSenderAndReciever(message.data);// find sender and reciever
+                }
+                /**
+                 * throw error if necessary
+                 */
+            });
+        
+        this.clearMessageBox();
+    }
+
+
+    /**
+     * Will update message on front end with new message from backend
+     * @param Message newMessage 
+     */
+    private findUpdatedMessage(newMessage: Message): void{
+        this.messageData.forEach((message: Message) => {
+            message.id === newMessage.id ? message.message = newMessage.message : null;
+        })
+        console.log('messageData: ', this.messageData)
+    }
+    
     /**
      * Will set the sender boolean to tell sender and reciever apart from server
      * @param message[] 
@@ -77,41 +141,7 @@ export class MessageBoxComponent implements OnInit {
             this.messageData.push(message);
         })
     }
-
-    /**
-     * will send or edit a message and send the new data to the server
-     * 
-     * @params none
-     * @returns void
-     */
-    public send():void {
-        const message = this.getMessage;
-        if(message === ''){
-            return;
-        }
-        // check if the user wants to edit the message
-        if(this.editMode){
-            this.messageService.editMessage(this.selectedUser.message_id, this.messageHoverId, message);
-            this.editMode = false;
-            this.clearMessageBox();
-            return;
-        }
-
-        const new_message = {
-            sender: this.authService.currentUser?.id,
-            reciever: this.selectedUser.id,
-            message: message,
-        };
-        // set message locally
-        this.messageService
-            .setMessage(new_message)
-            .subscribe((message: any)=>{// return the latest message from the server
-                this.findSenderAndReciever(message.data);// find sender and reciever
-            });
-
-        this.clearMessageBox();
-    }
-
+    
     public get getMessage(): string{
         return this.messageForm.controls['message'].value;
     }
@@ -122,6 +152,7 @@ export class MessageBoxComponent implements OnInit {
     * @return: void
     */    
     public hoverSettings(id: number): void{
+        if(this.toggleEdit) return;
         this.messageHoverId = id;
         this.toggleSettings = !this.toggleSettings;
     }
@@ -141,7 +172,7 @@ export class MessageBoxComponent implements OnInit {
     public manageMessageExit(exit: boolean): void{ 
         this.toggleEdit = exit;
     }
-
+    
     public manageMessageEdit(edit: boolean): void{ 
         this.editMode = edit; 
         const messageToEdit = this.findMessageToEdit(this.messageHoverId)
@@ -175,5 +206,4 @@ export class MessageBoxComponent implements OnInit {
     * @return: boolean
     */
     public hoverCheck(id: number): boolean{ return this.toggleSettings && id === this.messageHoverId ? true : false }
-
 }

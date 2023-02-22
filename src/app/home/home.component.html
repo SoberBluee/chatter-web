@@ -1,23 +1,9 @@
 <div class="row container" style="display: flex">
-    <div class="colum content" style="width: 30%;">
+    <div style="width:30%">
         <app-sidebar-user></app-sidebar-user>
     </div>
-
-    <div class="column content" style="width: 55%;">
-        <button class="new-post-btn" (click)="toggleNewPost()"> New Post</button>
-        <app-create-post
-        *ngIf="toggleCreateNewPost">
-        </app-create-post>
-        <div class="row" 
-            *ngFor="let post of posts; let i = index">
-            <app-post-item
-                [title]="post.title"
-                [img]="post.img ?? ''"
-                [content]="post.body"
-            ></app-post-item>
-        </div>
+    <div style="width:65%">
+        <app-post ></app-post>
     </div>
 </div>  
-<div class="row content footer">
-    <label for="footer">Footer</label>
-</div>
+<app-footer></app-footer>   

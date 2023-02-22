@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { CurrentUser } from 'src/app/shared/interface.model';
 import { MessageService } from '../message.service';
 
@@ -11,6 +11,9 @@ import { MessageService } from '../message.service';
 export class MessageBoxHeaderComponent implements OnInit{
 
     @Input() public selectedUser: CurrentUser;
+    @Output() public emitToggleManagerUser: EventEmitter<boolean> = new EventEmitter();
+
+    public toggleManageUser: boolean = false;
 
     constructor(private messageService: MessageService){}
 
@@ -18,16 +21,17 @@ export class MessageBoxHeaderComponent implements OnInit{
         // listen for when selected user is pressed
         this.messageService.emitSelectedUser.subscribe((selectedUser: CurrentUser) => {
             this.selectedUser = selectedUser;
-        })
+        });
     }
 
     public showManageUserModal(){
-        // if(!this.selectedUser){
-        //     this.showErrorBanner = true;
-        //     this.errorBannerMessage = 'You have not selected a user.';
-        //     this.errorBannerType = 'ERROR';
-        // }else{
-        //     this.toggleManageUser = !this.toggleManageUser
-        // }
+        if(!this.selectedUser){
+            // this.showErrorBanner = true;
+            // this.errorBannerMessage = 'You have not selected a user.';
+            // this.errorBannerType = 'ERROR';
+        }else{
+            this.toggleManageUser = !this.toggleManageUser;
+            this.emitToggleManagerUser.emit(this.toggleManageUser);
+        }
     }
 }

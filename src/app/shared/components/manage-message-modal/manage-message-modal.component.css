@@ -4,13 +4,12 @@
     position: absolute;
     top: 50px;
     left: 50px;
-    width: 250px;
+    width: 270px;
     align-items:center;
-    border: 1px solid black;
+    border: 1.5px solid black;
     padding:1rem .5rem;
     border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    background-color: rgb(189, 228, 255);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    background-color: rgb(219, 217, 217);
     margin: 10px;  
     justify-content: center;
     box-sizing: border-box;
@@ -33,18 +32,43 @@
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
-.controlBtn{
-    margin: 10px;
-    width: 90%;    
-    border-radius: 10px;
-    border: none;
-    background-color:white;
-    justify-content: center;
+.button{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 10%;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    margin: .313rem;
+    border-radius: 4px;
+    transition: 0.2s;
+    opacity: .9;
+    border: 2.5px solid ;
+    background-color:rgb(226, 226, 226);
+    box-shadow: inset 15px 0px rgb(21, 21, 21);
 }
 
-.controlBtn:hover{
-    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-    background-color: rgb(184, 196, 204);
+.close:hover{
+    background-color: rgb(185, 32, 32);
+    transition: .7s;
+}
+
+.button p{
+    margin-left: 50px;
+}
+
+.button .logo{
+    min-height: 12%;
+    height: auto;
+}
+
+.button:hover{
+    color:#fff;
+    border-radius: 10px;
+    box-shadow: inset -140px 0px rgba(14, 14, 14, 0.5);
+    border: 2.5px solid rgb(21, 21, 21);
 }
 
 .loginFormBtn:hover, input[type=text]:hover,input[type=password]:hover{

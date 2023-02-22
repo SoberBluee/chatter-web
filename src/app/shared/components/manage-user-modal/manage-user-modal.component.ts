@@ -15,7 +15,9 @@ export class ManageUserModalComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit(): void{}
+    ngOnInit(): void{
+        console.log('selectedUser manage user modal: ', this.user);
+    }
 
     public get name(){
         return this.user.first_name.toUpperCase() + " " + this.user.sur_name.toUpperCase();

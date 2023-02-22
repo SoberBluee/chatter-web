@@ -3,7 +3,7 @@
     <form [formGroup]="messageForm">
         <!-- Message window -->
         <div class="row message-window" *ngIf="!loading else noData">
-            <div class="box" *ngFor="let user_message of messageData ;">
+            <div class="box" *ngFor="let user_message of messageData;">
                 <div>
                     <!-- sender -->
                     <div class="message-box sender" 
@@ -12,11 +12,8 @@
                         (mouseleave)="hoverSettings(user_message.id)">
                         <button class="edit" (click)="calltoggleEdit()">...</button>
                         <div class="divider"></div>
-                        <!-- {{ currentUser.id === user_message.user_sender_id }} -->
                         {{user_message.message}}
                     </div>
-                    <!-- to solve problem of hover over message, edit message and hover over another
-                    message while the modal is open. check if model is open and hover-->
     
                     <!-- reciever -->
                     <div class="message-box reciever" 
@@ -42,7 +39,7 @@
         <!-- footer -->
         <div class="row footer-content">
             <input class="message-box"type="text" placeholder="Send a message" formControlName="message"/>
-            <button type="button" class="message-btn" (click)="send()"> Send</button>
+            <button type="button" class="button" (click)="send()" > Send</button>        
         </div>
     </form>
 </div>
