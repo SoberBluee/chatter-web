@@ -40,6 +40,9 @@ export class AuthService implements OnInit{
     public superLogin(){
         return this.http.post(this.routePrefix + 'user/super-login', {superLogin: true});
     }
+    public autoLogin(user: CurrentUser){
+        return this.http.post(this.routePrefix + 'user/auto-login', user);
+    }
 
 
 }

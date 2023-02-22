@@ -30,7 +30,7 @@ export class MessageService{
         return this.http.delete(this.routePrefix + '/' + message_id);
     }
 
-    public editMessage(user_id: number, message_id: number, newMessage: string){
-        return this.http.post(this.routePrefix + "/edit/" + message_id, newMessage);
+    public editMessage(message:Message){
+        return this.http.post(this.routePrefix + "messages/edit", message);
     }
 }

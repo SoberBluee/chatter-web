@@ -25,6 +25,7 @@ export interface CurrentUser{
     post_id: number;
     message_id: number;
     messages: Message[];
+    remember_token: string;
     friend_list: CurrentUser[];
     created_at: Date;
     updated_at: Date;

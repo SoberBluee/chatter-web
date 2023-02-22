@@ -18,7 +18,7 @@ label{
 
 input[type=text]{
     display: inline-block;
-    border: 1px solid black;
+    border: 1.5px solid black;
     width:80%;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -63,7 +63,7 @@ input[type=text]:hover{
 .message-box{
     border-radius: 10px;
     min-height: 50px;
-    border: 1px solid black;
+    border: 1.5px solid black;
     width: 100%;
     height: 80%;
 }
@@ -98,6 +98,12 @@ input[type=text]:hover{
     padding: 5px;
     height: 40px;
     border-radius: 10px;
+    transition: .5s;
+}
+
+.message-box:hover{
+    transition: .5s;
+    border-radius: 25px;
 }
 
 .reciever{
@@ -145,4 +151,39 @@ input[type=text]:hover{
 .message-window{
     max-height: 26.25rem;
     overflow: scroll;
+}
+
+.button{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 15%;
+    height: auto;
+    width: 15%;
+    padding: 10px;
+    margin: .313rem;
+    border-radius: 4px;
+    transition: 0.2s;
+    opacity: .9;
+    border: 2.5px solid ;
+    background-color:rgb(226, 226, 226);
+    box-shadow: inset 15px 0px rgb(21, 21, 21);
+}
+
+.button p{
+    margin-left: 50px;
+}
+
+.button .logo{
+    min-height: 12%;
+    height: auto;
+}
+
+.button:hover{
+    color:#fff;
+    border-radius: 10px;
+    box-shadow: inset -90px 0px rgba(14, 14, 14, 0.5);
+    border: 2.5px solid rgb(21, 21, 21);
+    transition: .5s;
 }

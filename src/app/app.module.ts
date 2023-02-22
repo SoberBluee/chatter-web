@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
+import { PostComponent } from './post/post.component';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +15,7 @@ import { MessageComponent} from './message/message.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
 import { AuthGuardService } from './login/auth-guard.service';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
-import { PostItemComponent } from './home/post-item/post-item.component'
+import { PostItemComponent } from './post/post-item/post-item.component'
 import { SideBarUserComponent } from './shared/components/sidebar-user/sidebar-user.component';
 import { MessageBoxComponent } from './message/message-box/message-box.component';
 import { ManageUserModalComponent } from './shared/components/manage-user-modal/manage-user-modal.component';
@@ -24,10 +23,9 @@ import { ManageMessageModalComponent } from './shared/components/manage-message-
 import { ErrorBannerComponent } from './shared/components/error-banner/error-banner.component';
 import { CommentSectionComponent } from './shared/components/comments-section/comment-section.component';
 import { HeaderInterceptor } from './header-interceptor.interceptor';
-import { CreatePostComponent } from './home/create-post/create-post.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
 import { MessageBoxHeaderComponent } from './message/message-box-header/message-box-header.component';
-
-
+import { FooterComponent } from './shared/components/footer/footer.component';
 //Error Exceptions
 import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
 
@@ -51,6 +49,8 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     CommentSectionComponent,
     CreatePostComponent,
     MessageBoxHeaderComponent,
+    PostComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

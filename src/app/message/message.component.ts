@@ -23,17 +23,12 @@ export class MessageComponent implements OnInit{
 
     constructor(private authService: AuthService, private messageService: MessageService){}
 
-    ngOnInit(){
-        // const user = this.authService.currentUser || null;
-        // if(user){
-        //     console.log('selected user in message component');
-        //     this.messageService.getMessages(user.message_id, this.selectedUser.message_id)
-        //     .subscribe((response: any) => {
-        //         console.log("get messages : ", response);
-        //     });
-        // }
-    } 
+    ngOnInit(){} 
 
     public closeError(){this.showErrorBanner = false;}
+
+    public toggleManagerUserModel(event: any): void{ 
+        this.toggleManageUser = event;
+    }
 
 }

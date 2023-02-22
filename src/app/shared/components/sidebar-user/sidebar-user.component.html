@@ -1,19 +1,22 @@
 
-<h2>Sidebar</h2>
-<div class="row" 
-    *ngFor="let friend of currentUser.friend_list; let i = index" 
-    (click)="setSelectedUser(i)">
-    <div class="row sidebar-user">
-        <img class="pp" src="assets/default-avatar.png"
-            alt="profile-picture">
-    
-        <img class="status" [src]="status" alt="status">
-    
-        <p>{{friend.user_name}}</p>
-    
-        <p>{{friend.lastOnline}}</p>
+<div class="content">
+    <h2>Sidebar</h2>
+    <div class="row" 
+        *ngFor="let friend of currentUser.friend_list; let i = index" 
+        (click)="setSelectedUser(i)">
+        <div class="row sidebar-user">
+            <img class="pp" src="assets/default-avatar.png"
+                alt="profile-picture">
+        
+            <img class="status" [src]="status" alt="status">
+        
+            <p>{{friend.user_name}}</p>
+        
+            <p>{{friend.lastOnline}}</p>
+        </div>
+        <div class="row" *ngIf="currentUser.friend_list.length === 0">
+            <h3>No friends found</h3>
+        </div>    
     </div>
-    <div class="row" *ngIf="currentUser.friend_list.length === 0">
-        <h3>No friends found</h3>
-    </div>    
 </div>
+

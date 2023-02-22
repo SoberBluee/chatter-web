@@ -1,0 +1,60 @@
+
+/* Global Styles */
+::placeholder{text-align: center;}
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.parent{
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.content{
+    display: inline-block;
+    align-items:center;
+    border: 1.5px solid black;
+    padding:1rem .5rem;
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    background-color: rgb(219, 217, 217);
+    margin:10px;  
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.new-post-btn{
+    /* margin: 20px auto; */
+    width: 100%;    
+    border-radius: 10px;
+    border: none;
+    background-color:white;
+    justify-content: center;
+}
+
+.new-post-btn:hover{
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+    background-color: rgb(184, 196, 204);
+}
+
+
+.footer{
+    margin: 10px 0px;
+    width: 93%;
+}

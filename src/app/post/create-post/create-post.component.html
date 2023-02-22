@@ -1,0 +1,20 @@
+<div class="content">
+    <form [formGroup]="newCreatePost"> 
+        <div class="row header-content">
+            <h3 style="width: auto;">
+                <input class="title-input" type="text" placeholder="Type a title" formControlName="title"/>
+            </h3>
+        </div>
+        <div    
+            class="row post-content" 
+            >
+            <!-- show if there is an image -->
+            <div class="body">
+                <input class="body-input" type="text" placeholder="Enter some text" formControlName="body" />
+            </div>  
+            <div class="footer-content">
+                <button class="post-btn" (click)="createNewPost()">Post</button>
+            </div>
+        </div>
+    </form>
+</div>

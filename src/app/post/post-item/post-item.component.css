@@ -1,0 +1,113 @@
+*{
+    margin: 10px 0px;
+}
+
+::placeholder{text-align: center;   }
+
+.content{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.content:hover{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+
+img{
+    max-width: 90%;
+    max-height: 300px;
+    margin-left: 10px;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+input[type=text]{
+    border: 1.5px solid black;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin: 5px 10px;
+    padding: 5px;
+    width:50%;
+}
+
+.header-content{
+    border-bottom: 2px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    width: auto;
+}
+
+.footer-content{
+    justify-content: center;
+}
+
+.comment-button{
+    width: 5%;
+    margin: 10px;
+    border-radius: 50px;
+    background-image: url('../../../assets/comment-icon.png');
+    background-size: cover;
+    float: right;
+}
+
+.like-button{
+    width: 5%;
+    padding: 5px;
+    background-image: url('../../../assets/like-button.png');
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.share-button{
+    width: 5%;
+    /* background-image: url(''); */
+    background-size: cover;
+    border-radius: 20px;    
+}
+
+.post-comment{
+    width: 5%;
+    background-image: url('../../../assets/post-comment-icon.png');
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.comment-button:hover, input[type=text]:hover, .actionBtn:hover, .like-button:hover, .share-button:hover {
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.actionBtn{
+    margin: 5px 10px;
+    height: 35px;
+    width: 5%;    
+    border-radius: 10px;
+    background-color:white;
+    justify-content: center;
+}
+
+.post-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.body{
+    height: auto;
+    text-align: center;
+    width: 80%;
+    margin-left: 10px; 
+}
+
+.divider{
+    width: 1px;
+    padding: 0px;
+    border: 1px solid gray;
+}
+
+.likes-label{
+    width: auto;
+}
