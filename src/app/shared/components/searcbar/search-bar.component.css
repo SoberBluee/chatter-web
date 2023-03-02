@@ -1,0 +1,13 @@
+.ff-input{
+    margin: 5px;
+    outline: none;
+    width: 100%;
+}
+
+.ff-label{
+    margin: 10px;
+}
+
+.ff-container{
+    padding: 10px;
+}

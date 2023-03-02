@@ -26,5 +26,6 @@ export class ForgotPasswordComponent implements OnInit {
 
     public submitForgotPassword(): void{
         const forgotPassword = { email: this.forgotPasswordForm.controls['fpEmail'].value}
+        
     }
 }

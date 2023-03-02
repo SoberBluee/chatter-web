@@ -1,0 +1,20 @@
+.update-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.personal{
+    width: 100%;
+    margin-right: 1rem;
+}
+
+.password{
+    width: 100%;
+}
+

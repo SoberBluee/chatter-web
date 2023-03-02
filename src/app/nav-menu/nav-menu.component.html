@@ -13,43 +13,25 @@
         data-target=".navbar-collapse"
         aria-label="Toggle navigation"
         [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+        (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-middle"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow nav-buttons">
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-            </li>
+        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        [ngClass]="{ show: isExpanded }">
+        <ul class="navbar-nav flex-grow nav-buttons" style="width: 100%">
+            <app-search-bar></app-search-bar>   
+            <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/']">Home</a>
+            <a class="divider align"></a>
+            <a class="text-dark align">User: {{currentUser?.user_name ? currentUser?.user_name : 'Not logged in'}}</a>
+            <a class="divider align"></a>
+            <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/message']">Messages</a>
+            <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/people-page']">PeoplesPage</a>
+            <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/account']">Account</a>
 
-            <a class="divider"></a>
-
-            <p>User: {{currentUser?.user_name ? currentUser?.user_name : 'Not logged in'}}</p>
-
-            <li class="class-item">
-                
-            </li>
-
-            <a class="divider"></a>
-     
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/message']">Messages</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/people-page']">PeoplesPage</a>
-            </li>
-            <a class="divider"></a>
-            <li class="nav-item"[routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/login']">{{ !!currentUser ? 'Logout' : 'Login'}}</a>
-            </li>
-            <li class="nav-item" [routerLinkActive]="['link-active']">
-                <a class="nav-link text-dark" [routerLink]="['/account']">MyAccount</a>
-            </li>
-
+            <a class="divider align"></a>
+            <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/login']">{{ !!currentUser ? 'Logout' : 'Login'}}</a>
+            <!-- <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/account']">MyAccount</a> -->
         </ul>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="row container">
     <h3>Manage Message</h3>
-    <button class="button" (click)="edit()">Edit</button>
-    <button class="button" (click)="delete()">Delete</button>
+    <button *ngIf="!isReciever" class="button" (click)="edit()">Edit</button>
+    <button *ngIf="!isReciever" class="button close" (click)="delete()">Delete</button>
     <button class="button" (click)="forward()">Forward</button>
     <button class="button close" (click)="exit()">X</button>
 </div>

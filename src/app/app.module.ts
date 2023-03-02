@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PostComponent } from './post/post.component';
@@ -10,7 +9,6 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
-import { AccountComponent } from './account/account.component';
 import { MessageComponent} from './message/message.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
 import { AuthGuardService } from './login/auth-guard.service';
@@ -26,8 +24,15 @@ import { HeaderInterceptor } from './header-interceptor.interceptor';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { MessageBoxHeaderComponent } from './message/message-box-header/message-box-header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { AccountComponent } from './account/account.component';
+import { PersonalInfoFormComponent } from './account/personal-info-form/personal-info-form.component';
+import { PasswordInfoFormComponent } from './account/password-info-form/password-info-form.component';
+import { AccountInfoComponent } from './account/account-info/account-info.component';
+
 //Error Exceptions
 import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
+import { SearchBarComponent } from './shared/components/searcbar/search-bar.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,6 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     LoginComponent,
     ForgotPasswordComponent,
     RegisterComponent,
-    AccountComponent,
     MessageComponent,
     PeoplePageComponent,
     PostItemComponent,
@@ -51,21 +55,18 @@ import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
     MessageBoxHeaderComponent,
     PostComponent,
     FooterComponent,
+    SearchBarComponent,
+    AccountComponent,
+    PersonalInfoFormComponent,
+    PasswordInfoFormComponent,
+    AccountInfoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-       //TODO: replace routes with routing component
-      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-      { path: 'login', component: LoginComponent, pathMatch: 'full' },
-      { path: 'account', component: AccountComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-      { path: 'message', component: MessageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-      { path: 'people-page', component: PeoplePageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-      { path: '**', component: NotFoundComponent}
-    ])
+    AppRoutingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }

@@ -39,4 +39,12 @@ a.divider{
 .user-setting-btn:hover{
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
     border-radius: 10px;
+    transition: .4s;
+}
+
+.error:hover{
+    box-shadow: red 0 0 0 3px, transparent 0 0 0 0;
+    border-radius: 10px;
+    transition: .4s;
+
 }

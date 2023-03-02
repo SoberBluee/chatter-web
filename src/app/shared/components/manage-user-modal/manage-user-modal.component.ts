@@ -19,6 +19,10 @@ export class ManageUserModalComponent implements OnInit {
         console.log('selectedUser manage user modal: ', this.user);
     }
 
+    public goToUserPage(): void{
+        
+    }
+
     public get name(){
         return this.user.first_name.toUpperCase() + " " + this.user.sur_name.toUpperCase();
     }

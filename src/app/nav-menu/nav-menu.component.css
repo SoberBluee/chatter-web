@@ -19,6 +19,15 @@ a.divider{
     height: 50px;
 }
 
+.align{
+    margin-top: 40px !important;
+}
+
+.find-friend{
+    width:25%;
+    height:40px !important;
+    margin-right: 20px;
+}
 
 html {
   font-size: 14px;

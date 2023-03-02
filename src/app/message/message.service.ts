@@ -27,7 +27,7 @@ export class MessageService{
     }
 
     public deleteMessage(message_id: number){
-        return this.http.delete(this.routePrefix + '/' + message_id);
+        return this.http.delete(this.routePrefix + 'messages/' + message_id);
     }
 
     public editMessage(message:Message){

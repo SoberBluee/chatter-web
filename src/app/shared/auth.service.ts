@@ -28,8 +28,6 @@ export class AuthService implements OnInit{
     }
 
     public login(loginDetails: Login){
-        console.log('login route: ', this.routePrefix);
-        console.log('login details: ', loginDetails);
         return this.http.post(this.routePrefix + 'user/login', loginDetails);
     }
 
