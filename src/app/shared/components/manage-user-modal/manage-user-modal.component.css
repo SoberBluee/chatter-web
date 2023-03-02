@@ -3,7 +3,7 @@
     flex-direction: row;
     position: absolute;
     top: 200px;
-    left: 500px;
+    left: 474px;
     width: 55%;
     height: 400px;
     align-items:center;
@@ -78,9 +78,6 @@ p{
     border-radius: 20px;
     justify-content: center;
     object-fit: contain;
-}
-
-.user-body{
 }
 
 .controls-body{

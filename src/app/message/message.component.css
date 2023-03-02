@@ -3,7 +3,7 @@
 ::placeholder{text-align: center;}
 
 h2{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
     text-decoration: underline;
 }
@@ -17,7 +17,7 @@ h3:hover{
 }
 
 label{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: 600;
     text-decoration: underline;
@@ -39,7 +39,6 @@ label{
     height: 1px;
     border: 1px solid gray;
 }
-
 
 .content{
     background-color: rgb(219, 217, 217);

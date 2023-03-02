@@ -3,21 +3,29 @@
     <form [formGroup]="messageForm">
         <!-- Message window -->
         <div class="row message-window" *ngIf="!loading else noData">
-            <div class="box" *ngFor="let user_message of messageData;">
+            <div class="box" *ngFor="let user_message of messageData; let i = index;">
                 <div>
                     <!-- sender -->
-                    <div class="message-box sender" 
+                    <div class="message-box sender"
+                        [class.message-deleted]="isMessageDeleted(i)"
                         *ngIf="user_message.isSender" 
-                        (mouseover)="hoverSettings(user_message.id)" 
-                        (mouseleave)="hoverSettings(user_message.id)">
-                        <button class="edit" (click)="calltoggleEdit()">...</button>
-                        <div class="divider"></div>
+                        (mouseover)="hoverSettings(user_message.id, i)" 
+                        (mouseleave)="hoverSettings(user_message.id, i)">
+                        <ng-container *ngIf="!isMessageDeleted(i)">
+                            <button class="edit" (click)="calltoggleEdit()">...</button>
+                            <div class="divider"></div>
+                        </ng-container>
                         {{user_message.message}}
                     </div>
     
                     <!-- reciever -->
                     <div class="message-box reciever" 
                         *ngIf="!user_message.isSender">
+                        <ng-container *ngIf="!isMessageDeleted(i)">
+                            <button class="edit" (click)="calltoggleEdit(true)">...</button>
+                            <div class="divider"></div>
+                        </ng-container>
+
                         {{user_message.message}} 
                     </div>
                 </div>
@@ -26,9 +34,10 @@
             <!-- Message pop up -->
             <app-manage-message-modal 
                 *ngIf="toggleEdit" 
+                [isReciever]="recieverHover"
                 (emitExit)="manageMessageExit($event)"
                 (emitEdit)="manageMessageEdit($event)"
-                (emitDelete)="manageMessageDelete($event)"
+                (emitDelete)="manageMessageDelete()"
                 (emitForward)="manageMessageForward($event)">
             </app-manage-message-modal>
         </div>

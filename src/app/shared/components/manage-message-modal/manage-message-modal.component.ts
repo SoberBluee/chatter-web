@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
     selector: 'app-manage-message-modal',
@@ -6,7 +6,8 @@ import { Component, OnInit, EventEmitter, Output } from "@angular/core";
     styleUrls: ['./manage-message-modal.component.css'],
 })
 
-export class ManageMessageModalComponent implements OnInit{
+export class ManageMessageModalComponent implements OnInit, OnChanges{
+    @Input() public isReciever: boolean;
 
     @Output() public emitExit = new EventEmitter<boolean>();
     @Output() public emitEdit = new EventEmitter<boolean>();
@@ -15,7 +16,16 @@ export class ManageMessageModalComponent implements OnInit{
 
     constructor(){}
 
-    public ngOnInit(): void {}
+    ngOnChanges(changes: SimpleChanges): void {
+        if(changes.isReciever){
+            console.log("changes: ", changes.isReciever);
+        }
+    }
+    
+    public ngOnInit(): void {
+        console.log('reciever: ', this.isReciever);
+    }
+
 
     public edit(): void{ 
         this.emitEdit.next(true); 

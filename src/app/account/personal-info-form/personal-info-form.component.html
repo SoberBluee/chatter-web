@@ -1,0 +1,43 @@
+<div class="container">
+    <h3>Personal</h3>
+    <form class="personal-form" [formGroup]="personalInfoForm" (ngSubmit)="submitPersonalForm()">
+        <!-- Username -->
+        <div class="form-control">
+            <label for="username" class="form-label">
+                Username
+                <input type="text" class="form-input" formControlName="username">
+            </label>
+        </div>
+        <!-- Firstname -->
+        <div class="form-control">
+            <label for="firstname" class="form-label">
+                Firstname
+                <input type="text" class="form-input" formControlName="firstname">
+            </label>
+        </div>
+        <!-- Surname -->
+        <div class="form-control">
+            <label for="surname" class="form-label">
+                Surname
+                <input type="text" class="form-input" formControlName="surname">
+            </label>
+        </div>
+
+        <!-- Email -->
+        <div class="form-control">
+            <label for="email" class="form-label">
+                Email
+                <input type="text" class="form-input" formControlName="email">
+            </label>
+        </div>
+
+        <!-- Phonenumber -->
+        <div class="form-control">
+            <label for="phonenumber" class="form-label">
+                Phonenumber
+                <input type="text" class="form-input" formControlName="phonenumber">
+            </label>
+        </div>
+        <button class="button">Submit</button>
+    </form>
+</div>

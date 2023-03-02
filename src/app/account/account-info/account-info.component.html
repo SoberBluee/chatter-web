@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <h2>Welcome {{currentUser?.user_name}}!</h2>
+    <div class="container">
+        <div class="section-1">
+            <img class="pp" src="assets/default-avatar.png" alt="profile-picture">
+        </div>
+        <a class="divider"></a>
+        <div class="section-2">
+            <h3>Other stuff</h3>
+
+            <p>Firstname: {{currentUser?.first_name}}</p>
+            <p>Surname: {{currentUser?.sur_name}}</p>
+            <p>Email: {{currentUser?.email}}</p>
+            <p>Phonenumber: {{currentUser?.phone_number}}</p>
+            <p>Last online: {{currentUser?.lastOnline}}</p>
+        </div>    
+    </div>
+</div>

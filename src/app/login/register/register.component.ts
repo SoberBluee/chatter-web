@@ -77,8 +77,6 @@ export class RegisterComponent implements OnInit {
         this.authService.register(registerDetails).pipe().subscribe({
             next: (response:any) =>{
                 if(response.status === 200){
-                    console.log("response user: ", response);
-                    // this.authService.currentUserChange.next(response.data);
                     this.router.navigate(['/'])
                 }
                 //display error message

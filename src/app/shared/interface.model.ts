@@ -95,3 +95,9 @@ export interface JsonResponse{
     message: string,
     status: number;
 }
+
+export interface Error{
+    bannerMessage: string;
+    errorType: string;
+    errorCode: number;
+}
