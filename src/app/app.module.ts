@@ -28,6 +28,7 @@ import { AccountComponent } from './account/account.component';
 import { PersonalInfoFormComponent } from './account/personal-info-form/personal-info-form.component';
 import { PasswordInfoFormComponent } from './account/password-info-form/password-info-form.component';
 import { AccountInfoComponent } from './account/account-info/account-info.component';
+import { ChangeEmailFormComponent } from './account/change-email-form/change-email-form.component';
 
 //Error Exceptions
 import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
@@ -59,7 +60,8 @@ import { AppRoutingModule } from './app-routing.module';
     AccountComponent,
     PersonalInfoFormComponent,
     PasswordInfoFormComponent,
-    AccountInfoComponent
+    AccountInfoComponent,
+    ChangeEmailFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

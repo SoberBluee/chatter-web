@@ -1,12 +1,14 @@
 <div class="wrapper">
     <h2>Account</h2>
-    <app-account-info></app-account-info>
+    <app-account-info [currentUser]="currentUser"></app-account-info>
     <div class="update-container">
-        <!-- <div class="personal"> -->
-        <app-personal-info-form class="personal"></app-personal-info-form>
-        <!-- </div> -->
-        <!-- <div class="password"> -->
-        <app-password-info-form class="password" [currentUser]="currentUser"></app-password-info-form>
-        <!-- </div> -->
+
+        <app-personal-info-form class="personal" [currentUser]="currentUser"></app-personal-info-form>
+        
+        <div class="other-info">
+            <app-password-info-form class="password" [currentUser]="currentUser"></app-password-info-form>
+            <app-change-email-form class="email" [currentUser]="currentUser"></app-change-email-form>
+        </div>
+  
     </div>
 </div>

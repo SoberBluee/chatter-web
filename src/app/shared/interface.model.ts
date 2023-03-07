@@ -18,7 +18,7 @@ export interface CurrentUser{
     first_name: string;
     sur_name: string;
     email: string;
-    phone_number: number;
+    phonenumber: string;
     lastOnline: Date;
     status: string;
     email_verified_at: Date;
@@ -100,4 +100,21 @@ export interface Error{
     bannerMessage: string;
     errorType: string;
     errorCode: number;
+}
+
+export interface AccountUpdate{ 
+    username: string; 
+    firstname: string;
+    surname: string;
+    phonenumber: string;
+}
+
+export interface EmailUpdate{
+    email: string;
+    confirmEmail: string;
+}
+
+export interface PasswordUpdate{
+    password: string;
+    confirmPassword: string
 }

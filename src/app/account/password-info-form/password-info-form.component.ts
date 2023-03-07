@@ -24,7 +24,6 @@ export class PasswordInfoFormComponent implements OnInit {
         private authService: AuthService) {}
 
     public ngOnInit(): void{
-        
         this.initForm();
     }
 
@@ -36,37 +35,41 @@ export class PasswordInfoFormComponent implements OnInit {
         })
     }
 
-    public submitPasswordForm(): void{ 
-        if(this.passwordMismatch || this.currentUser === null){ return; }
-
-        console.log("passwordMismatch: ", this.passwordMismatch);
-
-        const checkPassData = { 
-            oldPassword: this.oldPasswordVal,
-            id: this.currentUser.id,
-        };
-
-        this.accountService
-            .checkOldPassword(checkPassData)
-            .subscribe((result: any) => {
-                if(result.data){
-                    return;
-                }
-                this.wrongCurrentPassword = true;
-                return; 
-            });
-
+    private updatePassword(): void{
+        if(this.currentUser === null){
+            return;
+        }
         const postData = { 
             password: this.passwordVal, 
             id: this.currentUser.id
         }
 
-        console.log(this.currentUser);
         this.accountService
             .updatePassword(postData)
             .subscribe((response:any) => {
 
-            });
+        });
+    }
+
+    public submitPasswordForm(): void{ 
+        if(this.passwordMismatch || this.currentUser === null){ return; }
+
+        const checkPassData = { 
+            oldPassword: this.oldPasswordVal,
+            id: this.currentUser.id,
+        };
+        
+       this.accountService
+        .checkOldPassword(checkPassData)
+        .subscribe((result: any) => {
+            console.log(result.data);
+            if(result.data){
+                this.updatePassword();
+                return;
+            }          
+            this.passwordMismatch = true;
+            console.log(this.passwordMismatch);
+        });
     }
 
     public get checkPasswordMatch(): boolean {

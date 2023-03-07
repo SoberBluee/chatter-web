@@ -23,7 +23,6 @@ export class AuthService implements OnInit{
         user.status =  'ACTIVE'
         this.currentUser = user;
         this.emitCurrentUser.next(user);
-        console.log("user fro request: ", this.currentUser)
         return;
     }
 

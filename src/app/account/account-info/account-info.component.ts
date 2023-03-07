@@ -11,11 +11,14 @@ import { CurrentUser } from 'src/app/shared/interface.model';
 
 export class AccountInfoComponent implements OnInit {
 
-    @Input() public currentUser: CurrentUser;
+    @Input() public currentUser: CurrentUser | null;
 
     constructor(){}
 
     public ngOnInit(): void{ 
+        if(!this.currentUser){
+            console.error("Account-Info no user");
+        }
     }
 
 }

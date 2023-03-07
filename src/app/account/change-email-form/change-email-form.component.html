@@ -1,0 +1,41 @@
+<div class="container">
+    <h3>Email</h3>
+    <form (ngSubmit)="submitEmailForm()" [formGroup]="changeEmailForm">
+        <div class="form-control">
+            <label for="email" class="form-label">
+                Email
+                <img 
+                    class="img" 
+                    src="../../../assets/inactive-user.png" 
+                    alt="dot"
+                    *ngIf="checkRedChange">
+                <img 
+                    class="img" 
+                    src="../../../assets/afk-user.png" 
+                    alt="dot"
+                    *ngIf="checkAmberChange">
+                <img 
+                    class="img" 
+                    src="../../../assets/active-user.png" 
+                    alt="dot"
+                    *ngIf="checkGreenChange">
+                <input 
+                    type="text" 
+                    class="form-input" 
+                    formControlName="email"
+                    [class.amber]="checkAmberChange"
+                    [class.red]="checkRedChange">  
+            </label>
+        </div>
+        <div class="form-control">
+            <label for="confirmEmail" class="form-label">
+                Confirm Email
+                <input 
+                type="text" 
+                class="form-input" 
+                formControlName="confirmEmail">            
+            </label>
+        </div>
+        <button class="button" type="submit">Submit</button>
+    </form>
+</div>

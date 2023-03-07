@@ -24,13 +24,19 @@
     .form-control{
         margin: 20px 0px;
         background-color: rgb(219, 217, 217);
-        border: 2.5 solid black;
+        border: none;
         
         .form-label{
             width: 100%;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1rem;
             letter-spacing: 2px;
+
+            .img{ 
+                height:10px;
+                width: 10px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
 
         }
         .form-input{
@@ -46,6 +52,7 @@
             letter-spacing: 2px;
 
             outline: none;
+
         }
     }
 }
@@ -92,4 +99,15 @@
 .clear:hover{
     background-color: rgb(185, 32, 32);
     transition: .5s;
+}
+
+.red{
+    border: 1.5px solid red !important;
+}
+
+.amber{
+    border: 1.5px solid orange !important;
+}
+.green{
+    border: 1.5 solid green !important;
 }
