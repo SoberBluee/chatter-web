@@ -1,0 +1,17 @@
+.banner{
+    display: flex;
+    position: absolute;
+    left: 12px;
+    top: 130px;
+    border-top: 4.5px solid black;
+    border-bottom: 4.5px solid black;
+    background-color: rgb(219, 217, 217) !important;
+    padding: 10px 0px;
+
+
+    h4{ 
+        font-size: 20px;
+        width: auto;
+        margin: 0 auto;
+    }
+}

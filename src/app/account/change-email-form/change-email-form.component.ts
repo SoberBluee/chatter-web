@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { CurrentUser } from "src/app/shared/interface.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { EmailUpdate } from "src/app/shared/interface.model";
+import { EmailUpdate, ApiResponse, ErrorBannerEvent } from "src/app/shared/interface.model";
 import { AccountService } from "../account.service";
 
 @Component({
@@ -17,6 +17,8 @@ export class ChangeEmailFormComponent implements OnInit{
 
     public changeEmailForm: FormGroup;
 
+    @Output() public emitBannerMessage:EventEmitter<ErrorBannerEvent> = new EventEmitter();
+
     constructor(
         private readonly fb: FormBuilder, 
         private readonly accountService: AccountService){}
@@ -30,7 +32,7 @@ export class ChangeEmailFormComponent implements OnInit{
 
     private initForm(): void{ 
         this.changeEmailForm = this.fb.group({
-            email: [this.currentUser?.email ? this.currentUser?.email : '', Validators.required],
+            email: ['', Validators.required],
             confirmEmail: ['', Validators.required],
         })
     }
@@ -39,41 +41,49 @@ export class ChangeEmailFormComponent implements OnInit{
         if(this.changeEmailForm.valid){ return; }
 
         const postData: EmailUpdate = {
+            userId: this.currentUser?.id ?? -1,
             email: this.emailVal,
             confirmEmail: this.confirmEmailVal,
         }
 
-        this.accountService.updateEmail(postData)
+        this.accountService
+            .updateEmail(postData)
+            .pipe()
+            .subscribe({
+                next: (response:any) => {
+                    if(response.status === 200){
+                        //update current user in local storage
+                        localStorage.setItem('session', JSON.stringify(response.data));
+                        //emit success message
+                        this.emitBannerMessage.emit({
+                            status: response.status,
+                            message: response.message,
+                            type: 'SUCCESS'
+                        });
+                        
+                        window.scrollTo(0,0);
+                    }
+                    this.emitBannerMessage.emit({
+                        status: response.status,
+                        message: response.message,
+                        type: 'ERROR'
+                    })
+                    window.scrollTo(0,0);
+
+                },
+                error: (response: any) =>{
+                    this.emitBannerMessage.emit({
+                        status: 400,
+                        message: 'Something went wrong',
+                        type: 'ERROR'
+                    })
+                    window.scrollTo(0,0);
+                }
+            })
     }
 
-    /**
-     * Will check if a given, a string form control name, will return true or false
-     * if that value is the same as before
-     * @param string check 
-     * @returns boolean
-     */
-     public get checkGreenChange(): boolean{
-        return this.emailVal === this.currentUser?.email;
-    }
-
-    /**
-     * Will check if a given, a string form control name, will return true or false
-     * if that value has or has not been changed in the input field
-     * @param string check 
-     * @returns boolean
-     */
-    public get checkAmberChange(): boolean{
-        return this.emailVal !== this.currentUser?.email && this.emailVal !== '';
-    }
-    
-    /**
-     * Will check if a given, a string form control name, will return true or false
-     * if a value has been deleted
-     * @param string check 
-     * @returns boolean
-     */
-    public get checkRedChange(): boolean{
-        return this.emailVal === '';
+    public get checkEmail(): boolean{
+        return this.emailVal === this.confirmEmailVal;
     }
 
     public get emailVal(): string { 

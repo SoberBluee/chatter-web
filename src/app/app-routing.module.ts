@@ -14,7 +14,7 @@ import { AccountComponent } from "./account/account.component";
 const routes: Routes = [
      //TODO: replace routes with routing component
      { path: 'login', component: LoginComponent, pathMatch: 'full' },
-     { path: 'account', component: AccountComponent, pathMatch: 'full',  },
+     { path: 'account', component: AccountComponent, pathMatch: 'full'},
      { path: 'message', component: MessageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
      { path: 'people-page', component: PeoplePageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
      { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },

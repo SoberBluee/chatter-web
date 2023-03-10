@@ -6,7 +6,7 @@
  * ALL MESSAGES WITH A USER WILL LOAD WHEN THE MESSAGES PAGE IS VISITED
  */
 
-export interface JsonResponse{
+export interface ApiResponse{
     data: any;
     message: string;
     status: number;
@@ -110,6 +110,7 @@ export interface AccountUpdate{
 }
 
 export interface EmailUpdate{
+    userId: number;
     email: string;
     confirmEmail: string;
 }
@@ -118,3 +119,10 @@ export interface PasswordUpdate{
     password: string;
     confirmPassword: string
 }
+
+export interface ErrorBannerEvent{
+    status: number;
+    message: string;
+    type: string;
+}
+

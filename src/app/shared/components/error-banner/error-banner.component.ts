@@ -3,7 +3,7 @@ import { Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
 @Component({
     selector: 'app-error-banner',
     templateUrl: './error-banner.component.html',
-    styleUrls: ['./error-banner.component.css']
+    styleUrls: ['./error-banner.component.scss']
 })
 
 export class ErrorBannerComponent implements OnInit {
@@ -16,7 +16,6 @@ export class ErrorBannerComponent implements OnInit {
     constructor(){}
 
     public ngOnInit(): void {
-        console.log('width: ', this.widthPercentage);
         setTimeout(()=> this.emitClose.emit(), 5000); //banner closes after a certain time
     }
 
@@ -24,10 +23,13 @@ export class ErrorBannerComponent implements OnInit {
         //sets the background color depending on the type of error
         switch(this.error_type){
             case "WARNING":
-                return 'rgb(252, 149, 53)';
+                return '1.5px solid rgb(252, 149, 53)';
             case "ERROR":
-                return 'rgb(232, 60, 60)';
+                return '1.5px solid rgb(232, 60, 60)';
+            case "SUCCESS":
+                return '1.5px solid green';
+            default:
+                return '1.5px solid blue';
         }
-        return 'white';
     }
 }

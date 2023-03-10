@@ -1,30 +1,14 @@
 <div class="container">
     <h3>Email</h3>
+    <p>Current Email: {{currentUser?.email}}</p>
     <form (ngSubmit)="submitEmailForm()" [formGroup]="changeEmailForm">
         <div class="form-control">
             <label for="email" class="form-label">
                 Email
-                <img 
-                    class="img" 
-                    src="../../../assets/inactive-user.png" 
-                    alt="dot"
-                    *ngIf="checkRedChange">
-                <img 
-                    class="img" 
-                    src="../../../assets/afk-user.png" 
-                    alt="dot"
-                    *ngIf="checkAmberChange">
-                <img 
-                    class="img" 
-                    src="../../../assets/active-user.png" 
-                    alt="dot"
-                    *ngIf="checkGreenChange">
                 <input 
                     type="text" 
                     class="form-input" 
-                    formControlName="email"
-                    [class.amber]="checkAmberChange"
-                    [class.red]="checkRedChange">  
+                    formControlName="email">  
             </label>
         </div>
         <div class="form-control">
@@ -33,9 +17,10 @@
                 <input 
                 type="text" 
                 class="form-input" 
-                formControlName="confirmEmail">            
+                formControlName="confirmEmail"
+                [class.error]="!checkEmail">            
             </label>
         </div>
-        <button class="button" type="submit">Submit</button>
+        <button class="button">Submit</button>
     </form>
 </div>
