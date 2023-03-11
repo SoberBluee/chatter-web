@@ -15,7 +15,7 @@ export class AccountService{
         return this.http.post(this.routePrefix + "account/check-old-password", postData);
     }
 
-    public updateAccountDetails(postData:AccountUpdate){
+    public updateAccountDetails(postData: any){
         return this.http.post(this.routePrefix + 'account/update-account-details', postData);
     }
     
@@ -26,5 +26,7 @@ export class AccountService{
     public updateEmail(postData: EmailUpdate ): Observable<object>{
         return this.http.post(this.routePrefix + 'account/update-email', postData);
     }
+
+    
 
 }

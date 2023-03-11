@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { CurrentUser } from "src/app/shared/interface.model";
+import { CurrentUser, ErrorBannerEvent } from "src/app/shared/interface.model";
 import { AccountService } from "../account.service";
 
 @Component({
@@ -10,10 +10,13 @@ import { AccountService } from "../account.service";
 })
 
 export class PersonalInfoFormComponent implements OnInit {
+    
+    @Input() public currentUser: CurrentUser | null;
 
     public personalInfoForm: FormGroup;
 
-    @Input() public currentUser: CurrentUser | null;
+    @Output() public emitBannerMessage: EventEmitter<ErrorBannerEvent> = new EventEmitter();
+
 
     public constructor(private fb:FormBuilder, private accountService: AccountService){ }
 
@@ -43,17 +46,29 @@ export class PersonalInfoFormComponent implements OnInit {
             return;
         }
 
-        const newData = {
-            username: this.checkAmberChange('username') ? this.usernameVal : '',
-            firstname: this.checkAmberChange('firstname') ? this.firstnameVal : '',
-            surname: this.checkAmberChange('surname') ? this.surnameVal : '' ,
-            phonenumber: this.checkAmberChange('phonenumber') ? this.phonenumberVal.toString() : '',
+        const postData = {
+            userId: this.currentUser?.id,
+            username: this.checkAmberChange('username') ? this.usernameVal : null,
+            firstname: this.checkAmberChange('firstname') ? this.firstnameVal : null,
+            surname: this.checkAmberChange('surname') ? this.surnameVal : null,
+            phonenumber: this.checkAmberChange('phonenumber') ? this.phonenumberVal.toString() : null,
         };
-        
+
         this.accountService
-            .updateAccountDetails(newData)
+            .updateAccountDetails(postData)
             .subscribe((response: any) => {
-                console.log(response);
+                if(response.status === 200){
+                    this.emitBannerMessage.emit({
+                        status: response.status,
+                        message: response.message,
+                        type: 'SUCCESS',
+                    })
+                }
+                this.emitBannerMessage.emit({
+                    status: response.status,
+                    message: response.message,
+                    type: 'ERROR',
+                })
             })
     }
     
