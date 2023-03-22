@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { Posts } from "src/app/shared/interface.model";
-import { PostSerice } from "../post.service";
+import { PostSerice } from "../../shared/services/post.service";
 
 @Component({
     selector: 'app-create-post',

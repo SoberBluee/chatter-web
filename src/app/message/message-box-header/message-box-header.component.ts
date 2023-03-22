@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CurrentUser, Error } from 'src/app/shared/interface.model';
-import { MessageService } from '../message.service';
+import { MessageService } from '../../shared/services/message.service';
 
 @Component({
     selector: 'app-message-box-header',

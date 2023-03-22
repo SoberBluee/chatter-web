@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
     selector: 'app-forgot-password',
     templateUrl: './forgot-password.component.html',
-    styleUrls: ['./forgot-password.component.css']
+    styleUrls: ['./forgot-password.component.scss']
 })
 
 export class ForgotPasswordComponent implements OnInit {
@@ -25,7 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     public submitForgotPassword(): void{
-        const forgotPassword = { email: this.forgotPasswordForm.controls['fpEmail'].value}
+        const email = this.forgotPasswordForm.controls['fpEmail'].value
         
     }
 }

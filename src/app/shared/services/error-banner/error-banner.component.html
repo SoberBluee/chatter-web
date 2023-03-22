@@ -1,0 +1,9 @@
+<div 
+    class="row banner" 
+    [ngStyle]="{
+        'border-top': border_color, 
+        'border-bottom': border_color, 
+        'width': widthPercentage ? widthPercentage + '%' : '100%'
+        }">
+    <h4>{{'Status: ' + error_status + ' - ' + error_message}}</h4>
+</div>

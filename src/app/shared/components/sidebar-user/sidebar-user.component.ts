@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from "@angular/core";
-import { AuthService } from "../../auth.service";
-import { MessageService } from "src/app/message/message.service";
+import { AuthService } from "../../services/auth.service";
+import { MessageService } from "src/app/shared/services/message.service";
 import { Router } from "@angular/router";
 //Interfaces
 import { CurrentUser } from "../../interface.model";

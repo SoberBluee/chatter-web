@@ -2,8 +2,8 @@
 import { Injectable, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { HttpClient } from "@angular/common/http";
-import { Login, Register} from "../login/auth-properties";
-import { CurrentUser } from "./interface.model";
+import { Login, Register} from "../../login/auth-properties";
+import { CurrentUser } from "../interface.model";
 import {Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
@@ -32,6 +32,10 @@ export class AuthService implements OnInit{
 
     public register(user: Register){
         return this.http.post(this.routePrefix + 'user/create-user', user);
+    }
+
+    public resetPassword(email: string){
+        return this.http.get(this.routePrefix + '')
     }
 
     public superLogin(){

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { CurrentUser, ErrorBannerEvent } from "src/app/shared/interface.model";
-import { AccountService } from "../account.service";
-import { AuthService } from "src/app/shared/auth.service";
+import { AccountService } from "../../shared/services/account.service";
+import { AuthService } from "src/app/shared/services/auth.service";
 
 @Component({
     selector: 'app-password-info-form',

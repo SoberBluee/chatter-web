@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUser, Posts } from '../shared/interface.model';
-import { MessageService } from '../message/message.service';
-import { PostSerice } from './post.service';
-import { UserService } from '../shared/user.service'
-import { AuthService } from '../shared/auth.service';
+import { MessageService } from '../shared/services/message.service';
+import { PostSerice } from '../shared/services/post.service';
+import { UserService } from '../shared/services/user.service'
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
     selector: 'app-post',

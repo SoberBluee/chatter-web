@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { CurrentUser } from './shared/interface.model';
 import { Router } from '@angular/router';
 import { NavigationStart } from '@angular/router';
-import { AuthService } from './shared/auth.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',

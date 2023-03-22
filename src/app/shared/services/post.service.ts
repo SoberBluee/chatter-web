@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
-import { Comment, Posts } from "../shared/interface.model";
+import { Comment, Posts } from "../interface.model";
 import { Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";

@@ -1,4 +1,4 @@
-import { CurrentUser, Message } from "../shared/interface.model";
+import { CurrentUser, Message } from "../interface.model";
 import { environment } from "src/environments/environment";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";

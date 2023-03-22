@@ -4,7 +4,7 @@
         *ngIf="isError" 
         [error_message]="errorBannerMessage" 
         [error_type]="'ERROR'" 
-        [widthPercentage]="50" 
+        [widthPercentage]="100" 
         [error_status]="errorStatusCode"
         ></app-error-banner>
     <div class="content" style="height: 386px">
@@ -50,7 +50,7 @@
         <app-register></app-register>
     </div>
     <!-- Reset password form -->
-    <div class="content" style="height: 150px !important;" *ngIf="showForgotPasswordForm">
+    <div class="content reset-pass" *ngIf="showForgotPasswordForm">
         <app-forgot-password></app-forgot-password>
     </div>
 </div>

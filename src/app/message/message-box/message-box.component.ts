@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 //RXJS
 //Components
 //Services 
-import { MessageService } from '../message.service';
+import { MessageService } from '../../shared/services/message.service';
 //Interfaces
 import {Message, CurrentUser } from 'src/app/shared/interface.model';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit} from "@angular/core";
-import { MessageService } from "./message.service";
-import { AuthService } from "../shared/auth.service";
+import { MessageService } from "../shared/services/message.service";
+import { AuthService } from "../shared/services/auth.service";
 
 //Interfaces 
 import {CurrentUser} from '../shared/interface.model';

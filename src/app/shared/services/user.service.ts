@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { AuthService } from "./auth.service";
-import { CurrentUser } from "./interface.model";
+import { CurrentUser } from "../interface.model";
 import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 

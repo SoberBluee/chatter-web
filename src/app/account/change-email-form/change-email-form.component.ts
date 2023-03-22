@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { CurrentUser } from "src/app/shared/interface.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { EmailUpdate, ApiResponse, ErrorBannerEvent } from "src/app/shared/interface.model";
-import { AccountService } from "../account.service";
+import { AccountService } from "../../shared/services/account.service";
 
 @Component({
     selector: 'app-change-email-form',

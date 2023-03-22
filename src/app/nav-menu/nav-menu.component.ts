@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { CurrentUser } from '../shared/interface.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
