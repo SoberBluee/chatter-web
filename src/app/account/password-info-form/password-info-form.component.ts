@@ -11,7 +11,6 @@ import { AuthService } from "src/app/shared/services/auth.service";
 })
 
 export class PasswordInfoFormComponent implements OnInit {
-
     @Input() public currentUser: CurrentUser | null;
     
     public passwordInfoForm: FormGroup;

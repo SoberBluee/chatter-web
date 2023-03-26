@@ -1,4 +1,4 @@
-<div class="row">
+<div class="container">
     <!-- Error Banner -->
     <app-error-banner 
         *ngIf="isError" 
@@ -46,12 +46,8 @@
         </form>
     </div>
     <!--  Register form -->
-    <div class="content" *ngIf="showRegisterForm">
-        <app-register></app-register>
-    </div>
+    <app-register class="register" *ngIf="showRegisterForm"></app-register>
     <!-- Reset password form -->
-    <div class="content reset-pass" *ngIf="showForgotPasswordForm">
-        <app-forgot-password></app-forgot-password>
-    </div>
+    <app-forgot-password class="reset-password"  *ngIf="showForgotPasswordForm"></app-forgot-password>
 </div>
 
