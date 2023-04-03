@@ -1,49 +1,11 @@
-
-/* Global Styles */
-::placeholder{text-align: center;}
-
-h2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-label{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    font-weight: 600;
-    text-decoration: underline;
-    text-align: center;
-}
-
-input[type=text],input[type=password]{
-    border: 1.5px solid black;
-    width:100%;
-    border-radius: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin-top: 5px;
-    padding: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
+@import "../shared/styles/gloabl";
 
 .container{
     display: flex;
     flex-direction: row;    
     .content{
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        border: 1.5px solid black;
-        padding: 2rem;
-        border-radius: 10px;
         width: 45%;
-        box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-        background-color: rgb(219, 217, 217);
-        margin: 10px;   
-        overflow:auto;
-        min-height: 400px;
-    
+        height: 50%;
     }
     
     .reset-password{
@@ -54,114 +16,11 @@ input[type=text],input[type=password]{
         width: 35%;
     }
     
-    .row{
-        margin: 10px;
-    }
-    
-    .loginFormBtn{
-        margin: 10px;
-        width: 40%;    
-        border-radius: 10px;
-        background-color:white;
-        justify-content: center;
-    }
-    
-    .loginFormBtn:hover, input[type=text]:hover,input[type=password]:hover{
-        box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-    }
-    
     .error-invalid{
         color: red;
         width: auto;
         margin-top: 5px;
     }
-    
-    /* On error */
-    .input-error{
-        border-color: 2px solid red;
-    }
-    
-    .success{
-        background-color:rgb(74, 255, 74);
-    }
-    
-    .danger{
-        background-color: rgb(255, 85, 85);
-    }
-    
-    .default{
-        background-color: rgb(111, 137, 253);
-    }
-    
-    .loader {
-        display: inline-block;
-        width: 80px;
-        height: 80px;
-      }
-      .lds-dual-ring:after {
-        content: " ";
-        display: block;
-        width: 64px;
-        height: 64px;
-        margin: 8px;
-        border-radius: 50%;
-        border: 6px solid #fff;
-        border-color: #fff transparent #fff transparent;
-        animation: lds-dual-ring 1.2s linear infinite;
-      }
-      @keyframes lds-dual-ring {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    
-    .button{
-        display: flex;
-        justify-content:flex-end;
-        align-items: center;
-        box-sizing: border-box;
-        min-height: 10%;
-        height: auto;
-        width: 40%;
-        padding: 10px;
-        margin: .313rem;
-        border-radius: 4px;
-        transition: 0.2s;
-        opacity: .9;
-        border: 2.5px solid ;
-        background-color:rgb(226, 226, 226);
-        box-shadow: inset 15px 0px rgb(21, 21, 21);
-    }
-    
-    .button p{
-        margin-left: 50px;
-    }
-    
-    .button .logo{
-        min-height: 12%;
-        height: auto;
-    }
-    
-    .button:hover{
-        color:#fff;
-        border-radius: 10px;
-        box-shadow: inset -140px 0px rgba(14, 14, 14, 0.5);
-        border: 2.5px solid rgb(21, 21, 21);
-    }
-    
-    .login:hover{
-        background-color: rgb(53, 154, 53);
-        transition: .5s;
-    }
-    
-    .clear:hover{
-        background-color: rgb(185, 32, 32);
-        transition: .5s;
-    }
-
 }
 
 

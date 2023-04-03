@@ -19,7 +19,7 @@ import { ManageUserModalComponent } from './shared/components/manage-user-modal/
 import { ManageMessageModalComponent } from './shared/components/manage-message-modal/manage-message-modal.component';
 import { ErrorBannerComponent } from './shared/services/error-banner/error-banner.component';
 import { CommentSectionComponent } from './shared/components/comments-section/comment-section.component';
-import { HeaderInterceptor } from './header-interceptor.interceptor';
+import { HeaderInterceptor } from './shared/interceptors/header-interceptor.interceptor';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { MessageBoxHeaderComponent } from './message/message-box-header/message-box-header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -29,10 +29,10 @@ import { PasswordInfoFormComponent } from './account/password-info-form/password
 import { AccountInfoComponent } from './account/account-info/account-info.component';
 import { ChangeEmailFormComponent } from './account/change-email-form/change-email-form.component';
 import { ConfirmationModalComponent } from './shared/components/confirmation-modal/confirmation-modal.component';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 //Error Exceptions
-import { NotFoundComponent } from './Exceptions/404/404-not-found.component';
+import { NotFoundComponent } from './exceptions/404/404-not-found.component';
 import { SearchBarComponent } from './shared/components/searcbar/search-bar.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -63,7 +63,8 @@ import { AppRoutingModule } from './app-routing.module';
     PasswordInfoFormComponent,
     AccountInfoComponent,
     ChangeEmailFormComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    ResetPasswordComponent  
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
