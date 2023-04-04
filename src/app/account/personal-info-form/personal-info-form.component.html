@@ -1,118 +1,135 @@
-<div class="container">
-    <h3>Personal</h3>
-    <form class="personal-form" [formGroup]="personalInfoForm" (ngSubmit)="submitPersonalForm()">
-        <!-- Username -->
-        <div class="form-control">
-            <label for="username" class="form-label">
-                Username
-                <img 
-                    class="img" 
-                    src="../../../assets/inactive-user.png" 
-                    alt="dot"
-                    *ngIf="checkRedChange('username')">
-                <img 
-                    class="img" 
-                    src="../../../assets/afk-user.png" 
-                    alt="dot"
-                    *ngIf="checkAmberChange('username')">
-                <img 
-                    class="img" 
-                    src="../../../assets/active-user.png" 
-                    alt="dot"
-                    *ngIf="checkGreenChange('username')">
+<div class="content">
+  <h3>Personal</h3>
+  <form [formGroup]="personalInfoForm" (ngSubmit)="submitPersonalForm()">
+    <!-- Username -->
+    <div class="form-control">
+      <label for="username" class="form-label">
+        Username
+        <img
+          class="img"
+          src="../../../assets/inactive-user.png"
+          alt="dot"
+          *ngIf="checkRedChange('username')"
+        />
+        <img
+          class="img"
+          src="../../../assets/afk-user.png"
+          alt="dot"
+          *ngIf="checkAmberChange('username')"
+        />
+        <img
+          class="img"
+          src="../../../assets/active-user.png"
+          alt="dot"
+          *ngIf="checkGreenChange('username')"
+        />
 
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    formControlName="username"
-                    [class.amber]="checkAmberChange('username')"
-                    [class.red]="checkRedChange('username')"
-                    >
-            </label>
-        </div>
-        <!-- Firstname -->
-        <div class="form-control">
-            <label for="firstname" class="form-label">
-                Firstname
-                <img 
-                    class="img" 
-                    src="../../../assets/inactive-user.png" 
-                    alt="dot"
-                    *ngIf="checkRedChange('firstname')">
-                <img 
-                    class="img" 
-                    src="../../../assets/afk-user.png" 
-                    alt="dot"
-                    *ngIf="checkAmberChange('firstname')">
-                <img 
-                    class="img" 
-                    src="../../../assets/active-user.png" 
-                    alt="dot"
-                    *ngIf="checkGreenChange('firstname')">
+        <input
+          type="text"
+          class="form-input"
+          formControlName="username"
+          [class.amber]="checkAmberChange('username')"
+          [class.red]="checkRedChange('username')"
+        />
+      </label>
+    </div>
+    <!-- Firstname -->
+    <div class="form-control">
+      <label for="firstname" class="form-label">
+        Firstname
+        <img
+          class="img"
+          src="../../../assets/inactive-user.png"
+          alt="dot"
+          *ngIf="checkRedChange('firstname')"
+        />
+        <img
+          class="img"
+          src="../../../assets/afk-user.png"
+          alt="dot"
+          *ngIf="checkAmberChange('firstname')"
+        />
+        <img
+          class="img"
+          src="../../../assets/active-user.png"
+          alt="dot"
+          *ngIf="checkGreenChange('firstname')"
+        />
 
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    formControlName="firstname" 
-                    [class.amber]="checkAmberChange('firstname')"
-                    [class.red]="checkRedChange('firstname')">
-            </label>
-        </div>
-        <!-- Surname -->
-        <div class="form-control">
-            <label for="surname" class="form-label">
-                Surname
-                <img 
-                    class="img" 
-                    src="../../../assets/inactive-user.png" 
-                    alt="dot"
-                    *ngIf="checkRedChange('surname')">
-                <img 
-                    class="img" 
-                    src="../../../assets/afk-user.png" 
-                    alt="dot"
-                    *ngIf="checkAmberChange('surname')">
-                <img 
-                    class="img" 
-                    src="../../../assets/active-user.png" 
-                    alt="dot"
-                    *ngIf="checkGreenChange('surname')">
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    formControlName="surname" 
-                    [class.amber]="checkAmberChange('surname')"
-                    [class.red]="checkRedChange('surname')">
-            </label>
-        </div>
+        <input
+          type="text"
+          class="form-input"
+          formControlName="firstname"
+          [class.amber]="checkAmberChange('firstname')"
+          [class.red]="checkRedChange('firstname')"
+        />
+      </label>
+    </div>
+    <!-- Surname -->
+    <div class="form-control">
+      <label for="surname" class="form-label">
+        Surname
+        <img
+          class="img"
+          src="../../../assets/inactive-user.png"
+          alt="dot"
+          *ngIf="checkRedChange('surname')"
+        />
+        <img
+          class="img"
+          src="../../../assets/afk-user.png"
+          alt="dot"
+          *ngIf="checkAmberChange('surname')"
+        />
+        <img
+          class="img"
+          src="../../../assets/active-user.png"
+          alt="dot"
+          *ngIf="checkGreenChange('surname')"
+        />
+        <input
+          type="text"
+          class="form-input"
+          formControlName="surname"
+          [class.amber]="checkAmberChange('surname')"
+          [class.red]="checkRedChange('surname')"
+        />
+      </label>
+    </div>
 
-        <!-- Phonenumber -->
-        <div class="form-control">
-            <label for="phonenumber" class="form-label">
-                Phonenumber
-                <img 
-                    class="img" 
-                    src="../../../assets/inactive-user.png" 
-                    alt="dot"
-                    *ngIf="checkRedChange('phonenumber')">
-                <img 
-                    class="img" 
-                    src="../../../assets/afk-user.png" 
-                    alt="dot"
-                    *ngIf="checkAmberChange('phonenumber')">
-                <img 
-                    class="img" 
-                    src="../../../assets/active-user.png" 
-                    alt="dot"
-                    *ngIf="checkGreenChange('phonenumber')">
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    formControlName="phonenumber" 
-                    [class.amber]="checkAmberChange('phonenumber')"
-                    [class.red]="checkRedChange('phonenumber')">
-            </label>
-        </div>
-        <button class="button">Submit</button>
-    </form>
+    <!-- Phonenumber -->
+    <div class="form-control">
+      <label for="phonenumber" class="form-label">
+        Phonenumber
+        <img
+          class="img"
+          src="../../../assets/inactive-user.png"
+          alt="dot"
+          *ngIf="checkRedChange('phonenumber')"
+        />
+        <img
+          class="img"
+          src="../../../assets/afk-user.png"
+          alt="dot"
+          *ngIf="checkAmberChange('phonenumber')"
+        />
+        <img
+          class="img"
+          src="../../../assets/active-user.png"
+          alt="dot"
+          *ngIf="checkGreenChange('phonenumber')"
+        />
+        <input
+          type="text"
+          class="form-input"
+          formControlName="phonenumber"
+          [class.amber]="checkAmberChange('phonenumber')"
+          [class.red]="checkRedChange('phonenumber')"
+        />
+      </label>
+    </div>
+    <div class="control-container">
+      <button class="button">Submit</button>
+    </div>
+  </form>
 </div>

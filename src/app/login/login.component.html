@@ -19,13 +19,13 @@
           >Email:
           <!-- Email input -->
           <input
+            class="form-input"
             [ngStyle]="{
               border:
                 loginControls.email.invalid && loginControls.email.touched
                   ? '2px solid red'
-                  : '1px solid black'
+                  : '1.5px solid rgb(87, 46, 95)'
             }"
-            class="form-input"
             type="text"
             id="email"
             placeholder="Please enter email"
@@ -43,19 +43,20 @@
       <!-- password control -->
       <div class="form-control">
         <!-- Password label -->
-        <label class="form-label" for="password">Password:
-            <!-- password input -->
-            <input
-                class="form-input"
-                type="password"
-                id="password"
-                placeholder="Please enter password"
-                formControlName="password"
-                />
+        <label class="form-label" for="password"
+          >Password:
+          <!-- password input -->
+          <input
+            class="form-input"
+            type="password"
+            id="password"
+            placeholder="Please enter password"
+            formControlName="password"
+          />
         </label>
       </div>
       <!-- Form controls -->
-      <div class="row"> 
+      <div class="control-container">
         <button class="button login" type="submit">Login</button>
         <button class="button" type="button" (click)="switchForgotPassword()">
           Sign Up

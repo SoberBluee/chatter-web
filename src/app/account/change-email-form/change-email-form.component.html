@@ -1,26 +1,29 @@
-<div class="container">
-    <h3>Email</h3>
-    <p>Current Email: {{currentUser?.email}}</p>
-    <form (ngSubmit)="submitEmailForm()" [formGroup]="changeEmailForm">
-        <div class="form-control">
-            <label for="email" class="form-label">
-                Email
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    formControlName="email">  
-            </label>
-        </div>
-        <div class="form-control">
-            <label for="confirmEmail" class="form-label">
-                Confirm Email
-                <input 
-                type="text" 
-                class="form-input" 
-                formControlName="confirmEmail"
-                [class.error]="!checkEmail">            
-            </label>
-        </div>
-        <button class="button">Submit</button>
-    </form>
+<div class="content">
+  <h3>Email</h3>
+  <p>
+    Current Email:
+    {{ currentUser?.email ? currentUser?.email : "User email not found" }}
+  </p>
+  <form (ngSubmit)="submitEmailForm()" [formGroup]="changeEmailForm">
+    <div class="form-control">
+      <label for="email" class="form-label">
+        Email
+        <input class="form-input" type="text" formControlName="email" />
+      </label>
+    </div>
+    <div class="form-control">
+      <label for="confirmEmail" class="form-label">
+        Confirm Email
+        <input
+          type="text"
+          class="form-input"
+          formControlName="confirmEmail"
+          [class.error]="!checkEmail"
+        />
+      </label>
+    </div>
+    <div class="control-container">
+      <button class="button">Submit</button>
+    </div>
+  </form>
 </div>

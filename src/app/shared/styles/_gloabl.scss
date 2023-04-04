@@ -15,29 +15,35 @@
     text-align: center;
 }
 
-:global(input[type=text]),:global(input[type=password]){
+a.divider{
+    display: inline-block;
+    width: 1px;
     border: 1.5px solid black;
-    width:100%;
-    border-radius: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin-top: 5px;
-    padding: 5px;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    margin: 0 20px;
+    opacity: .15;
+    height: 300px;
 }
 
 .content{
     display: flex;
     flex-direction: column;
     align-items:center;
-    border: 1.5px solid black;
+    border: 2.5px solid rgb(153, 82, 167);
     padding: 2rem;
     border-radius: 10px;
-    width: 60%;
+    width: 100%;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     background-color: rgb(219, 217, 217);
     margin: 10px;   
     overflow:auto;
     min-height: 400px;
+
+    :global(h3){
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 2px;
+        text-decoration: underline;
+    }
 }
 
 .button{
@@ -77,44 +83,6 @@
 .clear:hover{
     background-color: rgb(185, 32, 32);
     transition: .5s;
-}
-form{
-    .form-control{
-        display: flex;
-        flex-direction: row;
-        margin: 20px 0px;
-        background-color: rgb(219, 217, 217);
-        border: none;
-        
-        .form-label{
-            width: 100%;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-
-            .img{ 
-                height:10px;
-                width: 10px;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            }
-
-        }
-        
-        .form-input{
-            float: right;
-            border-radius: 10px;
-            min-height: 50px;
-            border: 1.5px solid black;
-            width:70%;
-            height: 80%;
-            padding: 3px;
-            font-size: 1rem;
-            letter-spacing: 2px;
-
-            outline: none;
-
-        }
-    }
 }
 
 /* On error */

@@ -1,88 +1,165 @@
 <div class="content">
-    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
-        <div>
-            <h2>Register</h2>
-        </div>
-        <div class="row">
-            <label for="username">Username: </label>
-            <input type="text"
-                id="username"
-                placeholder="Usernam"
-                formControlName="username">
-        </div>
-        <div class="row">
-            <label for="firstname">Firstname: </label>
-            <input 
-                    type="text" 
-                    id="firstname" 
-                    placeholder="Firstname" 
-                    formControlName="firstname"/>
-        </div>
-        <div class="row">
-            <label for="surname">Surname: </label>
-            <input 
-                    type="text" 
-                    id="surname" 
-                    placeholder="Surname" 
-                    formControlName="surname"/>
-        </div>
-        <div class="row">
-            <label for="phoneNumber">Phone Number: </label>
-            <input 
-                    type="text" 
-                    id="phoneNumber" 
-                    placeholder="Phone Number" 
-                    formControlName="phoneNumber"/>
-        </div>
-        <div class="row">
-            <label for="rEmail">Email: </label>
-            <input 
-                    [ngStyle]="{border: compareEmail? ' 2px solid red' : '1px solid black'  }"
-                    type="text" 
-                    id="rEmail" 
-                    placeholder="Email" 
-                    formControlName="rEmail"/>
-        </div>
-        <div class="row">
-            <label for="confirmEmail">Confirm Email: </label>
-            <input 
-                    [ngStyle]="{border: compareEmail ? ' 2px solid red' : '1px solid black'  }"
-                    type="text" 
-                    id="confirmEmail" 
-                    placeholder="Confirm email" 
-                    formControlName="confirmEmail"/>
-        </div>
-        <p class="error-invalid" 
-            *ngIf="compareEmail && (registerControls.rEmail.touched && registerControls.confirmEmail.touched)">
-            Please make sure both entered emails are the same </p>
-        <div class="row">
-            <label for="rPassword">Password: </label>
-            <input 
-                    [ngStyle]="{border: comparePassword && comparePasswordInput ? ' 2px solid red' : '1px solid black'  }"
-                    type="password" 
-                    id="rPassword" 
-                    placeholder="Password" 
-                    formControlName="rPassword"/>
-        </div>
-        <div class="row">
-            <label for="confirmPassword">Confirm Password </label>
-            <input 
-                    [ngStyle]="{border: comparePassword && comparePasswordInput ? ' 2px solid red' : '1px solid black'  }"
-                    type="password" 
-                    id="confirmPassword" 
-                    placeholder="Confirm Password" 
-                    formControlName="confirmPassword"/>
-        </div>
-        <p class="error-invalid" 
-                *ngIf="comparePassword && (registerControls.rPassword.touched && registerControls.confirmPassword.touched)">
-                Please make sure both entered passwords are the same </p>
-        <p class="error-invalid"
-            *ngIf="noDetailsError">
-            Please make sure you have entered your details</p>
-        <div class="row">
-            <button class="button" type="submit" [disabled]="compareLogin">Create</button>
-            <button class="button" (click)="clear()">Clear</button>
-        </div>
+  <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+    <div>
+      <h2>Register</h2>
+    </div>
 
-    </form>
+    <div class="form-control">
+      <!-- Username label -->
+      <label class="form-label" for="username">
+        Username:
+        <!-- Username input -->
+        <input
+          class="form-input"
+          type="text"
+          id="username"
+          placeholder="Usernam"
+          formControlName="username"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="firstname" class="form-label">
+        Firstname:
+        <input
+          class="form-input"
+          type="text"
+          id="firstname"
+          placeholder="Firstname"
+          formControlName="firstname"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="surname" class="form-label">
+        Surname:
+        <input
+          class="form-input"
+          type="text"
+          id="surname"
+          placeholder="Surname"
+          formControlName="surname"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="phoneNumber" class="form-label">
+        Phone number:
+        <input
+          class="form-input"
+          type="text"
+          id="phoneNumber"
+          placeholder="Phone Number"
+          formControlName="phoneNumber"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="email" class="form-label">
+        Email:
+        <input
+          class="form-input"
+          [ngStyle]="{
+            border: compareEmail
+              ? ' 2px solid red'
+              : '1.5px solid rgb(87, 46, 95)'
+          }"
+          type="text"
+          id="rEmail"
+          placeholder="Email"
+          formControlName="rEmail"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="confirmEmail" class="form-label">
+        Confirm Email:
+        <input
+          class="form-input"
+          [ngStyle]="{
+            border: compareEmail
+              ? ' 2px solid red'
+              : '1.5px solid rgb(87, 46, 95)'
+          }"
+          type="text"
+          id="confirmEmail"
+          placeholder="Confirm email"
+          formControlName="confirmEmail"
+        />
+      </label>
+      <p
+        class="error-invalid"
+        *ngIf="
+          compareEmail &&
+          registerControls.rEmail.touched &&
+          registerControls.confirmEmail.touched
+        "
+      >
+        Please make sure both entered emails are the same
+      </p>
+    </div>
+
+    <div class="form-control">
+      <label for="password" class="form-label">
+        Password:
+        <input
+          class="form-input"
+          [ngStyle]="{
+            border:
+              comparePassword && comparePasswordInput
+                ? ' 2px solid red'
+                : '1.5px solid rgb(87, 46, 95)'
+          }"
+          type="password"
+          id="rPassword"
+          placeholder="Password"
+          formControlName="rPassword"
+        />
+      </label>
+    </div>
+
+    <div class="form-control">
+      <label for="confirmPassword" class="form-label">
+        Confirm password:
+        <input
+          class="form-input"
+          [ngStyle]="{
+            border:
+              comparePassword && comparePasswordInput
+                ? ' 2px solid red'
+                : '1.5px solid rgb(87, 46, 95)'
+          }"
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+      </label>
+    </div>
+
+    <p
+      class="error-invalid"
+      *ngIf="
+        comparePassword &&
+        registerControls.rPassword.touched &&
+        registerControls.confirmPassword.touched
+      "
+    >
+      Please make sure both entered passwords are the same
+    </p>
+    <p class="error-invalid" *ngIf="noDetailsError">
+      Please make sure you have entered your details
+    </p>
+    <div class="control-container">
+      <button class="button" type="submit" [disabled]="compareLogin">
+        Create
+      </button>
+      <button class="button" (click)="clear()">Clear</button>
+    </div>
+  </form>
 </div>

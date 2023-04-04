@@ -1,27 +1,27 @@
 <div class="row container" style="display: flex">
-    <app-error-banner 
-        *ngIf="showErrorBanner" 
-        [error_message]="errorBannerMessage" 
-        [error_type]="errorBannerType"
-        (emitClose)="closeError()"></app-error-banner>
+  <app-error-banner
+    *ngIf="showErrorBanner"
+    [error_message]="errorBannerMessage"
+    [error_type]="errorBannerType"
+    (emitClose)="closeError()"
+  ></app-error-banner>
 
-    <div style="width:30%; height: 100%;">
-        <app-sidebar-user></app-sidebar-user>
-    </div>
+  <div style="width: 30%; height: 100%">
+    <app-sidebar-user></app-sidebar-user>
+  </div>
 
-    <div class="column content" style="width: 65%;">
-        <app-message-box-header
-        [selectedUser]="selectedUser"
-        (emitToggleManagerUser)="toggleManagerUserModel($event)"
-        ></app-message-box-header>
-        <app-manage-user-modal 
-            *ngIf="toggleManageUser"
-            [user]="selectedUser"></app-manage-user-modal>
-        <div class="row seperator"></div>
+  <div class="column content" style="width: 65%">
+    <app-message-box-header
+      [selectedUser]="selectedUser"
+      (emitToggleManagerUser)="toggleManagerUserModel($event)"
+    ></app-message-box-header>
+    <app-manage-user-modal
+      *ngIf="toggleManageUser"
+      [user]="selectedUser"
+    ></app-manage-user-modal>
+    <div class="row seperator"></div>
 
-        <app-message-box
-        [selectedUser]="selectedUser"
-        ></app-message-box>
-    </div>
-</div>      
+    <app-message-box [selectedUser]="selectedUser"></app-message-box>
+  </div>
+</div>
 <app-footer></app-footer>

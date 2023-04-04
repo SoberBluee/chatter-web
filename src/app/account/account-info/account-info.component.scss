@@ -1,15 +1,7 @@
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1.5px solid black;
-    padding: .5rem;
-    border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    background-color: rgb(219, 217, 217);
-    margin: 10px;   
-    overflow:auto;
-    min-height: 350px;
+@import "../../shared/styles/gloabl";
+@import "../../shared/styles/forms";
+
+.content{
 
     h2{
         font-family: Arial, Helvetica, sans-serif;
@@ -17,7 +9,7 @@
         text-decoration: underline;
     }
 
-    .container{
+    .section-container{
         display: flex;
         flex-direction: row;
 
@@ -26,25 +18,12 @@
             letter-spacing: 2px;
             text-decoration: underline;
         }
-
-
-        a.divider{
-            display: inline-block;
-            width: 1px;
-            border: 1.5px solid black;
-            background-color: black;
-            margin: 0 20px;
-            opacity: .15;
-            height: 300px;
-        }
-
         .section-1{
             display: flex;
             flex-direction: column;    
             width: 50%;
             justify-content: center;
 
-        
             .pp{
                 padding: 0px;
                 max-width: 220px;
@@ -65,7 +44,5 @@
             flex-direction: column;
             width: 50%;
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
 @import "../shared/styles/gloabl";
+@import "../shared/styles/_forms";
 
 .container{
     display: flex;
@@ -8,12 +9,14 @@
         height: 50%;
     }
     
-    .reset-password{
-        width: 35%;
+    .reset-password, .register{
+        width: 40%;
     }
 
-    .register{
-        width: 35%;
+    .control-container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     
     .error-invalid{

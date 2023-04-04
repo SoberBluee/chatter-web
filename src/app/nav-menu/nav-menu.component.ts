@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/services/auth.service';
-import { CurrentUser } from '../shared/interface.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "../shared/services/auth.service";
+import { CurrentUser } from "../shared/interface.model";
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  selector: "app-nav-menu",
+  templateUrl: "./nav-menu.component.html",
+  styleUrls: ["./nav-menu.component.scss"],
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
@@ -15,11 +14,11 @@ export class NavMenuComponent implements OnInit {
 
   public findFriendsForm: FormGroup;
 
-  constructor(private authService:AuthService, private fb: FormBuilder){}
+  constructor(private authService: AuthService, private fb: FormBuilder) {}
 
-  ngOnInit():void { 
-    this.authService.emitCurrentUser.subscribe((user:CurrentUser) => {
-        this.currentUser = user;
+  ngOnInit(): void {
+    this.authService.emitCurrentUser.subscribe((user: CurrentUser) => {
+      this.currentUser = user;
     });
 
     this.initForm();
@@ -30,17 +29,17 @@ export class NavMenuComponent implements OnInit {
     // });
   }
 
-  private initForm(): void{ 
+  private initForm(): void {
     this.findFriendsForm = this.fb.group({
-        searchBar: [''],
-    })
+      searchBar: [""],
+    });
   }
 
   /**
    * returns the search bar string value
    */
-  public get searchBarValue(): string{
-    return this.findFriendsForm.controls['searchBar'].value;
+  public get searchBarValue(): string {
+    return this.findFriendsForm.controls["searchBar"].value;
   }
 
   collapse() {
