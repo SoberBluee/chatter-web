@@ -1,0 +1,46 @@
+@import "../../shared/styles/global";
+@import "../../shared/styles/forms";
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    
+    .pp{
+        padding: 0px;
+        max-width: 70px;
+        max-height: 50px;   
+        height: auto;
+        width: auto;
+        border-radius: 20px;
+        margin: 0px 10px;
+        object-fit: contain;
+    }
+    
+    .user-setting-btn{
+        width: auto;
+        margin: 0px 10px;
+        background-color: transparent;
+        border: none;
+        height: 30px;
+
+        h4{
+            width: 1.5rem;
+        }
+    }
+    
+    .user-setting-btn:hover{
+        box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+        border-radius: 10px;
+        transition: .4s;
+    }
+    
+    .error:hover{
+        box-shadow: red 0 0 0 3px, transparent 0 0 0 0;
+        border-radius: 10px;
+        transition: .4s;
+    
+    }
+}
+

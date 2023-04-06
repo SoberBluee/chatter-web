@@ -6,11 +6,11 @@
     (emitClose)="closeError()"
   ></app-error-banner>
 
-  <div style="width: 30%; height: 100%">
+  <div class="sidebar">
     <app-sidebar-user></app-sidebar-user>
   </div>
 
-  <div class="column content" style="width: 65%">
+  <div class="content">
     <app-message-box-header
       [selectedUser]="selectedUser"
       (emitToggleManagerUser)="toggleManagerUserModel($event)"
@@ -19,9 +19,12 @@
       *ngIf="toggleManageUser"
       [user]="selectedUser"
     ></app-manage-user-modal>
-    <div class="row seperator"></div>
+    <div class="seperator"></div>
 
-    <app-message-box [selectedUser]="selectedUser"></app-message-box>
+    <app-message-box
+      class="message-box"
+      [selectedUser]="selectedUser"
+    ></app-message-box>
   </div>
 </div>
 <app-footer></app-footer>

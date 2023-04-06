@@ -1,49 +1,5 @@
-
-/* Global Styles */
-::placeholder{text-align: center;}
-
-h2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-label{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    font-weight: 600;
-    text-decoration: underline;
-    text-align: center;
-}
-
-input[type=text]{
-    display: inline-block;
-    border: 1.5px solid black;
-    width:80%;
-    border-radius: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin: .625rem;
-    padding: 5px;
-    
-}
-
-.message-btn{
-    margin: .625rem;
-    height: 2.5rem;
-    width: 5rem;    
-    border-radius: 10px;
-    background-color:white;
-    justify-content: center;
-}
-
-.message-btn:hover{
-    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-}
-
-input[type=text]:hover{
-    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-}
-
+@import "../../shared/styles/global";
+@import "../../shared/styles/forms";
 .options{
     height: 50px;
 }
@@ -52,11 +8,10 @@ input[type=text]:hover{
     position: relative;
     box-sizing: border-box;
     border-radius: 10px;
-    margin: 0px 10px;
     height: 90%;
     min-height: 500px;
     width: 100%;
-    padding: 10px;
+    padding: 0 10px;
 }   
 
 .message-box{
@@ -102,7 +57,7 @@ input[type=text]:hover{
 
 .message-box:hover{
     transition: .5s;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 
 .message-deleted{
@@ -140,15 +95,6 @@ input[type=text]:hover{
 
 .reciever:hover{
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-
-}
-
-.divider{
-    border: 1px solid rgb(170, 170, 170);
-    opacity: .75;
-    width: 1px;
-    height: 20px;
-    margin: 5px 10px;
 }
 
 .message-window{
@@ -157,36 +103,5 @@ input[type=text]:hover{
 }
 
 .button{
-    display: flex;
-    justify-content:flex-end;
-    align-items: center;
-    box-sizing: border-box;
-    min-height: 15%;
-    height: auto;
-    width: 15%;
-    padding: 10px;
-    margin: .313rem;
-    border-radius: 4px;
-    transition: 0.2s;
-    opacity: .9;
-    border: 2.5px solid ;
-    background-color:rgb(226, 226, 226);
-    box-shadow: inset 15px 0px rgb(21, 21, 21);
-}
-
-.button p{
-    margin-left: 50px;
-}
-
-.button .logo{
-    min-height: 12%;
-    height: auto;
-}
-
-.button:hover{
-    color:#fff;
-    border-radius: 10px;
-    box-shadow: inset -90px 0px rgba(14, 14, 14, 0.5);
-    border: 2.5px solid rgb(21, 21, 21);
-    transition: .5s;
+    width: 30%;
 }

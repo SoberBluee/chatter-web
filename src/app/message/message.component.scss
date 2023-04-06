@@ -1,31 +1,5 @@
-@import '../shared/styles/gloabl';
+@import '../shared/styles/global';
 @import '../shared/styles/forms';
-
-/* Global Styles */
-::placeholder{text-align: center;}
-
-h2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-h3{
-    text-decoration: underline;
-}
-
-h3:hover{
-    color: rgb(119, 119, 249)
-}
-
-label{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    font-weight: 600;
-    text-decoration: underline;
-    text-align: center;
-}
-
 .parent{
     align-items: center;
 }
@@ -33,24 +7,25 @@ label{
 .container{
     display: flex;
     flex-direction: row;
-}
 
-.seperator{
-    width: 95%;
-    margin: 10px 5px;
-    height: 1px;
-    border: 1px solid gray;
-}
+    .message-box{
+        width: 100%;
+    }
 
-.content{
-    background-color: rgb(219, 217, 217);
-    display: inline-block;
-    align-items:center;
-    border: 1.5px solid black;
-    padding:1rem .5rem;
-    border-radius: 10px;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    margin:10px;  
-    justify-content: center;
-    box-sizing: border-box;
+    .content{
+        width: 60%;
+        padding: 5px 10px;
+    }
+
+    .sidebar{
+        width: 30%;
+    }
+
+    .seperator{
+        width: 95%;
+        margin: 10px 5px;
+        height: 1px;
+        border: 1px solid gray;
+    }
+
 }

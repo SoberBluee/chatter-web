@@ -1,36 +1,36 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { CurrentUser, Error } from 'src/app/shared/interface.model';
-import { MessageService } from '../../shared/services/message.service';
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
+import { CurrentUser, Error } from "src/app/shared/interface.model";
+import { MessageService } from "../../shared/services/message.service";
 
 @Component({
-    selector: 'app-message-box-header',
-    templateUrl: './message-box-header.component.html',
-    styleUrls: ['./message-box-header.component.css'],
+  selector: "app-message-box-header",
+  templateUrl: "./message-box-header.component.html",
+  styleUrls: ["./message-box-header.component.scss"],
 })
+export class MessageBoxHeaderComponent implements OnInit {
+  @Input() public selectedUser: CurrentUser;
+  @Output() public emitToggleManagerUser: EventEmitter<boolean> =
+    new EventEmitter();
 
-export class MessageBoxHeaderComponent implements OnInit{
+  public showError: boolean = false;
+  public toggleManageUser: boolean = false;
 
-    @Input() public selectedUser: CurrentUser;
-    @Output() public emitToggleManagerUser: EventEmitter<boolean> = new EventEmitter();
+  constructor(private messageService: MessageService) {}
 
-    public showError: boolean = false;
-    public toggleManageUser: boolean = false;
+  public ngOnInit(): void {
+    // listen for when selected user is pressed
+    this.messageService.emitSelectedUser.subscribe(
+      (selectedUser: CurrentUser) => {
+        this.selectedUser = selectedUser;
+      }
+    );
+  }
 
-    constructor(private messageService: MessageService){}
-
-    public ngOnInit(): void{
-        // listen for when selected user is pressed
-        this.messageService.emitSelectedUser.subscribe((selectedUser: CurrentUser) => {
-            this.selectedUser = selectedUser;
-        });
+  public showManageUserModal() {
+    if (!this.selectedUser) {
+    } else {
+      this.toggleManageUser = !this.toggleManageUser;
+      this.emitToggleManagerUser.emit(this.toggleManageUser);
     }
-
-    public showManageUserModal(){
-        if(!this.selectedUser){
-            
-        }else{
-            this.toggleManageUser = !this.toggleManageUser;
-            this.emitToggleManagerUser.emit(this.toggleManageUser);
-        }
-    }
+  }
 }

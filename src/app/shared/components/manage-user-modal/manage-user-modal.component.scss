@@ -1,0 +1,50 @@
+@import "../../styles/forms";
+@import "../../styles/global";
+
+.caution:hover{
+    background-color: rgb(251, 65, 65);
+    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+}
+
+.content{
+    flex-direction: row;
+    width: 50rem;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 45%;
+    height: 100%;
+}
+
+.user-controls{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 45%;
+}
+
+.controls-body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.pp{
+    padding: 0px;
+    max-width: 170px;
+    max-height: 150px;   
+    height: auto;
+    width: auto;
+    margin: 0px auto;
+    border-radius: 20px;
+    justify-content: center;
+    object-fit: contain;
+}
+
+.button{
+
+}
+
