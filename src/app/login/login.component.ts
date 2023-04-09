@@ -1,109 +1,112 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../shared/services/auth.service';
-import { Router } from '@angular/router';
-import { Login } from './auth-properties';
-import { CurrentUser } from '../shared/interface.model';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthService } from "../shared/services/auth.service";
+import { Router } from "@angular/router";
+import { Login } from "./auth-properties";
+import { CurrentUser } from "../shared/interface.model";
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
+export class LoginComponent implements OnInit {
+  // Error banner stuff
+  public isError: boolean = false;
+  public errorBannerMessage: string;
+  public errorStatusCode: number;
 
-export class LoginComponent implements OnInit{
-    // Error banner stuff
-    public isError: boolean = false;
-    public errorBannerMessage: string;
-    public errorStatusCode: number; 
+  //Form related sutff
+  public user: CurrentUser;
+  public submitted: boolean = false;
+  public loginForm: FormGroup;
+  public showRegisterForm: boolean = false;
+  public showForgotPasswordForm: boolean = false;
 
-    //Form related sutff
-    public user: CurrentUser;
-    public submitted: boolean = false;
-    public loginForm: FormGroup;
-    public showRegisterForm: boolean = false;
-    public showForgotPasswordForm: boolean = false;
+  public loading: boolean = false;
 
-    public loading: boolean = false;
+  constructor(public authService: AuthService, public router: Router) {}
 
-    constructor(public authService: AuthService, 
-                public router: Router){}
+  public ngOnInit(): void {
+    // ============= attempty to setup autologin ===============
+    // let user = localStorage.getItem('session') ?? null;
+    // if(user){
+    //     console.log('user session: ', user);
+    //     this.authService.autoLogin(JSON.parse(user)).subscribe({
+    //         next: (response: any) => {
+    //             if(response.data){
+    //                 console.log("navigate");
+    //                 this.router.navigate(['/']);
+    //             }
+    //         }
+    //     });
+    // }
 
-    public ngOnInit(): void{
-        // ============= attempty to setup autologin ===============
-        // let user = localStorage.getItem('session') ?? null;
-        // if(user){
-        //     console.log('user session: ', user);
-        //     this.authService.autoLogin(JSON.parse(user)).subscribe({
-        //         next: (response: any) => {
-        //             if(response.data){
-        //                 console.log("navigate");
-        //                 this.router.navigate(['/']);
-        //             }
-        //         }
-        //     });
-        // }
+    this.loginForm = new FormGroup({
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required, Validators.min(6)]),
+    });
+  }
 
-        this.loginForm = new FormGroup ({
-            email: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', [Validators.required, Validators.min(6)])
-        });
+  public get loginControls() {
+    return this.loginForm.controls;
+  }
+
+  public get passwordLength(): number {
+    const passLen = this.loginForm.controls["password"].value.length;
+    if (passLen !== 0) {
+      return passLen;
     }
+    return -1;
+  }
 
-    public get loginControls(){
-        return this.loginForm.controls;
-    }
+  public clear() {
+    //TODO: implement
+    this.loginForm.reset();
+  }
 
-    public get passwordLength(): number{
-        const passLen = this.loginForm.controls['password'].value.length
-        if(passLen !== 0){
-            return passLen;
-        }
-        return -1;
-    }
+  public switchRegister(): void {
+    this.showRegisterForm = false;
+    this.showForgotPasswordForm = !this.showForgotPasswordForm;
+  }
 
-    public clear(){ //TODO: implement
-        this.loginForm.reset();
-    }
+  public switchForgotPassword(): void {
+    this.showForgotPasswordForm = false;
+    this.showRegisterForm = !this.showRegisterForm;
+  }
 
-    public switchRegister():void{
-        this.showRegisterForm = false;
-        this.showForgotPasswordForm = !this.showForgotPasswordForm;
-    }
+  public submitLogin(): void {
+    this.submitted = true;
+    this.loading = true;
 
-    public switchForgotPassword(): void{
-        this.showForgotPasswordForm = false;
-        this.showRegisterForm =!this.showRegisterForm;
-    }
+    const login: Login = {
+      email: this.loginForm.controls["email"].value,
+      password: this.loginForm.controls["password"].value,
+    };
 
-    public submitLogin(): void{
-        this.submitted = true;
-        this.loading = true;
-
-        const login:Login ={
-            email: this.loginForm.controls['email'].value,
-            password: this.loginForm.controls['password'].value,
-        };
-
-        this.authService.login(login)
-        .pipe()
-        .subscribe({
-            next:(response:any) =>{
-                if(response.status === 200){
-                    console.log('response: ', response.data);
-                    localStorage.setItem('session', JSON.stringify(response.data));
-                    this.authService.setCurrentUser(response.data);
-                    this.loading = false;
-                    this.router.navigate(['/'])
-                }else{
-                    console.error("ERROR:", response);
-                    this.isError = true;
-                    this.errorBannerMessage = response.message
-                    this.errorStatusCode = response.status;
-                    return;
-                }
-            }
-        });        
-       this.submitted = false;
-    }
+    this.authService
+      .login(login)
+      .pipe()
+      .subscribe({
+        next: (response: any) => {
+          if (response.status === 200) {
+            console.log("response: ", response.data);
+            localStorage.setItem("session", JSON.stringify(response.data));
+            localStorage.setItem(
+              "api_token",
+              JSON.stringify(response.data.api_token)
+            );
+            this.authService.setCurrentUser(response.data);
+            this.loading = false;
+            this.router.navigate(["/"]);
+          } else {
+            console.error("ERROR:", response);
+            this.isError = true;
+            this.errorBannerMessage = response.message;
+            this.errorStatusCode = response.status;
+            return;
+          }
+        },
+      });
+    this.submitted = false;
+  }
 }
-

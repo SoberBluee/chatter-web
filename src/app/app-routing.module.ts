@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule } from "@angular/router";
 
 import { AuthGuardService } from "./shared/guards/auth-guard.service";
 
@@ -13,19 +13,43 @@ import { AccountComponent } from "./account/account.component";
 import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
 const routes: Routes = [
-     //TODO: replace routes with routing component
-     { path: 'login', component: LoginComponent, pathMatch: 'full' },
-     { path: 'account', component: AccountComponent, pathMatch: 'full'},
-     { path: 'message', component: MessageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-     { path: 'people-page', component: PeoplePageComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-     { path: 'reset-password', component: ResetPasswordComponent, pathMatch: 'full'},   
-     { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuardService] },
-     { path: '**', component: NotFoundComponent}
+  //TODO: replace routes with routing component
+  { path: "login", component: LoginComponent, pathMatch: "full" },
+  {
+    path: "account",
+    component: AccountComponent,
+    pathMatch: "full",
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "message",
+    component: MessageComponent,
+    pathMatch: "full",
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "people-page",
+    component: PeoplePageComponent,
+    pathMatch: "full",
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "reset-password",
+    component: ResetPasswordComponent,
+    pathMatch: "full",
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "",
+    component: HomeComponent,
+    pathMatch: "full",
+    canActivate: [AuthGuardService],
+  },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule{}
+export class AppRoutingModule {}

@@ -13,6 +13,7 @@ export class NavMenuComponent implements OnInit {
   public currentUser: CurrentUser;
 
   public findFriendsForm: FormGroup;
+  public loginBtnText: string;
 
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
@@ -33,6 +34,22 @@ export class NavMenuComponent implements OnInit {
     this.findFriendsForm = this.fb.group({
       searchBar: [""],
     });
+  }
+
+  public checkLogin(): void {
+    if (this.loginBtnText === "Logout") {
+      localStorage.removeItem("session");
+      localStorage.removeItem("api_token");
+    }
+  }
+
+  public get loginBtn() {
+    if (!!this.currentUser) {
+      this.loginBtnText = "Logout";
+      return this.loginBtnText;
+    }
+    this.loginBtnText = "Login";
+    return this.loginBtnText;
   }
 
   /**
