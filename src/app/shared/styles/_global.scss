@@ -7,12 +7,50 @@
     text-decoration: underline;
 }
 
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    text-align: center; 
+    text-decoration: underline;
+    letter-spacing: 2.2px;
+}
+
 :global(label){
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: 600;
     text-decoration: underline;
-    text-align: center;
+    text-align: left;
+}
+
+a{
+    transition: .5s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 300;
+    letter-spacing: 2.2px;
+    text-align: left;
+    
+}
+
+a:hover{
+    transition: .5s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: 400;
+    letter-spacing: 2.6px;
+    text-align: left;
+    cursor: default;
+    text-decoration-color: #d8d8d8;
+    text-decoration: underline;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    letter-spacing: 2.2px;
+    text-align: left; 
 }
 
 .h-divider{

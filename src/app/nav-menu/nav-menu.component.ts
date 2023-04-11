@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
-  public currentUser: CurrentUser;
+  public currentUser: CurrentUser | null;
 
   public findFriendsForm: FormGroup;
   public loginBtnText: string;
@@ -18,9 +18,7 @@ export class NavMenuComponent implements OnInit {
   constructor(private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.authService.emitCurrentUser.subscribe((user: CurrentUser) => {
-      this.currentUser = user;
-    });
+    this.currentUser = JSON.parse(localStorage.getItem("session") ?? "");
 
     this.initForm();
 
@@ -38,18 +36,10 @@ export class NavMenuComponent implements OnInit {
 
   public checkLogin(): void {
     if (this.loginBtnText === "Logout") {
+      console.log("logout");
       localStorage.removeItem("session");
       localStorage.removeItem("api_token");
     }
-  }
-
-  public get loginBtn() {
-    if (!!this.currentUser) {
-      this.loginBtnText = "Logout";
-      return this.loginBtnText;
-    }
-    this.loginBtnText = "Login";
-    return this.loginBtnText;
   }
 
   /**

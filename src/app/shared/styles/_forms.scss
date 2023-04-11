@@ -24,7 +24,6 @@ form{
                 width: 10px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             }
-
         }
 
         .form-input{
@@ -38,6 +37,11 @@ form{
             font-size: 1rem;
             letter-spacing: 2px;
             outline: none;
+        }
+
+        .form-input:hover{
+            cursor: default;
+            border: 3px solid rgb(153, 80, 166);
         }
 
         .form-input:focus{

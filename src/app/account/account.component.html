@@ -4,21 +4,27 @@
         *ngIf="showBanner"
         [error_message]="error_message"
         [error_status]="error_status"
-        [error_type]="error_type"></app-error-banner>
+        [error_type]="error_type"
+    ></app-error-banner>
     <app-account-info [currentUser]="currentUser"></app-account-info>
     <div class="update-container">
+        <app-personal-info-form
+            class="personal"
+            [currentUser]="currentUser"
+        ></app-personal-info-form>
 
-        <app-personal-info-form class="personal" [currentUser]="currentUser"></app-personal-info-form>
-        
         <div class="other-info">
-            <app-password-info-form class="password" [currentUser]="currentUser"></app-password-info-form>
-            <app-change-email-form 
-                class="email" 
+            <app-password-info-form
+                class="password"
                 [currentUser]="currentUser"
-                (emitBannerMessage)="showBannerMessage($event)"></app-change-email-form>
-        </div>  
-        
+            ></app-password-info-form>
+            <app-change-email-form
+                class="email"
+                [currentUser]="currentUser"
+                (emitBannerMessage)="showBannerMessage($event)"
+            ></app-change-email-form>
+        </div>
+
         <!-- <app-confirmation-modal></app-confirmation-modal> -->
-        
     </div>
 </div>
