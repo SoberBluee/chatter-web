@@ -1,5 +1,7 @@
 <div class="wrapper">
-    <h2 id="top">Account</h2>
+    <app-page-navigation
+        (pageChangeEmitter)="accountPageChange($event)"
+    ></app-page-navigation>
     <app-error-banner
         *ngIf="showBanner"
         [error_message]="error_message"
@@ -9,22 +11,56 @@
     <app-account-info [currentUser]="currentUser"></app-account-info>
     <div class="update-container">
         <app-personal-info-form
+            *ngIf="accountCurrentPage === 1"
             class="personal"
+            [class.slide-in-div]="accountCurrentPage === 1"
             [currentUser]="currentUser"
         ></app-personal-info-form>
 
-        <div class="other-info">
-            <app-password-info-form
-                class="password"
-                [currentUser]="currentUser"
-            ></app-password-info-form>
-            <app-change-email-form
-                class="email"
-                [currentUser]="currentUser"
-                (emitBannerMessage)="showBannerMessage($event)"
-            ></app-change-email-form>
-        </div>
+        <!-- current div (page) should have the slide-in class -->
+        <!-- nextPage should be given the slide-out for when the div will be shown -->
 
-        <!-- <app-confirmation-modal></app-confirmation-modal> -->
+        <!-- 
+            currentPage = change password
+            nextPage = null
+
+            user presses change email button
+
+            currentPage = change password
+            nextPage = change email 
+
+            if next !== null 
+                give the current page the slide-out
+            
+            
+            
+            
+
+         -->
+        <div class="other-info">
+            <div
+                *ngIf="accountCurrentPage === 2"
+                class="change-password"
+                [class.slide-in-div]="accountCurrentPage === 2"
+                [class.display-none]="accountCurrentPage !== 2"
+            >
+                <app-password-info-form
+                    class="password"
+                    [currentUser]="currentUser"
+                ></app-password-info-form>
+            </div>
+            <div
+                *ngIf="accountCurrentPage === 3"
+                class="change-email"
+                [class.slide-in-div]="accountCurrentPage === 3"
+                [class.display-none]="accountCurrentPage !== 3"
+            >
+                <app-change-email-form
+                    class="email"
+                    [currentUser]="currentUser"
+                    (emitBannerMessage)="showBannerMessage($event)"
+                ></app-change-email-form>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+@keyframes slide-out{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: 100%;
+    }
+}
+
+@keyframes slide-in{
+    0%{
+        right: 100%;
+    }
+    100%{
+        right: 0;
+    }
+}
+
+.slide-in-div{
+    animation: slide-in 5s ease-in-out forwards !important;
+}
+
+.slide-out-div{
+    animation: slide-out 5s ease-in-out forwards !important;
+}

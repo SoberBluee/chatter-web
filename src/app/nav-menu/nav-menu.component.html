@@ -1,78 +1,92 @@
-<header>
-    <nav
-        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-    >
-        <div class="container">
+<header [class.vertical]="verticalHeader">
+    <nav class="navbar">
+        <ul>
+            <img
+                class="change-orientation"
+                src="../../assets/circular-arrow-svgrepo-com.svg"
+                alt=""
+                (click)="changeHeaderOrientation()"
+            />
             <a class="navbar-brand" [routerLink]="['/']">
                 <img src="../../assets/header_logo.png" alt="logo" />
             </a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target=".navbar-collapse"
-                aria-label="Toggle navigation"
-                [attr.aria-expanded]="isExpanded"
-                (click)="toggle()"
+            <a [routerLinkActive]="['link-active']" [routerLink]="['/']"
+                >Home</a
             >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-                class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-                [ngClass]="{ show: isExpanded }"
+            <div class="dot-seperator"></div>
+            <a [routerLinkActive]="['link-active']" [routerLink]="['/message']"
+                >Messages</a
             >
-                <ul
-                    class="navbar-nav flex-grow nav-buttons"
-                    style="width: 100%"
-                >
-                    <app-search-bar></app-search-bar>
-                    <a
-                        class="nav-link text-dark align"
-                        [routerLinkActive]="['link-active']"
-                        [routerLink]="['/']"
-                        >Home</a
-                    >
-                    <a class="v-divider align"></a>
-                    <a class="text-dark align"
-                        >User:
-                        {{
-                            currentUser?.user_name
-                                ? currentUser?.user_name
-                                : 'Not logged in'
-                        }}</a
-                    >
-                    <a class="v-divider align"></a>
-                    <a
-                        class="nav-link text-dark align"
-                        [routerLinkActive]="['link-active']"
-                        [routerLink]="['/message']"
-                        >Messages</a
-                    >
-                    <a
-                        class="nav-link text-dark align"
-                        [routerLinkActive]="['link-active']"
-                        [routerLink]="['/people-page']"
-                        >PeoplesPage</a
-                    >
-                    <a
-                        class="nav-link text-dark align"
-                        [routerLinkActive]="['link-active']"
-                        [routerLink]="['/account']"
-                        >Account</a
-                    >
+            <a
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/people-page']"
+                >Peoples Page</a
+            >
+            <a [routerLinkActive]="['link-active']" [routerLink]="['/account']"
+                >Account</a
+            >
+            <div class="dot-seperator"></div>
 
-                    <a class="v-divider align"></a>
-                    <a
-                        *ngIf="!currentUser"
-                        class="nav-link text-dark align"
-                        [routerLinkActive]="['link-active']"
-                        [routerLink]="['/login']"
-                        (click)="checkLogin()"
-                        >Login</a
-                    >
-                    <!-- <a class="nav-link text-dark align" [routerLinkActive]="['link-active']" [routerLink]="['/account']">MyAccount</a> -->
-                </ul>
-            </div>
-        </div>
+            <a
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/login']"
+                *ngIf="showLoginButton"
+                >Login</a
+            >
+            <div *ngIf="showLoginButton" class="dot-seperator"></div>
+
+            <a>{{
+                currentUser?.user_name
+                    ? currentUser?.user_name
+                    : 'Not logged in'
+            }}</a>
+        </ul>
     </nav>
 </header>
+
+<!--      [routerLinkActive]="['link-active']"
+                        [routerLink]="['/people-page']" -->
+<!--  -->
+
+<!-- <app-search-bar></app-search-bar>
+          <a
+            class="nav-link text-dark align"
+            
+            >Home</a
+          >
+          <a class="v-divider align"></a>
+          <a class="text-dark align"
+            >User:
+            {{
+              currentUser?.user_name ? currentUser?.user_name : "Not logged in"
+            }}</a
+          >
+          <a class="v-divider align"></a>
+          <a
+            class="nav-link text-dark align"
+            [routerLinkActive]="['link-active']"
+            [routerLink]="['/message']"
+            >Messages</a
+          >
+          <a
+            class="nav-link text-dark align"
+            [routerLinkActive]="['link-active']"
+            [routerLink]="['/people-page']"
+            >PeoplesPage</a
+          >
+          <a
+            class="nav-link text-dark align"
+            [routerLinkActive]="['link-active']"
+            [routerLink]="['/account']"
+            >Account</a
+          >
+
+          <a class="v-divider align"></a>
+          <a
+          *ngIf="currentUser"
+            class="nav-link text-dark align"
+            [routerLinkActive]="['link-active']"
+            [routerLink]="['/login']"
+            (click)="checkLogin()"
+            >Login</a
+          > -->

@@ -10,6 +10,8 @@ import { CurrentUser, ErrorBannerEvent } from '../shared/interface.model'
 export class AccountComponent implements OnInit {
     public currentUser: CurrentUser | null
     public showBanner: boolean = false
+    public accountCurrentPage: number = 2
+    public accountNextPage: number = -1
 
     public error_message: string
     public error_type: string
@@ -29,5 +31,9 @@ export class AccountComponent implements OnInit {
         this.error_type = $event.type
         this.error_status = $event.status
         this.showBanner = true
+    }
+
+    public accountPageChange(nextPage: number): void {
+        this.accountCurrentPage = nextPage
     }
 }

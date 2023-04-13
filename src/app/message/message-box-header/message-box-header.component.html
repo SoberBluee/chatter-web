@@ -1,18 +1,17 @@
 <div class="header">
-  <h2>Messages with</h2>
-  <a class="v-divider"></a>
-  <img class="pp" src="assets/default-avatar.png" alt="profile-picture" />
-  <h3 style="width: auto; padding-left: 0px">
-    <a href="#their profile link">{{
-      selectedUser ? selectedUser.user_name : "No user selected"
-    }}</a>
-  </h3>
-  <a class="v-divider"></a>
-  <button
-    class="user-setting-btn"
-    (click)="showManageUserModal()"
-    [class.error]="!selectedUser"
-  >
-    <h4>...</h4>
-  </button>
+    <h2>Messages with</h2>
+    <img class="pp" src="assets/default-avatar.png" alt="profile-picture" />
+    <h3 style="width: auto; padding-left: 0px">
+        <a href="#their profile link">{{
+            selectedUser ? selectedUser.user_name : 'No user selected'
+        }}</a>
+    </h3>
+    <a class="v-divider"></a>
+    <button
+        class="user-setting-btn"
+        (click)="showManageUserModal()"
+        [class.error]="!selectedUser"
+    >
+        <h4>...</h4>
+    </button>
 </div>

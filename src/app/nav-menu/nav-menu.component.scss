@@ -1,46 +1,73 @@
 @import "../shared/styles/global";
 @import "../shared/styles/forms";
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-    
+header{
+    nav.navbar{
+        display: flex;
+        height: 100px;
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px 3px;
+
+        border-bottom: 2.5 solid black;
+        margin-bottom: 5px;
+
+        
+        ul{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            line-height: 80px; 
+            width: auto;
+            margin: 0px;
+            border-radius: 25px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            transition: .5s;
+
+            img.change-orientation{
+                margin: auto 0px;
+                height: 25px;
+                width: 25px;
+                opacity: .7;
+            }
+
+            a{
+                margin: 0px 10px;
+                color: black;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        }
+
+        ul:hover{
+            transition: .5s;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        }
+        
+    }
 }
 
-div.nav-title{
-    display: inline-block;
-    text-align: center;
-}
-
-a.divider{
-    width: 1px;
-    border: 1.5px solid black;
-    background-color: black;
-    margin: 0 20px;
-    opacity: .15;
-    height: 50px;
-}
-
-.align{
-    margin-top: 40px !important;
-}
-
-.find-friend{
-    width:25%;
-    height:40px !important;
+.vertical{
+    display: flex !important;
+    float: left;
+    height: 100%;
+    flex-direction: column !important;
     margin-right: 20px;
+    
+    nav.navbar{
+        justify-content: center;
+        ul{
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+        }
+    }
 }
 
-html {
-  font-size: 14px;
-}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}

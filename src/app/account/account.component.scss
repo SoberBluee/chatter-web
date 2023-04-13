@@ -1,5 +1,58 @@
 @import "../shared/styles/global";
 @import "../shared/styles/forms";
+@import "../shared/styles/animations";
+
+.account-btn{
+    width: 20%;
+}
+
+.display-none{
+    display: none;
+    transition: 5s;
+}
+
+@keyframes slide-out{
+    0%{
+        right: 0;
+    }
+    100%{
+        right: 100%;
+    }
+}
+
+@keyframes slide-in{
+    0%{
+        right: 100%;
+    }
+    100%{
+        right: 0;
+    }
+}
+
+.slide-in-div{
+    // animation-duration: 5s;
+    // animation: slide-in 5s ease-in-out forwards !important;
+    // -moz-animation: slide-in 5s ease-in-out forwards;
+    // -webkit-animation: slide-in 5s ease-in-out forwards;
+}
+
+.slide-out-div{
+    // animation-name: slide-in;
+    // animation-duration: 5s;
+    // animation: slide-out 5s ease-in-out forwards !important;
+}
+
+.color{
+    animation-name: change-color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite ;
+}
+
+@keyframes change-color{ 
+    25%{color: red}
+    50%{color: blue}
+    75%{color: green}
+}
 
 .update-container{
     display: flex;
