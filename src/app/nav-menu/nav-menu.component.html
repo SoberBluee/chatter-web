@@ -10,19 +10,57 @@
             <a class="navbar-brand" [routerLink]="['/']">
                 <img src="../../assets/header_logo.png" alt="logo" />
             </a>
-            <a [routerLinkActive]="['link-active']" [routerLink]="['/']"
+            <img
+                class="icons"
+                *ngIf="verticalHeader"
+                src="../../assets/home-icon.png"
+                alt="message-icon"
+                [routerLink]="['/']"
+            />
+            <a
+                *ngIf="!verticalHeader"
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/']"
                 >Home</a
             >
             <div class="dot-seperator"></div>
-            <a [routerLinkActive]="['link-active']" [routerLink]="['/message']"
+            <img
+                class="icons"
+                *ngIf="verticalHeader"
+                src="../../assets/message-icon.png"
+                alt="message-icon"
+                [routerLink]="['/message']"
+            />
+            <a
+                *ngIf="!verticalHeader"
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/message']"
                 >Messages</a
             >
+            <img
+                class="icons"
+                *ngIf="verticalHeader"
+                src="../../assets/group.png"
+                alt="message-icon"
+                [routerLink]="['/people-page']"
+            />
             <a
+                *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
                 [routerLink]="['/people-page']"
                 >Peoples Page</a
             >
-            <a [routerLinkActive]="['link-active']" [routerLink]="['/account']"
+            <img
+                class="icons"
+                *ngIf="verticalHeader"
+                src="../../assets/user-icon.png"
+                alt="message-icon"
+                [routerLink]="['/account']"
+            />
+            <a
+                *ngIf="!verticalHeader"
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/account']"
                 >Account</a
             >
             <div class="dot-seperator"></div>

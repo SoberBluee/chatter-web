@@ -21,13 +21,7 @@ export class NavMenuComponent implements OnInit {
 
     ngOnInit(): void {
         this.currentUser = JSON.parse(localStorage.getItem('session') ?? '')
-
         this.initForm()
-
-        // this.findFriendsForm.controls.get('searchBar').valueChanges.subscribe(
-        // (value) => {
-        //     console.log(value);
-        // });
     }
 
     private initForm(): void {
