@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { CurrentUser } from '../shared/interface.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-nav-menu',
@@ -15,14 +16,27 @@ export class NavMenuComponent implements OnInit {
     public loginBtnText: string;
     public headerOrientation: string = 'HORIZONTAL';
     public verticalHeader: boolean = false;
+    public showSearch: boolean = false;
 
-    constructor(private authService: AuthService, private fb: FormBuilder) {}
+    constructor(
+        private authService: AuthService,
+        private fb: FormBuilder,
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
-        const session = localStorage.getItem('session');
-        if (session) {
-            this.currentUser = JSON.parse(session);
-        }
+        this.router.events.subscribe((val: any) => {
+            if (localStorage.getItem('session') === null || undefined) {
+                return;
+            }
+
+            if (this.router.url !== '/login') {
+                this.currentUser = JSON.parse(
+                    localStorage.getItem('session') ?? ''
+                );
+            }
+            return;
+        });
         this.initForm();
     }
 
@@ -34,6 +48,10 @@ export class NavMenuComponent implements OnInit {
 
     public changeHeaderOrientation(): void {
         this.verticalHeader = !this.verticalHeader;
+    }
+
+    public toggleSearch(): void {
+        this.showSearch = !this.showSearch;
     }
 
     public get showLoginButton(): boolean {
@@ -52,4 +70,11 @@ export class NavMenuComponent implements OnInit {
     public get searchBarValue(): string {
         return this.findFriendsForm.controls['searchBar'].value;
     }
+}
+
+export interface RouterObject {
+    id: number;
+    navigationTrigger: string;
+    restoredState: any;
+    url: string;
 }

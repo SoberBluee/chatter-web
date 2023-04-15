@@ -78,6 +78,19 @@
                     ? currentUser?.user_name
                     : 'Not logged in'
             }}</a>
+            <img
+                class="search"
+                src="../../assets/search-icon.png"
+                alt="search-icon"
+                (click)="toggleSearch()"
+            />
+            <div
+                class="hide-search"
+                [class.show]="showSearch"
+                [hidden]="!showSearch"
+            >
+                <app-search-bar></app-search-bar>
+            </div>
         </ul>
     </nav>
 </header>
