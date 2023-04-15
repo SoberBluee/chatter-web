@@ -1,13 +1,19 @@
 <div class="navigation-wrapper">
     <ul class="navigation">
+        <a (click)="changePage(1)" class="nav-item" type="button">Account</a>
         <a (click)="changePage(2)" class="nav-item" type="button"
+            >Change Account details</a
+        >
+
+        <a (click)="changePage(3)" class="nav-item" type="button"
             >Change password</a
         >
-        <a (click)="changePage(3)" class="nav-item" type="button"
+        <a (click)="changePage(4)" class="nav-item" type="button"
             >Change email</a
         >
-        <!-- <a (click)="changePage(3)" class="nav-item" type="button"
+        <a (click)="changePage(5)" class="nav-item" type="button"
             >Prefrerences</a
-        > -->
+        >
+        <a (click)="emitLogout()" class="logout" type="button">Logout</a>
     </ul>
 </div>

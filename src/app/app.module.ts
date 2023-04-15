@@ -31,7 +31,7 @@ import { ChangeEmailFormComponent } from './account/change-email-form/change-ema
 import { ConfirmationModalComponent } from './shared/components/confirmation-modal/confirmation-modal.component'
 import { ResetPasswordComponent } from './reset-password/reset-password.component'
 import { PageNavigationComopnent } from './shared/components/page-navigation/page-navigation.component'
-
+import { TooltipComponent } from './shared/components/tooltip/tooltip.component'
 //Error Exceptions
 import { NotFoundComponent } from './exceptions/404/404-not-found.component'
 import { SearchBarComponent } from './shared/components/searchbar/search-bar.component'
@@ -67,6 +67,7 @@ import { AppRoutingModule } from './app-routing.module'
         ConfirmationModalComponent,
         ResetPasswordComponent,
         PageNavigationComopnent,
+        TooltipComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

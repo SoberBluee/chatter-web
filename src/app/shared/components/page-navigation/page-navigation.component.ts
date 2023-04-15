@@ -7,13 +7,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 })
 export class PageNavigationComopnent implements OnInit {
     @Output() public pageChangeEmitter = new EventEmitter<number>()
+    @Output() public logoutEmitter = new EventEmitter<void>()
 
     constructor() {}
 
     public ngOnInit(): void {}
 
     public changePage(page: number): void {
-        console.log('changePage:', page)
         this.pageChangeEmitter.emit(page)
+    }
+
+    public emitLogout(): void {
+        this.logoutEmitter.emit()
     }
 }

@@ -1,60 +1,70 @@
 <div class="message-content" style="width: 100%">
-  <form [formGroup]="messageForm">
-    <!-- Message window -->
-    <div class="row message-window" *ngIf="!loading; else noData">
-      <div class="box" *ngFor="let user_message of messageData; let i = index">
-        <div>
-          <!-- sender -->
-          <div
-            class="message-box sender"
-            [class.message-deleted]="isMessageDeleted(i)"
-            *ngIf="user_message.isSender"
-            (mouseover)="hoverSettings(user_message.id, i)"
-            (mouseleave)="hoverSettings(user_message.id, i)"
-          >
-            <ng-container *ngIf="!isMessageDeleted(i)">
-              <button class="edit" (click)="calltoggleEdit()">...</button>
-              <div class="v-divider"></div>
-            </ng-container>
-            {{ user_message.message }}
-          </div>
+    <form [formGroup]="messageForm">
+        <!-- Message window -->
+        <div class="row message-window" *ngIf="!loading; else noData">
+            <div
+                class="box"
+                *ngFor="let user_message of messageData; let i = index"
+            >
+                <div>
+                    <!-- sender -->
+                    <div
+                        class="message-box sender"
+                        [class.message-deleted]="isMessageDeleted(i)"
+                        *ngIf="user_message.isSender"
+                        (mouseover)="hoverSettings(user_message.id, i)"
+                        (mouseleave)="hoverSettings(user_message.id, i)"
+                    >
+                        <ng-container *ngIf="!isMessageDeleted(i)">
+                            <button class="edit" (click)="calltoggleEdit()">
+                                ...
+                            </button>
+                            <div class="v-divider"></div>
+                        </ng-container>
+                        {{ user_message.message }}
+                    </div>
 
-          <!-- reciever -->
-          <div class="message-box reciever" *ngIf="!user_message.isSender">
-            <ng-container *ngIf="!isMessageDeleted(i)">
-              <button class="edit" (click)="calltoggleEdit(true)">...</button>
-              <div class="v-divider"></div>
-            </ng-container>
+                    <!-- reciever -->
+                    <div
+                        class="message-box reciever"
+                        *ngIf="!user_message.isSender"
+                    >
+                        <ng-container *ngIf="!isMessageDeleted(i)">
+                            <button class="edit" (click)="calltoggleEdit(true)">
+                                ...
+                            </button>
+                            <div class="v-divider"></div>
+                        </ng-container>
 
-            {{ user_message.message }}
-          </div>
+                        {{ user_message.message }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message pop up -->
+            <app-manage-message-modal
+                *ngIf="toggleEdit"
+                [isReciever]="recieverHover"
+                (emitExit)="manageMessageExit($event)"
+                (emitEdit)="manageMessageEdit($event)"
+                (emitDelete)="manageMessageDelete()"
+                (emitForward)="manageMessageForward($event)"
+            >
+            </app-manage-message-modal>
         </div>
-      </div>
+        <ng-template #noData>
+            <p>Please select a user to message</p>
+        </ng-template>
 
-      <!-- Message pop up -->
-      <app-manage-message-modal
-        *ngIf="toggleEdit"
-        [isReciever]="recieverHover"
-        (emitExit)="manageMessageExit($event)"
-        (emitEdit)="manageMessageEdit($event)"
-        (emitDelete)="manageMessageDelete()"
-        (emitForward)="manageMessageForward($event)"
-      >
-      </app-manage-message-modal>
-    </div>
-    <ng-template #noData>
-      <p>Please select a user to message</p>
-    </ng-template>
-
-    <!-- footer -->
-    <div class="footer-content">
-      <input
-        class="message-box"
-        type="text"
-        placeholder="Send a message"
-        formControlName="message"
-      />
-      <button type="button" class="button" (click)="send()">Send</button>
-    </div>
-  </form>
+        <!-- footer -->
+        <div class="footer-content">
+            <input
+                class="message-box"
+                type="text"
+                placeholder="Send a message"
+                formControlName="message"
+            />
+            <button type="button" class="button" (click)="send()">Send</button>
+        </div>
+    </form>
 </div>
