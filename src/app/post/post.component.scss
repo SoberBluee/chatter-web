@@ -10,6 +10,14 @@
 .content{   
     height: auto;
     width: auto;
+    padding:0px 10px;
+
+    .post-item{
+        width: 100%;
+        margin: 0px !important;
+        border-left: none;
+        border-right: none;
+    }
 }
 
 

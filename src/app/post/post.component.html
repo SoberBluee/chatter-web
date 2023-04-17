@@ -2,7 +2,7 @@
     <button class="button" (click)="toggleNewPost()">New Post</button>
     <app-create-post class="create-post" *ngIf="toggleCreateNewPost">
     </app-create-post>
-    <div *ngFor="let post of posts; let i = index">
+    <div class="post-item" *ngFor="let post of posts; let i = index">
         <app-post-item
             [title]="post.title"
             [img]="post.img ?? ''"

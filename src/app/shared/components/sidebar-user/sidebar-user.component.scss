@@ -49,6 +49,10 @@
     }
 }
 
+.content:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .caution:hover{
     background-color: rgb(251, 65, 65);
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;

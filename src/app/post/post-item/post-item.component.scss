@@ -1,48 +1,86 @@
-*{
-    margin: 10px 0px;
-}
-
-::placeholder{text-align: center;   }
+@import "../../shared/styles/global";
+@import "../../shared/styles/forms";
+@import "../../shared/styles/animations";
 
 .content{
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    margin-top: 20px;
-    border-radius: 10px;
+    display: flex;
+    width: 100%;
+    margin: .5rem 0px;
+    
+    .post-header{
+        border-bottom: 2px solid gray;
+        border-radius: 10px;
+        padding: 5px;
+        width: auto;
+    }
+
+    .post{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+
+
+        img{
+            max-width: 90%;
+            max-height: 300px;
+            margin-left: 10px;
+            border-radius: 5px;
+            object-fit: contain;
+        }
+    }
+
+    // .comment-section{
+    // }
+
+    .post-control{
+        display: flex;
+        flex-direction: row;
+        margin: .5rem 0rem;
+        justify-content: left;
+        
+        .likes{
+            display: flex;
+            width: auto;
+            
+        }
+
+        a.post-button{
+            width: 2rem;
+            height: 2rem;
+            border: 1.5 solid black;
+            border-radius: 10%;
+            background-size:contain;
+            background-repeat:no-repeat;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .like{
+            background-image: url('../../../assets/like.png');
+            transition: 1s;
+        }
+
+        .like:hover, .like-cliked:hover{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .like-clicked{
+            background-image: url('../../../assets/heart.png');
+            transition: 1s;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+        }
+
+        
+    }
+
+    
 }
 
-.content:hover{
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
 
 
-img{
-    max-width: 90%;
-    max-height: 300px;
-    margin-left: 10px;
-    border-radius: 5px;
-    object-fit: contain;
-}
 
-input[type=text]{
-    border: 1.5px solid black;
-    border-radius: 5px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin: 5px 10px;
-    padding: 5px;
-    width:50%;
-}
-
-.header-content{
-    border-bottom: 2px solid gray;
-    border-radius: 10px;
-    padding: 5px;
-    width: auto;
-}
-
-.footer-content{
-    justify-content: center;
-}
 
 .comment-button{
     width: 5%;
@@ -88,12 +126,7 @@ input[type=text]{
     justify-content: center;
 }
 
-.post-content{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
+
 
 .body{
     height: auto;
@@ -108,6 +141,4 @@ input[type=text]{
     border: 1px solid gray;
 }
 
-.likes-label{
-    width: auto;
-}
+

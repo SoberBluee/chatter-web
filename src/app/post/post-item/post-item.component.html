@@ -1,48 +1,30 @@
 <div class="content">
     <form [formGroup]="postOptionsForm">
-        <div class="row header-content">
-            <h3 style="width: auto;">{{title}}</h3>
-            <p style="width: auto;">{{uploadDate}}</p>
+        <div class="post-header">
+            <h3 style="width: auto">{{ title }}</h3>
+            <p style="width: auto">{{ uploadDate }}</p>
         </div>
-        <div 
-            class="row post-content" 
-            (click)="showComments()">
+        <div class="post" (click)="showComments()">
             <!-- show if there is an image -->
-            <img src="{{img}}">
+            <img src="{{ img }}" />
             <div class="body">
-                {{content}}
-            </div>  
+                {{ content }}
+            </div>
         </div>
-        <app-comment-selction
-            style="padding: 0px;"
-            *ngIf="toggleCommentSection"
-            [comments]="comments"></app-comment-selction>
-        <div class="row footer-content">
-            <label class="likes-label" for="likes">Likes: {{likes}}</label>
-            <div class="divider"></div>
-            <button
-                [ngStyle]="{'background-color': isLiked ? 'rgb(70, 205, 250)' : 'rgb(255, 255, 255)'}"
-                type="button" 
-                class="actionBtn like-button" 
-                (click)="like()"></button>
-            <button 
-                class="actionBtn comment-button" 
-                type="button" 
-                (click)="showComment = !showComment"></button>
-            <button 
-                class="actionBtn share-button" 
-                type="button" 
-                (click)="share()"></button>
-            <input 
-                *ngIf="showComment" 
-                type="text" 
-                formControlName="commentBox"
-                placeholder="Leave a comment!"/>
-            <button 
-                *ngIf="showComment" 
-                class="actionBtn post-comment" 
-                type="text" 
-                (click)="comment()"></button>
+        <div class="comment-section">
+            <app-comment-selction
+                *ngIf="toggleCommentSection"
+                [comments]="comments"
+            ></app-comment-selction>
+        </div>
+        <div class="post-control">
+            <label class="likes" for="likes">Likes: {{ likes }}</label>
+            <div class="v-divider"></div>
+            <a
+                class="post-button like"
+                [class.like-clicked]="isLiked"
+                (click)="like()"
+            ></a>
         </div>
     </form>
 </div>

@@ -32,6 +32,9 @@
                     (emitBannerMessage)="showBannerMessage($event)"
                 ></app-change-email-form>
             </div>
+            <div class="preferences" *ngIf="accountCurrentPage === 5">
+                <app-preferences></app-preferences>
+            </div>
         </div>
     </div>
 </div>

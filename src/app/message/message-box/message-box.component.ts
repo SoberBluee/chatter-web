@@ -49,8 +49,10 @@ export class MessageBoxComponent implements OnInit {
         this.messageService.emitSelectedUser.subscribe(
             (selectedUser: CurrentUser) => {
                 console.log(this.messageData);
-                if (this.messageData.length > 1) return;
                 this.messageData = [];
+
+                console.log('message data: ', this.messageData);
+                console.log('selected user: ', this.selectedUser);
 
                 this.loading = true;
                 this.selectedUser = selectedUser;
