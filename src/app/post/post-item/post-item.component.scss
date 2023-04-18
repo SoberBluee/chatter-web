@@ -36,109 +36,36 @@
     .post-control{
         display: flex;
         flex-direction: row;
-        margin: .5rem 0rem;
+        margin: 1rem 0rem;
         justify-content: left;
         
         .likes{
             display: flex;
             width: auto;
-            
         }
 
         a.post-button{
-            width: 2rem;
-            height: 2rem;
-            border: 1.5 solid black;
-            border-radius: 10%;
+            width: 35px;
+            height: 35px;
+            margin-right: 1rem; 
+            border-radius: 10px;
             background-size:contain;
             background-repeat:no-repeat;
             border-radius: 10px;
-            padding: 5px;
+            transition: .5s;
+
+            img{
+                height: 40px;
+                width: 40px;    
+                transition: .5s;
+            }
+
+            img:hover{
+                transition: .5s;
+                height: 45px;
+                width: 45px;    
+            }
         }
-
-        .like{
-            background-image: url('../../../assets/like.png');
-            transition: 1s;
-        }
-
-        .like:hover, .like-cliked:hover{
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
-
-        .like-clicked{
-            background-image: url('../../../assets/heart.png');
-            transition: 1s;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-        }
-
-        
     }
-
-    
 }
-
-
-
-
-
-.comment-button{
-    width: 5%;
-    margin: 10px;
-    border-radius: 50px;
-    background-image: url('../../../assets/comment-icon.png');
-    background-size: cover;
-    float: right;
-}
-
-.like-button{
-    width: 5%;
-    padding: 5px;
-    background-image: url('../../../assets/like-button.png');
-    background-size: cover;
-    border-radius: 20px;
-}
-
-.share-button{
-    width: 5%;
-    /* background-image: url(''); */
-    background-size: cover;
-    border-radius: 20px;    
-}
-
-.post-comment{
-    width: 5%;
-    background-image: url('../../../assets/post-comment-icon.png');
-    background-size: cover;
-    border-radius: 20px;
-}
-
-.comment-button:hover, input[type=text]:hover, .actionBtn:hover, .like-button:hover, .share-button:hover {
-    box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
-}
-
-.actionBtn{
-    margin: 5px 10px;
-    height: 35px;
-    width: 5%;    
-    border-radius: 10px;
-    background-color:white;
-    justify-content: center;
-}
-
-
-
-.body{
-    height: auto;
-    text-align: center;
-    width: 80%;
-    margin-left: 10px; 
-}
-
-.divider{
-    width: 1px;
-    padding: 0px;
-    border: 1px solid gray;
-}
-
 

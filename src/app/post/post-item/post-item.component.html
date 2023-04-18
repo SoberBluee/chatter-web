@@ -1,9 +1,11 @@
 <div class="content">
     <form [formGroup]="postOptionsForm">
+        <!-- Post header -->
         <div class="post-header">
             <h3 style="width: auto">{{ title }}</h3>
             <p style="width: auto">{{ uploadDate }}</p>
         </div>
+        <!-- Post Content sections -->
         <div class="post" (click)="showComments()">
             <!-- show if there is an image -->
             <img src="{{ img }}" />
@@ -11,20 +13,57 @@
                 {{ content }}
             </div>
         </div>
+        <!-- Post control  -->
+        <div class="post-control">
+            <!-- Likes  -->
+            <label class="likes" for="likes">Likes: {{ likes }}</label>
+            <div class="v-divider"></div>
+            <!-- Like button -->
+            <a class="post-button like" (click)="like()">
+                <img
+                    *ngIf="!isLiked; else liked"
+                    src="../../../assets/like.png"
+                />
+                <ng-template #liked>
+                    <img src="../../../assets/heart.png" />
+                </ng-template>
+            </a>
+            <!-- Comment section button -->
+            <a class="post-button comment-section" (click)="showComments()">
+                <img
+                    class="closed-comment"
+                    *ngIf="!toggleCommentSection; else commenting"
+                    src="../../../assets/comment-section.png"
+                />
+                <ng-template #commenting>
+                    <img
+                        class="open-comment"
+                        src="../../../assets/comment-section-clicked.png"
+                    />
+                </ng-template>
+            </a>
+            <!-- Comment section button -->
+            <a class="post-button comment" (click)="showCommentBox()">
+                <img
+                    class="comment-btn"
+                    src="../../../assets/chat.png"
+                    alt="comment-box"
+                    *ngIf="toggleCommentBox; else commentBox"
+                />
+                <ng-template #commentBox>
+                    <img
+                        src="../../../assets/chat-bubble.png"
+                        alt="comment-box-clicked"
+                    />
+                </ng-template>
+            </a>
+        </div>
+        <!-- Toggle comment section -->
         <div class="comment-section">
             <app-comment-selction
                 *ngIf="toggleCommentSection"
                 [comments]="comments"
             ></app-comment-selction>
-        </div>
-        <div class="post-control">
-            <label class="likes" for="likes">Likes: {{ likes }}</label>
-            <div class="v-divider"></div>
-            <a
-                class="post-button like"
-                [class.like-clicked]="isLiked"
-                (click)="like()"
-            ></a>
         </div>
     </form>
 </div>
