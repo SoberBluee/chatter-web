@@ -6,12 +6,30 @@
     display: flex;
     width: 100%;
     margin: .5rem 0px;
+    padding: 1rem 0px;
     
     .post-header{
-        border-bottom: 2px solid gray;
-        border-radius: 10px;
+        border-bottom: 2.5px solid black;
         padding: 5px;
         width: auto;
+        transition: .5s;    
+        
+        h3{
+            transition: .5s;    
+            width: auto;
+        }
+
+        h3:hover{
+            transition: .5s;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            letter-spacing: 2.6px;
+            text-align: center;
+            cursor: default;
+            text-decoration-color: #d8d8d8;
+            text-decoration: underline;
+            font-size: 34px;
+        }
     }
 
     .post{
@@ -19,7 +37,7 @@
         flex-direction: row;
         justify-content: center;
         width: 100%;
-
+        padding: 15px;
 
         img{
             max-width: 90%;
@@ -29,21 +47,40 @@
             object-fit: contain;
         }
     }
-
-    // .comment-section{
-    // }
+ 
+    .comment-area{
+        margin-top: 10px;
+    }
 
     .post-control{
         display: flex;
         flex-direction: row;
-        margin: 1rem 0rem;
-        justify-content: center;
+        padding-top: 1rem;
+        justify-content: left;
+        border-top: 2.5px solid black;
         
         .likes{
             display: flex;
-            width: auto;
+            width: auto; 
+            margin-left: 15px;
         }
 
+        .comment{
+            display: flex;
+            flex-direction: row; 
+        }
+
+        .comment-box-input{
+            margin-left: 10px;
+            background:transparent;
+            border: none;
+            outline: none;
+            width: 50%;
+            height: auto;
+            resize: vertical;
+            border-bottom: 1.5px solid black;
+        }
+        
         a.post-button{
             width: 35px;
             height: 35px;
@@ -63,7 +100,8 @@
             img:hover{
                 transition: .5s;
                 height: 35px;
-                width: 35px;    
+                width: 35px;   
+                color: white; 
             }
         }
     }

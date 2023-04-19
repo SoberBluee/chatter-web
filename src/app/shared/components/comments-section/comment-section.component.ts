@@ -3,19 +3,14 @@ import { Comment } from '../../interface.model';
 @Component({
     selector: 'app-comment-selction',
     templateUrl: './comment-section.component.html',
-    styleUrls: ['./comment-section.component.css']
+    styleUrls: ['./comment-section.component.scss'],
 })
-
-export class CommentSectionComponent implements OnInit{
-
+export class CommentSectionComponent implements OnInit {
     @Input() comments: Comment[];
 
-    constructor(){}
+    constructor() {}
 
-    ngOnInit(){
+    ngOnInit() {
         console.log(this.comments);
     }
-
-
-
 }

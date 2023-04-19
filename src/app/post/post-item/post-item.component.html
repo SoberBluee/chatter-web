@@ -5,6 +5,7 @@
             <h3 style="width: auto">{{ title }}</h3>
             <p style="width: auto">{{ uploadDate }}</p>
         </div>
+
         <!-- Post Content sections -->
         <div class="post" (click)="showComments()">
             <!-- show if there is an image -->
@@ -57,9 +58,14 @@
                     />
                 </ng-template>
             </a>
+            <textarea
+                *ngIf="toggleCommentBox"
+                class="comment-box-input"
+                type="text"
+            ></textarea>
         </div>
         <!-- Toggle comment section -->
-        <div class="comment-section">
+        <div class="comment-area">
             <app-comment-selction
                 *ngIf="toggleCommentSection"
                 [comments]="comments"
