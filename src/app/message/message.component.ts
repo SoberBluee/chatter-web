@@ -12,7 +12,7 @@ import { CurrentUser } from '../shared/interface.model';
     styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent implements OnInit {
-    public users: CurrentUser[] = [];
+    public currentUser: CurrentUser | null;
     public selectedUser: CurrentUser;
     public userHeaderName: string = 'No user selected';
     public toggleManageUser: boolean = false;
@@ -26,7 +26,13 @@ export class MessageComponent implements OnInit {
         private messageService: MessageService
     ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.currentUser = JSON.parse(localStorage.getItem('session') || '');
+        this.messageService.emitSelectedUser.subscribe((selectedUser) => {
+            console.log('emitSelectedUser: ', selectedUser);
+            this.selectedUser = selectedUser;
+        });
+    }
 
     public closeError() {
         this.showErrorBanner = false;

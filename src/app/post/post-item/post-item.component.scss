@@ -56,13 +56,23 @@
         display: flex;
         flex-direction: row;
         padding-top: 1rem;
-        justify-content: left;
+        justify-content: center;
         border-top: 2.5px solid black;
+        transition: 1s;
         
         .likes{
-            display: flex;
-            width: auto; 
+            text-decoration-color: black;
+            text-decoration: solid;
+            font-size: 1.5rem;
+            color: black;
             margin-left: 15px;
+
+            &:hover{
+                transition: .5s;
+                text-decoration: underline;
+                font-size: 2rem;
+
+            }
         }
 
         .comment{
@@ -71,6 +81,7 @@
         }
 
         .comment-input{
+            transition: 1s;
             width: 100%;
             .comment-box-input{
                 margin: 0px 10px;
@@ -90,29 +101,107 @@
 
         }
         
-        a.post-button{
-            width: 35px;
-            height: 35px;
-            margin-right: 1rem; 
-            border-radius: 10px;
-            background-size:contain;
-            background-repeat:no-repeat;
-            border-radius: 10px;
+        .icons{
             transition: .5s;
-
-            img{
-                height: 30px;
-                width: 30px;    
-                transition: .5s;
+            height: 40px;
+            width: 40px;
+        
+            &.like{
+                background-image: url('../../../svgs/like.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
             }
-
-            img:hover{
-                transition: .5s;
-                height: 35px;
-                width: 35px;   
-                color: white; 
+        
+            &.comment{
+                background-image: url('../../../svgs/comment.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+        
+            &.comment-section{
+                background-image: url('../../../svgs/comment-section.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
             }
         }
+
+            
+        
     }
+}
+
+.liked{
+    background-image:unset;
+    background-image: url('../../../svgs/like-clicked.svg') !important;
+    background-size: contain;
+    background-repeat: no-repeat;  
+    background-position: center;
+    background-size: 1.5rem; 
+    border: none;
+
+    &:hover{
+        transition: .5s;
+        background-size: 2rem;
+    }
+
+}
+
+.comment-section-clicked{
+    background-image:unset;
+    background-image: url('../../../svgs/comment-section-clicked.svg') !important;
+    background-size: contain;
+    background-repeat: no-repeat;  
+    background-position: center;
+    background-size: 1.5rem; 
+    border: none;
+
+    &:hover{
+        transition: .5s;
+        background-size: 2rem;
+    }
+
+}
+
+.comment-clicked{
+    background-image:unset;
+    background-image: url('../../../svgs/comment-clicked.svg') !important;
+    background-size: contain;
+    background-repeat: no-repeat;  
+    background-position: center;
+    background-size: 1.5rem; 
+    border: none;
+
+    &:hover{
+        transition: .5s;
+        background-size: 2rem;
+    }
+
 }
 

@@ -1,22 +1,25 @@
 <header [class.vertical]="verticalHeader">
     <nav class="navbar">
         <ul>
-            <img
+            <!-- <img
                 class="change-orientation"
                 src="../../assets/circular-arrow-svgrepo-com.svg"
                 alt=""
                 (click)="changeHeaderOrientation()"
-            />
+            /> -->
+            <a
+                class="change-orientation"
+                (click)="changeHeaderOrientation()"
+            ></a>
             <a class="navbar-brand" [routerLink]="['/']">
                 <img src="../../assets/header_logo.png" alt="logo" />
             </a>
-            <img
-                class="icons"
+            <!-- Home -->
+            <a
+                class="icons home"
                 *ngIf="verticalHeader"
-                src="../../assets/home-icon.png"
-                alt="message-icon"
                 [routerLink]="['/']"
-            />
+            ></a>
             <a
                 *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
@@ -24,45 +27,52 @@
                 >Home</a
             >
             <div class="dot-seperator"></div>
-            <img
-                class="icons"
+
+            <!-- Messages -->
+            <a
+                class="icons message"
                 *ngIf="verticalHeader"
-                src="../../assets/message-icon.png"
-                alt="message-icon"
                 [routerLink]="['/message']"
-            />
+            ></a>
             <a
                 *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
                 [routerLink]="['/message']"
                 >Messages</a
             >
-            <img
-                class="icons"
+            <!-- Peoples page -->
+            <a
                 *ngIf="verticalHeader"
-                src="../../assets/group.png"
-                alt="message-icon"
+                class="icons people-page"
                 [routerLink]="['/people-page']"
-            />
+            ></a>
             <a
                 *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
                 [routerLink]="['/people-page']"
                 >Peoples Page</a
             >
-            <img
-                class="icons"
-                *ngIf="verticalHeader"
-                src="../../assets/user-icon.png"
-                alt="message-icon"
-                [routerLink]="['/account']"
-            />
+            <!-- Calendar -->
             <a
                 *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
                 [routerLink]="['/friends-calendar']"
                 >Friend Calendar</a
             >
+            <a
+                *ngIf="verticalHeader"
+                class="icons calandar"
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/account']"
+            ></a>
+
+            <!-- Account -->
+            <a
+                *ngIf="verticalHeader"
+                class="icons account"
+                [routerLinkActive]="['link-active']"
+                [routerLink]="['/account']"
+            ></a>
             <a
                 *ngIf="!verticalHeader"
                 [routerLinkActive]="['link-active']"
@@ -84,66 +94,16 @@
                     ? currentUser?.user_name
                     : 'Not logged in'
             }}</a>
-            <img
+
+            <button
+                type="button"
                 class="search"
-                src="../../assets/search-icon.png"
-                alt="search-icon"
                 (click)="toggleSearch()"
-            />
-            <div
-                class="hide-search"
-                [class.show]="showSearch"
-                [hidden]="!showSearch"
-            >
-                <app-search-bar></app-search-bar>
-            </div>
+            ></button>
         </ul>
+        <app-search-bar
+            [class.show]="showSearch"
+            [hidden]="!showSearch"
+        ></app-search-bar>
     </nav>
 </header>
-
-<!--      [routerLinkActive]="['link-active']"
-                        [routerLink]="['/people-page']" -->
-<!--  -->
-
-<!-- <app-search-bar></app-search-bar>
-          <a
-            class="nav-link text-dark align"
-            
-            >Home</a
-          >
-          <a class="v-divider align"></a>
-          <a class="text-dark align"
-            >User:
-            {{
-              currentUser?.user_name ? currentUser?.user_name : "Not logged in"
-            }}</a
-          >
-          <a class="v-divider align"></a>
-          <a
-            class="nav-link text-dark align"
-            [routerLinkActive]="['link-active']"
-            [routerLink]="['/message']"
-            >Messages</a
-          >
-          <a
-            class="nav-link text-dark align"
-            [routerLinkActive]="['link-active']"
-            [routerLink]="['/people-page']"
-            >PeoplesPage</a
-          >
-          <a
-            class="nav-link text-dark align"
-            [routerLinkActive]="['link-active']"
-            [routerLink]="['/account']"
-            >Account</a
-          >
-
-          <a class="v-divider align"></a>
-          <a
-          *ngIf="currentUser"
-            class="nav-link text-dark align"
-            [routerLinkActive]="['link-active']"
-            [routerLink]="['/login']"
-            (click)="checkLogin()"
-            >Login</a
-          > -->

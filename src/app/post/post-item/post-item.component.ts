@@ -61,7 +61,7 @@ export class PostItemComponent implements OnInit {
     }
 
     public share(): void {
-        // console.log("Share post");
+        console.log('Share post');
     }
 
     public showCommentBox(): void {

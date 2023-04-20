@@ -48,11 +48,7 @@ export class MessageBoxComponent implements OnInit {
         // listen for when a user on the sidebar menu is selected
         this.messageService.emitSelectedUser.subscribe(
             (selectedUser: CurrentUser) => {
-                console.log(this.messageData);
                 this.messageData = [];
-
-                console.log('message data: ', this.messageData);
-                console.log('selected user: ', this.selectedUser);
 
                 this.loading = true;
                 this.selectedUser = selectedUser;
@@ -67,7 +63,6 @@ export class MessageBoxComponent implements OnInit {
                         if (!response) {
                             return;
                         }
-                        console.log('response: ', response);
                         // work out sender after data returned from database
                         // Want to base the sender of the currently logged in user
                         this.findSenderAndReciever(response.data);
@@ -222,10 +217,8 @@ export class MessageBoxComponent implements OnInit {
             .pipe()
             .subscribe((response: any) => {
                 if (response.status === 200) {
-                    console.log('message deleted');
                     this.findUpdatedMessage(response.data);
                 }
-                console.log('something went wrong');
             });
     }
 

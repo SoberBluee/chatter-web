@@ -10,9 +10,16 @@
                 src="assets/default-avatar.png"
                 alt="profile-picture"
             />
-            <p>{{ user.user_name }}</p>
-            <p>{{ name }}</p>
-            <p>{{ user_contact_details.email }}</p>
+            <p>{{ user?.user_name ? user.user_name : 'Username not found' }}</p>
+            <p>{{ name ? name : 'Name not found' }}</p>
+            <p>{{ user?.email ? user.email : 'Email not found' }}</p>
+            <p>
+                {{
+                    user?.phonenumber
+                        ? user.phonenumber
+                        : 'Phonenumber not found'
+                }}
+            </p>
         </div>
     </div>
     <div class="v-divider"></div>

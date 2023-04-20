@@ -25,14 +25,6 @@ header{
             box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
             transition: .5s;
 
-            img.change-orientation{
-                margin: auto 0px;
-                height: 25px;
-                width: 25px;
-                opacity: .7;
-                box-shadow: none;
-            }
-
             img.search{
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
                 margin: auto 20px;
@@ -53,10 +45,16 @@ header{
         }
         .search{
             transition: .5s;
-            width: 65px;
+            width: 50px;
             height: 50px;
             border-radius: 100%;
-            margin-left: 10px;
+            margin: 15px 10px;
+            background-image: url("../../svgs/search.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 2rem; 
+            border: none;
         }
 
         .search:hover{
@@ -104,6 +102,11 @@ header{
     nav.navbar{
         justify-content: center;
         ul{
+
+            .change-orientation{
+                height:35px;
+            }
+
             flex-direction: column;
             align-items: center;
             padding: 5px;
@@ -123,15 +126,102 @@ header{
                 height: 40px;
                 width: 40px;
                 margin: 10px;
-            }
 
-            .icons:hover{
-                transition: .5s;
-                height: 50px;
-                width: 50px;
-            }
+                &.home{
+                    background-image: url('../../svgs/home.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 2rem; 
+                    border: none;
 
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2.5rem;
+                    }
+
+                }
+
+                &.message{
+                    background-image: url('../../svgs/message.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 2rem; 
+                    border: none;
+
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2.5rem;
+                    }
+                }
+
+                &.people-page{
+                    background-image: url('../../svgs/people.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 2rem; 
+                    border: none;
+
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2.5rem;
+                    }
+                }
+
+                &.account{
+                    background-image: url('../../svgs/settings.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 2rem; 
+                    border: none;
+
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2.5rem;
+                    }
+                }
+
+                &.calandar{
+                    background-image: url('../../svgs/calendar.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 2rem; 
+                    border: none;
+
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2.5rem;
+                    }
+                }
+
+                
+
+                
+
+
+            }
         }
+    }
+}
+
+.change-orientation{
+    background-image: url('../../svgs/change-orientation.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem; 
+    border: none;
+    width: 35px;
+    margin: 0px !important;
+    
+
+    &:hover{
+        transition: .5s;
+        background-size: 2rem;
     }
 }
 

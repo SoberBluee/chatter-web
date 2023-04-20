@@ -28,7 +28,6 @@ export class PostComponent implements OnInit {
     ngOnInit() {
         this.postService.getAllPosts().subscribe((response: any) => {
             this.posts = response.data;
-            console.log('posts: ', this.posts);
         });
 
         this.authService.emitCurrentUser.subscribe((user: CurrentUser) => {

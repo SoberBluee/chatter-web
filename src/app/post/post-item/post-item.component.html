@@ -17,47 +17,23 @@
         <!-- Post control  -->
         <div class="post-control">
             <!-- Likes  -->
-            <label class="likes" for="likes">Likes: {{ likes }}</label>
+            <a class="likes" for="likes">{{ likes }}</a>
             <div class="v-divider"></div>
             <!-- Like button -->
-            <a class="post-button like" (click)="like()">
-                <img
-                    *ngIf="!isLiked; else liked"
-                    src="../../../assets/like.png"
-                />
-                <ng-template #liked>
-                    <img src="../../../assets/heart.png" />
-                </ng-template>
-            </a>
+            <a class="icons like" [class.liked]="isLiked" (click)="like()"></a>
             <!-- Comment section button -->
-            <a class="post-button comment-section" (click)="showComments()">
-                <img
-                    class="closed-comment"
-                    *ngIf="!toggleCommentSection; else commenting"
-                    src="../../../assets/comment-section.png"
-                />
-                <ng-template #commenting>
-                    <img
-                        class="open-comment"
-                        src="../../../assets/comment-section-clicked.png"
-                    />
-                </ng-template>
-            </a>
+            <a
+                class="icons comment-section"
+                [class.comment-section-clicked]="toggleCommentSection"
+                (click)="showComments()"
+            ></a>
             <!-- Comment section button -->
-            <a class="post-button comment" (click)="showCommentBox()">
-                <img
-                    class="comment-btn"
-                    src="../../../assets/chat.png"
-                    alt="comment-box"
-                    *ngIf="toggleCommentBox; else commentBox"
-                />
-                <ng-template #commentBox>
-                    <img
-                        src="../../../assets/chat-bubble.png"
-                        alt="comment-box-clicked"
-                    />
-                </ng-template>
-            </a>
+            <a
+                class="icons comment"
+                [class.comment-clicked]="toggleCommentBox"
+                (click)="showCommentBox()"
+            ></a>
+
             <div class="comment-input" *ngIf="toggleCommentBox">
                 <textarea class="comment-box-input" type="text"></textarea>
                 <button class="button-secondary">Comment</button>

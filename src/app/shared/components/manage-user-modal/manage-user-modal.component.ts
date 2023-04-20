@@ -17,9 +17,7 @@ export class ManageUserModalComponent implements OnInit {
 
     constructor() {}
 
-    ngOnInit(): void {
-        console.log('selectedUser manage user modal: ', this.user);
-    }
+    ngOnInit(): void {}
 
     public goToUserPage(): void {}
 
