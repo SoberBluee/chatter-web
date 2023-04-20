@@ -1,20 +1,6 @@
-@keyframes slide-out{
-    0%{
-        right: 0;
-    }
-    100%{
-        right: 100%;
-    }
-}
-
-@keyframes slide-in{
-    0%{
-        right: 100%;
-    }
-    100%{
-        right: 0;
-    }
-}
+@import "../../styles/global";
+@import "../../styles/forms";
+@import "../../styles/animations";
 
 .slide-in-div{
     animation: slide-in 5s ease-in-out forwards;
@@ -30,67 +16,5 @@
     .navigation{ 
         flex-wrap: wrap;
         flex-grow: 3;
-        a.nav-item{
-            // text styles
-            outline: none;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            text-align: center; 
-            text-decoration: underline;
-            color: black;
-            letter-spacing: 2.2px;
-            margin: 1px;
-            padding: 7px;
-            outline: none;
-            border: 2px solid rgb(87, 46, 95);
-            transition: .7s;
-            border-radius: 3px;  
-            margin-right: 20px;
-        }
-
-        a.logout{
-            justify-content: right;
-            border: 2px solid rgb(255, 85, 85) !important;
-            outline: none;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            text-align: center; 
-            text-decoration: underline;
-            color: black;
-            letter-spacing: 2.2px;
-            margin: 1px;
-            padding: 7px;
-            outline: none;
-            transition: .7s;
-            border-radius: 3px; 
-        }
-
-        a.logout:hover{
-            background-color: rgb(255, 85, 85) !important;
-            transition: .7s;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: large;
-            font-weight: 600;
-            letter-spacing: 2.6px;
-            text-align: left;
-            cursor: default;
-            text-decoration: underline;
-            color: black;
-            border-radius: 5px;
-        }
-
-        a.nav-item:hover{
-            transition: .7s;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: large;
-            font-weight: 600;
-            letter-spacing: 2.6px;
-            text-align: left;
-            cursor: default;
-            text-decoration: underline;
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-        }
     }
 }

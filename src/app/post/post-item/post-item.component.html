@@ -58,14 +58,13 @@
                     />
                 </ng-template>
             </a>
-            <textarea
-                *ngIf="toggleCommentBox"
-                class="comment-box-input"
-                type="text"
-            ></textarea>
+            <div class="comment-input" *ngIf="toggleCommentBox">
+                <textarea class="comment-box-input" type="text"></textarea>
+                <button class="button-secondary">Comment</button>
+            </div>
         </div>
         <!-- Toggle comment section -->
-        <div class="comment-area">
+        <div class="comment-section">
             <app-comment-selction
                 *ngIf="toggleCommentSection"
                 [comments]="comments"

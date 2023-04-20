@@ -2,6 +2,7 @@
 @import "../shared/styles/forms";
 
 header{
+
     nav.navbar{
         display: flex;
         height: 100px;
@@ -77,6 +78,7 @@ header{
             -webkit-animation: slide 0.5s forwards;
             -webkit-animation-delay: 2s;
             animation: slide 0.5s forwards;
+            z-index:2;
         }
         
         @-webkit-keyframes slide {

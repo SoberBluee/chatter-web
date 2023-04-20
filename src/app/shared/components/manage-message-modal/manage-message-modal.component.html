@@ -1,9 +1,10 @@
+<div class="blur"></div>
 <div class="content">
-  <h3>Manage Message</h3>
-  <button *ngIf="!isReciever" class="button" (click)="edit()">Edit</button>
-  <button *ngIf="!isReciever" class="button close" (click)="delete()">
-    Delete
-  </button>
-  <button class="button" (click)="forward()">Forward</button>
-  <button class="button close" (click)="exit()">X</button>
+    <h3>Manage Message</h3>
+    <button *ngIf="!isReciever" class="button" (click)="edit()">Edit</button>
+    <button *ngIf="!isReciever" class="button close" (click)="delete()">
+        Delete
+    </button>
+    <button class="button" (click)="forward()">Forward</button>
+    <button class="button close" (click)="exit()">X</button>
 </div>

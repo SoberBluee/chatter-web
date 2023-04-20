@@ -2,27 +2,29 @@
 @import "../../styles/global";
 
 .content{
+    padding: 10px 5px;
     display:flex;
     flex-direction: column;
     position: absolute;
-    top: 50px;
-    left: 50px;
-    width: 270px;
+    top: 0;
+    left: 0;
+    width: 500px;
     align-items:center;
     border: 1.5px solid black;
-    padding:1rem .5rem;
     border-radius: 10px;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    margin: 10px;  
     justify-content: center;
     box-sizing: border-box;
     z-index: 999;
     background-color:rgb(219, 217, 217);
     height: auto;
+    
+    .button{
+        width: 50%;
+    }
 }
 
-.button{
-    width: 100%;
-}
+
+
 
 

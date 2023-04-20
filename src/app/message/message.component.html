@@ -18,6 +18,7 @@
         <app-manage-user-modal
             *ngIf="toggleManageUser"
             [user]="selectedUser"
+            (exitEmitter)="toggleManageUser = !toggleManageUser"
         ></app-manage-user-modal>
         <div class="seperator"></div>
 

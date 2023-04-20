@@ -70,15 +70,24 @@
             flex-direction: row; 
         }
 
-        .comment-box-input{
-            margin-left: 10px;
-            background:transparent;
-            border: none;
-            outline: none;
-            width: 50%;
-            height: auto;
-            resize: vertical;
-            border-bottom: 1.5px solid black;
+        .comment-input{
+            width: 100%;
+            .comment-box-input{
+                margin: 0px 10px;
+                background:transparent;
+                border: none;
+                outline: none;
+                width: 70%;
+                height: 36px;
+                resize: vertical;
+                border-bottom: 1.5px solid black;
+            }
+
+            .send-comment{
+                width: 100px;
+                float: right;
+            }
+
         }
         
         a.post-button{
