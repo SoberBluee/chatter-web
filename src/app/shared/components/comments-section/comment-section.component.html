@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="comment-box">
-        <div class="comment" *ngFor="let comment of comments; let i = index">
-            <p>{{ comment.comment }}</p>
-        </div>
+<div class="container top">
+    <div class="comment bottom" *ngFor="let comment of comments; let i = index">
+        <p>{{ comment.comment }}</p>
+        <div class="h-divider"></div>
+        leave comment | edit comment | delete comment | user
     </div>
 </div>
