@@ -4,8 +4,10 @@
     </app-create-post>
     <div class="post-item" *ngFor="let post of posts; let i = index">
         <app-post-item
+            [postId]="post.id"
+            [comments]="post.comments"
             [title]="post.title"
-            [img]="post.img ?? ''"
+            [img]="post.img"
             [content]="post.body"
         ></app-post-item>
     </div>

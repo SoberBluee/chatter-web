@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  media_api_url: 'http://localhost:3001/api/v1/',
-  php_api_url: 'http://localhost:8000/api/v1/',
-  socket_api_url: 'http://localhost:3003/api/v1/'
+    production: false,
+    media_api_url: 'http://localhost:3001/api/v1/',
+    php_api_url: 'http://localhost:8000/api/v1/',
+    socket_api_url: 'http://localhost:3003/api/v1/',
 };
 
 /*
