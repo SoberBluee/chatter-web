@@ -1,7 +1,5 @@
 <div class="container top">
-    <div class="comment bottom" *ngFor="let comment of comments; let i = index">
-        <p>{{ comment.comment }}</p>
-        <div class="h-divider"></div>
-        leave comment | edit comment | delete comment | user
+    <div class="bottom" *ngFor="let comment of comments; let i = index">
+        <app-comment [comment]="comment"></app-comment>
     </div>
 </div>

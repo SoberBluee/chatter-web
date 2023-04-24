@@ -33,6 +33,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { PageNavigationComopnent } from './shared/components/page-navigation/page-navigation.component';
 import { TooltipComponent } from './shared/components/tooltip/tooltip.component';
 import { PreferencesComponent } from './account/preferences/preferences.component';
+import { CommentComponent } from './shared/components/comments-section/comment/comment.component';
+
 //Error Exceptions
 import { NotFoundComponent } from './exceptions/404/404-not-found.component';
 import { SearchBarComponent } from './shared/components/searchbar/search-bar.component';
@@ -70,6 +72,7 @@ import { AppRoutingModule } from './app-routing.module';
         PageNavigationComopnent,
         TooltipComponent,
         PreferencesComponent,
+        CommentComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -25,6 +25,10 @@ export class NavMenuComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.verticalHeader =
+            (localStorage.getItem('header-orientation') ?? null) === 'V'
+                ? true
+                : false;
         this.router.events.subscribe((val: any) => {
             if (localStorage.getItem('session') === null || undefined) {
                 return;
@@ -48,6 +52,14 @@ export class NavMenuComponent implements OnInit {
 
     public changeHeaderOrientation(): void {
         this.verticalHeader = !this.verticalHeader;
+        if (this.verticalHeader) {
+            localStorage.removeItem('header-orientation');
+            localStorage.setItem('header-orientation', 'V');
+            return;
+        }
+        localStorage.removeItem('header-orientation');
+        localStorage.setItem('header-orientation', 'H');
+        return;
     }
 
     public toggleSearch(): void {
