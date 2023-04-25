@@ -19,9 +19,16 @@ export class PostSerice implements OnInit {
 
     public setLike(liked: boolean, post_id: number): void {}
 
-    public setComment(new_comment: Comment, postId: number) {
+    public setComment(
+        commentData: {
+            comment: string;
+            userId: number;
+            parentCommentId: number | null;
+        },
+        postId: number
+    ) {
         return this.http.post(this.routePrefix + `posts/${postId}/comment`, {
-            new_comment,
+            commentData,
         });
     }
 

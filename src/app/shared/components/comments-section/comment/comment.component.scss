@@ -1,0 +1,146 @@
+@import "../../../styles/global";
+@import "../../../styles/forms";
+@import "../../../styles/animations";
+
+
+.comment{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    background-color:#cdc3ce;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+    padding: 5px;
+    position: relative;
+    min-height: 100px;
+    padding: 10px 5px;
+    border-top: 2.5px solid black;
+    border-left: 2.5px solid black;
+    border-right: 2.5px solid black;
+
+    &::before{
+        content: '';
+        border: 20px solid transparent;
+        position: absolute;
+    }
+
+    &::after{
+        content: '';
+        position: absolute;
+        border: 20px solid transparent
+    }
+
+    &.bottom::after{
+        border-bottom-color:#cdc3ce;
+        border-top: 0px;
+        bottom: -20px;
+        left: 20px;
+        transform: rotate(180deg);
+    }
+
+    .comment-control{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        .icons{
+            transition: .5s;
+            height: 40px;
+            width: 40px;
+            margin: 0px;
+            padding: 0px;  
+            min-height: unset; 
+            margin-right: 10px;
+
+            &.edit{
+                background-image: url('../../../../../svgs/edit.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+        
+            &.edit-clicked{
+                background-image: url('../../../../../svgs/edit-clicked.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+
+            &.trash{
+                background-image: url('../../../../../svgs/trash.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+        
+            &.trash-clicked{
+                background-image: url('../../../../../svgs/trash-clicked.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+    
+        
+            &.comment{
+                background-image: url('../../../../../svgs/comment.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+        
+            &.comment-clicked{
+                background-image: url('../../../../../svgs/comment-clicked.svg');
+                background-size: contain;
+                background-repeat: no-repeat;  
+                background-position: center;
+                background-size: 1.5rem; 
+                border: none;
+        
+                &:hover{
+                    transition: .5s;
+                    background-size: 2rem;
+                }
+        
+            }
+        }
+    }
+}

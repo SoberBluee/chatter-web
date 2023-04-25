@@ -11,8 +11,7 @@ import { AuthService } from '../shared/services/auth.service';
     styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-    public currentUser: CurrentUser;
-    public friends_list: any;
+    public currentUser: CurrentUser | null;
     public posts: Post[];
     public selectedUser: CurrentUser;
     public toggleCreateNewPost: boolean = false;
@@ -25,15 +24,14 @@ export class PostComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.currentUser =
+            localStorage.getItem('session') ?? null
+                ? JSON.parse(localStorage.getItem('session') ?? '')
+                : null;
+
         this.postService.getAllPosts().subscribe((response: any) => {
             this.posts = response.data;
             console.log('Post with comments: ', this.posts);
-        });
-
-        this.authService.emitCurrentUser.subscribe((user: CurrentUser) => {
-            this.currentUser = user;
-            this.friends_list = user.friend_list;
-            this.userService.hasFriendsEvent.next(user.friend_list);
         });
     }
 

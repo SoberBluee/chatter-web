@@ -35,7 +35,11 @@
             ></a>
             <!-- comment box -->
             <div class="comment-input" *ngIf="toggleCommentBox">
-                <textarea class="comment-box-input" type="text"></textarea>
+                <textarea
+                    formControlName="commentBox"
+                    class="comment-box-input"
+                    type="text"
+                ></textarea>
                 <button class="button-secondary" (click)="comment()">
                     Comment
                 </button>

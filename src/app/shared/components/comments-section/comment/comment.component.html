@@ -1,0 +1,21 @@
+<div class="comment bottom">
+    {{ comment.comment }}
+    <div class="v-divider"></div>
+    <div class="comment-control">
+        <a
+            class="icons comment"
+            [class.comment-clicked]="commentClicked"
+            (click)="toggleComments()"
+        ></a>
+        <a
+            class="icons trash"
+            [class.trash-clicked]="trashClicked"
+            (click)="toggleTrash()"
+        ></a>
+        <a
+            class="icons edit"
+            [class.edit-clicked]="editClicked"
+            (click)="toggleEdit()"
+        ></a>
+    </div>
+</div>

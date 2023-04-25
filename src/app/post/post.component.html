@@ -4,6 +4,7 @@
     </app-create-post>
     <div class="post-item" *ngFor="let post of posts; let i = index">
         <app-post-item
+            [currentUser]="currentUser"
             [postId]="post.id"
             [comments]="post.comments"
             [title]="post.title"

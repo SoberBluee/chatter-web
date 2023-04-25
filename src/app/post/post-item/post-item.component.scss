@@ -7,11 +7,12 @@
     width: 100%;
     margin: .5rem 0px;
     padding: 5px 0px;
+    overflow: hidden;
     
     .post-header{
         border-bottom: 2.5px solid black;
         padding: 5px;
-        width: auto;
+        width: 100%;
         transition: .5s;    
         
         h3{

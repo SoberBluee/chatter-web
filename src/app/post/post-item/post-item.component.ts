@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Comment } from 'src/app/shared/interface.model';
+import { Comment, CurrentUser } from 'src/app/shared/interface.model';
 import { PostSerice } from 'src/app/shared/services/post.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { PostSerice } from 'src/app/shared/services/post.service';
     styleUrls: ['./post-item.component.scss'],
 })
 export class PostItemComponent implements OnInit {
+    @Input() public currentUser: CurrentUser | null;
     @Input() public postId: number;
     @Input() public comments: Comment[];
     @Input() public title: string | undefined;
@@ -37,8 +38,18 @@ export class PostItemComponent implements OnInit {
     }
 
     public comment(): void {
-        const comment = this.postOptionsForm.get('commentBox')?.value;
-        this.postService.setComment(comment, this.postId);
+        const commentData = {
+            userId: 1,
+            comment: this.postOptionsForm.get('commentBox')?.value ?? '',
+            parentCommentId: null,
+        };
+        this.postService.setComment(commentData, this.postId).subscribe({
+            next: (response) => {
+                console.log('Response', response);
+            },
+            error: () => {},
+            complete: () => {},
+        });
         this.clearComments();
     }
 

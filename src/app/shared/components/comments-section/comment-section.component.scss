@@ -4,7 +4,6 @@
 .container{
     width: 95%;
     height: 95%;
-    background-color:rgb(162, 162, 162);
     border-radius: 10px;
     position: relative;
     padding: 20px;
@@ -27,16 +26,5 @@
         content: '';
         position: absolute;
         border: 20px solid transparent
-    }
-}
-
-.container:hover{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: .5s;
-
-    &.top:hover::after{
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  
-        transition: .5s;
-
     }
 }
