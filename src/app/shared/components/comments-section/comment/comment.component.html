@@ -1,21 +1,51 @@
 <div class="comment bottom">
-    {{ comment.comment }}
-    <div class="v-divider"></div>
-    <div class="comment-control">
-        <a
-            class="icons comment"
-            [class.comment-clicked]="commentClicked"
-            (click)="toggleComments()"
-        ></a>
-        <a
-            class="icons trash"
-            [class.trash-clicked]="trashClicked"
-            (click)="toggleTrash()"
-        ></a>
-        <a
-            class="icons edit"
-            [class.edit-clicked]="editClicked"
-            (click)="toggleEdit()"
-        ></a>
-    </div>
+    <form [formGroup]="editCommentForm" (ngSubmit)="editCommentSubmit()">
+        <div class="comment-container" *ngIf="!editClicked">
+            {{ comment.comment }}
+        </div>
+
+        <input
+            class="edit-comment-input"
+            formControlName="newComment"
+            [class.input-error]="formErrors"
+            *ngIf="editClicked"
+            type="text"
+        />
+        <div class="v-divider"></div>
+        <div
+            class="comment-control"
+            id="comment-control"
+            [class.comment-transistion]="commentControlHover"
+            (mouseenter)="commentControlHover = true"
+            (mouseleave)="checkOpenControl()"
+        >
+            <a
+                class="icons comment"
+                [class.comment-clicked]="commentClicked"
+                (click)="toggleComments()"
+            ></a>
+            <a
+                class="icons trash"
+                [class.trash-clicked]="trashClicked"
+                (click)="toggleTrash()"
+                *ngIf="commentControlHover && canUserDelete"
+            ></a>
+            <a
+                class="icons edit"
+                [class.edit-clicked]="editClicked"
+                (click)="toggleEdit()"
+                *ngIf="commentControlHover && canUserEdit"
+            ></a>
+            <button
+                class="icons confirm"
+                *ngIf="editClicked"
+                type="submit"
+            ></button>
+        </div>
+    </form>
 </div>
+<app-generic-delete-model
+    *ngIf="openTrashCommentModel"
+    (exitEmitter)="openTrashCommentModel = false"
+    (deleteCommentEmitter)="deleteComment()"
+></app-generic-delete-model>

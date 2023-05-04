@@ -27,15 +27,25 @@ export class PostSerice implements OnInit {
         },
         postId: number
     ) {
-        return this.http.post(this.routePrefix + `posts/${postId}/comment`, {
-            commentData,
-        });
+        return this.http.post(
+            this.routePrefix + `posts/comment/${postId}/setComment`,
+            {
+                commentData,
+            }
+        );
     }
 
-    public getComments(comment_id: number) {}
+    public editComment(newComment: string, commentId: number) {
+        return this.http.post(
+            this.routePrefix + `posts/comment/${commentId}/editComment`,
+            { comment: newComment }
+        );
+    }
 
-    public getPost(post_id: number) {
-        return this.http.get('/posts/' + post_id);
+    public deleteComment(commentId: number) {
+        return this.http.delete(
+            this.routePrefix + `posts/comment/${commentId}`
+        );
     }
 
     public getAllPosts() {
@@ -49,6 +59,4 @@ export class PostSerice implements OnInit {
     public deletePosts(post_id: number) {
         return this.http.delete(this.routePrefix + 'posts/' + post_id);
     }
-
-    public editPosts() {}
 }

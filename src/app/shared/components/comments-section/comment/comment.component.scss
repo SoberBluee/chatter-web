@@ -2,21 +2,17 @@
 @import "../../../styles/forms";
 @import "../../../styles/animations";
 
-
 .comment{
     display: flex;
     flex-direction: row;
     justify-content: end;
     background-color:#cdc3ce;
     border-radius: 15px;
-    margin-bottom: 3rem;
-    padding: 5px;
-    position: relative;
-    min-height: 100px;
+    margin-bottom: 2rem;
+    position: relative; 
     padding: 10px 5px;
-    border-top: 2.5px solid black;
-    border-left: 2.5px solid black;
-    border-right: 2.5px solid black;
+    width: fit-content;
+    padding: 10px 15px;
 
     &::before{
         content: '';
@@ -38,108 +34,184 @@
         transform: rotate(180deg);
     }
 
-    .comment-control{
+    form{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: end;
-        .icons{
+
+        input[type="text"].edit-comment-input{
+            display: flex;
+            text-align: start;
+            width: fit-content;
+            border-radius: 10px;
+            background:none;
+            outline:none;
+            border:none;
+        }
+
+        .comment-container{
+            vertical-align: middle;
+        }
+
+        .comment-control{
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
             transition: .5s;
-            height: 40px;
-            width: 40px;
-            margin: 0px;
-            padding: 0px;  
-            min-height: unset; 
-            margin-right: 10px;
+            width: auto;
 
-            &.edit{
-                background-image: url('../../../../../svgs/edit.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
+            button{
+                background:none;
                 border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
-                }
-        
-            }
-        
-            &.edit-clicked{
-                background-image: url('../../../../../svgs/edit-clicked.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
-                border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
-                }
-        
+                outline: none;
             }
 
-            &.trash{
-                background-image: url('../../../../../svgs/trash.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
-                border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
+            .icons{
+                display: flex;
+                position: relative;
+                transition: .5s;
+                height: 40px;
+                width: 40px;
+                margin: 0px;
+                padding: 0px;  
+                min-height: unset; 
+
+                &.edit{
+                    background-image: url('../../../../../svgs/edit.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
+                }
+            
+                &.edit-clicked{
+                    background-image: url('../../../../../svgs/edit-clicked.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
+                }
+
+                &.confirm{
+                    background-image: url('../../../../../svgs/confirm.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem
+                    }
+
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
+                }
+            
+                &.trash{
+                    background-image: url('../../../../../svgs/trash.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
+                }
+            
+                &.trash-clicked{
+                    background-image: url('../../../../../svgs/trash-clicked.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
                 }
         
-            }
-        
-            &.trash-clicked{
-                background-image: url('../../../../../svgs/trash-clicked.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
-                border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
+                &.comment{
+                    background-image: url('../../../../../svgs/comment.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
                 }
-        
-            }
-    
-        
-            &.comment{
-                background-image: url('../../../../../svgs/comment.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
-                border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
+            
+                &.comment-clicked{
+                    background-image: url('../../../../../svgs/comment-clicked.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;  
+                    background-position: center;
+                    background-size: 1.5rem; 
+                    border: none;
+            
+                    &:hover{
+                        transition: .5s;
+                        background-size: 2rem;
+                    }
+
+                    &:active{
+                        transition: .5s;
+                        background-size: 1rem;
+                    }
+            
                 }
-        
-            }
-        
-            &.comment-clicked{
-                background-image: url('../../../../../svgs/comment-clicked.svg');
-                background-size: contain;
-                background-repeat: no-repeat;  
-                background-position: center;
-                background-size: 1.5rem; 
-                border: none;
-        
-                &:hover{
-                    transition: .5s;
-                    background-size: 2rem;
-                }
-        
             }
         }
     }

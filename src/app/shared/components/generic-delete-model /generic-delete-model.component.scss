@@ -1,0 +1,23 @@
+@import "../../styles/global";
+@import "../../styles/forms";
+@import "../../styles/animations";
+
+.content{
+    // padding: 0px;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 35%;
+    left: 35%;
+    overflow: hidden;
+    text-align: center;
+
+
+    button.button-secondary{
+        margin-right: 0px;
+    }
+
+    button{
+        width: 50%;
+    }
+}

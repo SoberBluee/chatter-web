@@ -84,6 +84,7 @@ export interface CreateComment {
 }
 
 export interface Comment {
+    id: number;
     parentCommentId: number;
     postId: number;
     userId: number;

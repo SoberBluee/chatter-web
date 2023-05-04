@@ -1,5 +1,5 @@
 <div class="content">
-    <button class="button" (click)="toggleNewPost()">New Post</button>
+    <button class="button small" (click)="toggleNewPost()">New Post</button>
     <app-create-post class="create-post" *ngIf="toggleCreateNewPost">
     </app-create-post>
     <div class="post-item" *ngFor="let post of posts; let i = index">

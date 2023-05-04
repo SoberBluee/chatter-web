@@ -34,7 +34,7 @@ import { PageNavigationComopnent } from './shared/components/page-navigation/pag
 import { TooltipComponent } from './shared/components/tooltip/tooltip.component';
 import { PreferencesComponent } from './account/preferences/preferences.component';
 import { CommentComponent } from './shared/components/comments-section/comment/comment.component';
-
+import { GenericDeleteModelComponent } from './shared/components/generic-delete-model /generic-delete-model.component';
 //Error Exceptions
 import { NotFoundComponent } from './exceptions/404/404-not-found.component';
 import { SearchBarComponent } from './shared/components/searchbar/search-bar.component';
@@ -73,6 +73,7 @@ import { AppRoutingModule } from './app-routing.module';
         TooltipComponent,
         PreferencesComponent,
         CommentComponent,
+        GenericDeleteModelComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

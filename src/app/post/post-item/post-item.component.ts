@@ -28,6 +28,7 @@ export class PostItemComponent implements OnInit {
     constructor(private postService: PostSerice) {}
 
     ngOnInit(): void {
+        console.log('currentUser in post item: ', this.currentUser);
         this.postOptionsForm = new FormGroup({
             commentBox: new FormControl(''),
         });
@@ -44,8 +45,9 @@ export class PostItemComponent implements OnInit {
             parentCommentId: null,
         };
         this.postService.setComment(commentData, this.postId).subscribe({
-            next: (response) => {
-                console.log('Response', response);
+            next: (response: any) => {
+                const comment = response.data;
+                this.comments.push(comment);
             },
             error: () => {},
             complete: () => {},
